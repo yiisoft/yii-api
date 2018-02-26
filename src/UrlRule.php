@@ -57,7 +57,7 @@ use yii\web\UrlRuleInterface;
  * For more details and usage information on UrlRule, see the [guide article on rest routing](guide:rest-routing).
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
- * @since 2.0
+ * @since 1.0
  */
 class UrlRule extends CompositeUrlRule
 {

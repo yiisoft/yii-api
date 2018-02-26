@@ -28,7 +28,7 @@ use yii\web\Response;
  * implementing [[DataProviderInterface]]. You may override [[serialize()]] to handle more types.
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
- * @since 2.0
+ * @since 1.0
  */
 class Serializer extends Component
 {
@@ -92,13 +92,11 @@ class Serializer extends Component
     /**
      * @var string the name of the envelope (e.g. `_links`) for returning the links objects.
      * It takes effect only, if `collectionEnvelope` is set.
-     * @since 2.0.4
      */
     public $linksEnvelope = '_links';
     /**
      * @var string the name of the envelope (e.g. `_meta`) for returning the pagination object.
      * It takes effect only, if `collectionEnvelope` is set.
-     * @since 2.0.4
      */
     public $metaEnvelope = '_meta';
     /**
@@ -115,7 +113,6 @@ class Serializer extends Component
      * used to index the model objects. The default is to serialize all collections as array, regardless
      * of how the array is indexed.
      * @see serializeDataProvider()
-     * @since 2.0.10
      */
     public $preserveKeys = false;
 

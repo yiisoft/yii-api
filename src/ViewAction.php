@@ -15,7 +15,7 @@ use Yii;
  * For more details and usage information on ViewAction, see the [guide article on rest controllers](guide:rest-controllers).
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
- * @since 2.0
+ * @since 1.0
  */
 class ViewAction extends Action
 {
