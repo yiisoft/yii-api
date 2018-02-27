@@ -33,7 +33,7 @@
         }
     ],
     "autoload": {
-        "psr-4": { "yii\\rest\\": "src" }
+        "psr-4": {"yii\\rest\\": "src"}
     },
     "autoload-dev": {
         "psr-4": {"yiiunit\\rest\\": "tests"}
