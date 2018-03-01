@@ -73,34 +73,34 @@ class ActiveController extends Controller
     {
         return [
             'index' => [
-                'class' => IndexAction::class,
+                '__class' => IndexAction::class,
                 'modelClass' => $this->modelClass,
                 'checkAccess' => [$this, 'checkAccess'],
             ],
             'view' => [
-                'class' => ViewAction::class,
+                '__class' => ViewAction::class,
                 'modelClass' => $this->modelClass,
                 'checkAccess' => [$this, 'checkAccess'],
             ],
             'create' => [
-                'class' => CreateAction::class,
+                '__class' => CreateAction::class,
                 'modelClass' => $this->modelClass,
                 'checkAccess' => [$this, 'checkAccess'],
                 'scenario' => $this->createScenario,
             ],
             'update' => [
-                'class' => UpdateAction::class,
+                '__class' => UpdateAction::class,
                 'modelClass' => $this->modelClass,
                 'checkAccess' => [$this, 'checkAccess'],
                 'scenario' => $this->updateScenario,
             ],
             'delete' => [
-                'class' => DeleteAction::class,
+                '__class' => DeleteAction::class,
                 'modelClass' => $this->modelClass,
                 'checkAccess' => [$this, 'checkAccess'],
             ],
             'options' => [
-                'class' => OptionsAction::class,
+                '__class' => OptionsAction::class,
             ],
         ];
     }

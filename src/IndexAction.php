@@ -52,7 +52,7 @@ class IndexAction extends Action
      *
      * ```php
      * [
-     *     'class' => 'yii\data\ActiveDataFilter',
+     *     '__class' => \yii\data\ActiveDataFilter::class,
      *     'searchModel' => function () {
      *         return (new \yii\base\DynamicModel(['id' => null, 'name' => null, 'price' => null]))
      *             ->addRule('id', 'integer')
@@ -115,7 +115,7 @@ class IndexAction extends Action
         }
 
         return Yii::createObject([
-            'class' => ActiveDataProvider::class,
+            '__class' => ActiveDataProvider::class,
             'query' => $query,
             'pagination' => [
                 'params' => $requestParams,

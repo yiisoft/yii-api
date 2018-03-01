@@ -98,9 +98,9 @@ use yii\rest\ActiveController;
 
 class UserController extends ActiveController
 {
-    public $modelClass = 'app\models\User';
+    public $modelClass = \app\models\User::class;
     public $serializer = [
-        'class' => 'yii\rest\Serializer',
+        '__class' => \yii\rest\Serializer::class,
         'collectionEnvelope' => 'items',
     ];
 }
@@ -170,8 +170,8 @@ Content-Type: application/json; charset=UTF-8
 'response' => [
     // ...
     'formatters' => [
-        \yii\web\Response::FORMAT_JSON => [
-            'class' => 'yii\web\JsonResponseFormatter',
+        yii\web\Response::FORMAT_JSON => [
+            '__class' => yii\web\JsonResponseFormatter::class,
             'prettyPrint' => YII_DEBUG, // используем "pretty" в режиме отладки
             'encodeOptions' => JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE,
             // ...

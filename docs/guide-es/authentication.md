@@ -57,7 +57,7 @@ public function behaviors()
 {
     $behaviors = parent::behaviors();
     $behaviors['authenticator'] = [
-        'class' => HttpBasicAuth::class,
+        '__class' => HttpBasicAuth::class,
     ];
     return $behaviors;
 }
@@ -75,7 +75,7 @@ public function behaviors()
 {
     $behaviors = parent::behaviors();
     $behaviors['authenticator'] = [
-        'class' => CompositeAuth::class,
+        '__class' => CompositeAuth::class,
         'authMethods' => [
             HttpBasicAuth::class,
             HttpBearerAuth::class,

@@ -15,7 +15,7 @@ como sigue:
     'enableStrictParsing' => true,
     'showScriptName' => false,
     'rules' => [
-        ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
+        ['__class' => yii\rest\UrlRule::class, 'controller' => 'user'],
     ],
 ]
 ```
@@ -54,7 +54,7 @@ deshabilitar, respectivamente. Por ejemplo,
 
 ```php
 [
-    'class' => 'yii\rest\UrlRule',
+    '__class' => yii\rest\UrlRule::class,
     'controller' => 'user',
     'except' => ['delete', 'create', 'update'],
 ],
@@ -65,7 +65,7 @@ Por ejemplo, para soportar una nueva acción `search` por  el punto final `GET /
 
 ```php
 [
-    'class' => 'yii\rest\UrlRule',
+    '__class' => yii\rest\UrlRule::class,
     'controller' => 'user',
     'extraPatterns' => [
         'GET search' => 'search',
@@ -86,7 +86,7 @@ a un ID de controlador. Por ejemplo, el siguiente código mapea el nombre `u` al
  
 ```php
 [
-    'class' => 'yii\rest\UrlRule',
+    '__class' => yii\rest\UrlRule::class,
     'controller' => ['u' => 'user'],
 ]
 ```

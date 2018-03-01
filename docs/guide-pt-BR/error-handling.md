@@ -64,7 +64,7 @@ return [
    // ...
    'components' => [
        'response' => [
-           'class' => 'yii\web\Response',
+           '__class' => yii\web\Response::class,
            'on beforeSend' => function ($event) {
                $response = $event->sender;
                if ($response->data !== null && Yii::$app->request->get('suppress_response_code')) {

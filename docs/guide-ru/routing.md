@@ -15,7 +15,7 @@
     'enableStrictParsing' => true,
     'showScriptName' => false,
     'rules' => [
-        ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
+        ['__class' => yii\rest\UrlRule::class, 'controller' => 'user'],
     ],
 ]
 ```
@@ -54,7 +54,7 @@
 
 ```php
 [
-    'class' => 'yii\rest\UrlRule',
+    '__class' => yii\rest\UrlRule::class,
     'controller' => 'user',
     'except' => ['delete', 'create', 'update'],
 ],
@@ -65,7 +65,7 @@
 
 ```php
 [
-    'class' => 'yii\rest\UrlRule',
+    '__class' => yii\rest\UrlRule::class,
     'controller' => 'user',
     'extraPatterns' => [
         'GET search' => 'search',
@@ -86,7 +86,7 @@
 
 ```php
 [
-    'class' => 'yii\rest\UrlRule',
+    '__class' => yii\rest\UrlRule::class,
     'controller' => ['u' => 'user'],
 ]
 ```

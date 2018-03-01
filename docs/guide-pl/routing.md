@@ -14,7 +14,7 @@ Przykładowo żądanie `POST /users` może oznaczać wywołanie akcji `user/crea
     'enableStrictParsing' => true,
     'showScriptName' => false,
     'rules' => [
-        ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
+        ['__class' => yii\rest\UrlRule::class, 'controller' => 'user'],
     ],
 ]
 ```
@@ -52,7 +52,7 @@ Przykładowo,
 
 ```php
 [
-    'class' => 'yii\rest\UrlRule',
+    '__class' => yii\rest\UrlRule::class,
     'controller' => 'user',
     'except' => ['delete', 'create', 'update'],
 ],
@@ -63,7 +63,7 @@ Dla przykładu, aby dodać obsługę nowej akcji `search` dla punktu końcowego 
 
 ```php
 [
-    'class' => 'yii\rest\UrlRule',
+    '__class' => yii\rest\UrlRule::class,
     'controller' => 'user',
     'extraPatterns' => [
         'GET search' => 'search',
@@ -84,7 +84,7 @@ Dla przykładu, poniższy kod mapuje nazwę `u` na ID kontrolera `user`.
  
 ```php
 [
-    'class' => 'yii\rest\UrlRule',
+    '__class' => yii\rest\UrlRule::class,
     'controller' => ['u' => 'user'],
 ]
 ```

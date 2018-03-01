@@ -52,7 +52,7 @@ A continuación, modifica la configuración del componente `urlManager` en la co
     'enableStrictParsing' => true,
     'showScriptName' => false,
     'rules' => [
-        ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
+        ['__class' => yii\rest\UrlRule::class, 'controller' => 'user'],
     ],
 ]
 ```

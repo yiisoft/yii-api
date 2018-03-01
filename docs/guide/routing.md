@@ -15,7 +15,7 @@ in the application configuration like the following:
     'enableStrictParsing' => true,
     'showScriptName' => false,
     'rules' => [
-        ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
+        ['__class' => yii\rest\UrlRule::class, 'controller' => 'user'],
     ],
 ]
 ```
@@ -54,7 +54,7 @@ actions should be disabled, respectively. For example,
 
 ```php
 [
-    'class' => 'yii\rest\UrlRule',
+    '__class' => yii\rest\UrlRule::class,
     'controller' => 'user',
     'except' => ['delete', 'create', 'update'],
 ],
@@ -65,7 +65,7 @@ For example, to support a new action `search` by the endpoint `GET /users/search
 
 ```php
 [
-    'class' => 'yii\rest\UrlRule',
+    '__class' => yii\rest\UrlRule::class,
     'controller' => 'user',
     'extraPatterns' => [
         'GET search' => 'search',
@@ -86,7 +86,7 @@ a controller ID. For example, the following code maps the name `u` to the contro
  
 ```php
 [
-    'class' => 'yii\rest\UrlRule',
+    '__class' => yii\rest\UrlRule::class,
     'controller' => ['u' => 'user'],
 ]
 ```
@@ -98,10 +98,10 @@ A good example would be specifying defaults for `expand` parameter:
 
 ```php
 [
-    'class' => 'yii\rest\UrlRule',
+    '__class' => yii\rest\UrlRule::class,
     'controller' => ['user'],
     'ruleConfig' => [
-        'class' => 'yii\web\UrlRule',
+        '__class' => yii\web\UrlRule::class,
         'defaults' => [
             'expand' => 'profile',
         ]

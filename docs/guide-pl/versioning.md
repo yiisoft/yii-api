@@ -72,10 +72,10 @@ Konfiguracja Twojej aplikacji mogłaby wyglądać następująco:
 return [
     'modules' => [
         'v1' => [
-            'class' => 'app\modules\v1\Module',
+            '__class' => app\modules\v1\Module::class,
         ],
         'v2' => [
-            'class' => 'app\modules\v2\Module',
+            '__class' => app\modules\v2\Module::class,
         ],
     ],
     'components' => [
@@ -84,8 +84,8 @@ return [
             'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
-                ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/user', 'v1/post']],
-                ['class' => 'yii\rest\UrlRule', 'controller' => ['v2/user', 'v2/post']],
+                ['__class' => yii\rest\UrlRule::class, 'controller' => ['v1/user', 'v1/post']],
+                ['__class' => yii\rest\UrlRule::class, 'controller' => ['v2/user', 'v2/post']],
             ],
         ],
     ],

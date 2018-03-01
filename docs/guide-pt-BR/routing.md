@@ -13,7 +13,7 @@ Isto pode ser feito facilmente através da configuração do [componente de apli
    'enableStrictParsing' => true,
    'showScriptName' => false,
    'rules' => [
-       ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
+       ['__class' => yii\rest\UrlRule::class, 'controller' => 'user'],
    ],
 ]
 ```
@@ -49,7 +49,7 @@ Você pode configurar as opções `only` e `except` para listar explicitamente q
 
 ```php
 [
-   'class' => 'yii\rest\UrlRule',
+   '__class' => yii\rest\UrlRule::class,
    'controller' => 'user',
    'except' => ['delete', 'create', 'update'],
 ],
@@ -59,7 +59,7 @@ Você também pode configurar `patterns` ou `extraPatterns` para redefinir padr�
 
 ```php
 [
-   'class' => 'yii\rest\UrlRule',
+   '__class' => yii\rest\UrlRule::class,
    'controller' => 'user',
    'extraPatterns' => [
        'GET search' => 'search',
@@ -77,7 +77,7 @@ Caso a pluralização automática não encontre uma opção para a palavra reque
 
 ```php
 [
-   'class' => 'yii\rest\UrlRule',
+   '__class' => yii\rest\UrlRule::class,
    'controller' => ['u' => 'user'],
 ]
 ```
