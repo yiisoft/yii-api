@@ -39,7 +39,7 @@ class OptionsAction extends \yii\base\Action
             Yii::$app->getResponse()->setStatusCode(405);
         }
         $options = $id === null ? $this->collectionOptions : $this->resourceOptions;
-        Yii::$app->getResponse()->getHeaders()->set('Allow', implode(', ', $options));
-        Yii::$app->getResponse()->getHeaders()->set('Access-Control-Allow-Method', implode(', ', $options));
+        Yii::$app->getResponse()->getHeaderCollection()->set('Allow', implode(', ', $options));
+        Yii::$app->getResponse()->getHeaderCollection()->set('Access-Control-Allow-Method', implode(', ', $options));
     }
 }
