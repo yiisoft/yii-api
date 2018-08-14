@@ -1,5 +1,5 @@
 {
-    "name": "yiisoft/yii2-rest",
+    "name": "yiisoft/yii-rest",
     "description": "REST extension for the Yii framework",
     "keywords": ["yii2", "rest", "api"],
     "type": "yii2-extension",
@@ -24,7 +24,7 @@
         }
     ],
     "require": {
-        "yiisoft/core": "^3.0@dev"
+        "yiisoft/yii2": "3.0.x-dev"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.3",
