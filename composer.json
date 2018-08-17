@@ -1,5 +1,5 @@
 {
-    "name": "yiisoft/yii-rest",
+    "name": "harrytang/yii-rest",
     "description": "REST extension for the Yii framework",
     "keywords": ["yii", "rest", "api"],
     "type": "yii-extension",
