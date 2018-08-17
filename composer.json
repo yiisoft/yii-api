@@ -1,15 +1,15 @@
 {
-    "name": "yiisoft/yii2-rest",
+    "name": "harrytang/yii-rest",
     "description": "REST extension for the Yii framework",
-    "keywords": ["yii2", "rest", "api"],
-    "type": "yii2-extension",
+    "keywords": ["yii", "rest", "api"],
+    "type": "yii-extension",
     "license": "BSD-3-Clause",
     "support": {
-        "issues": "https://github.com/yiisoft/yii2-rest/issues",
+        "issues": "https://github.com/yiisoft/yii-rest/issues",
         "forum": "http://www.yiiframework.com/forum/",
         "wiki": "http://www.yiiframework.com/wiki/",
         "irc": "irc://irc.freenode.net/yii",
-        "source": "https://github.com/yiisoft/yii2-rest"
+        "source": "https://github.com/yiisoft/yii-rest"
     },
     "authors": [
         {
@@ -23,9 +23,6 @@
             "homepage": "http://rmcreative.ru/"
         }
     ],
-    "require": {
-        "yiisoft/core": "^3.0@dev"
-    },
     "require-dev": {
         "phpunit/phpunit": "^7.3",
         "yiisoft/di": "dev-master",
