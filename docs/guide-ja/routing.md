@@ -1,11 +1,13 @@
 ルーティング
 ============
 
-リソースとコントローラのクラスが準備できたら、通常のウェブアプリケーションと同じように、`http://localhost/index.php?r=user/create` というような URL を使ってリソースにアクセスすることが出来ます。
+リソースとコントローラのクラスが準備できたら、通常のウェブ・アプリケーションと同じように、
+`http://localhost/index.php?r=user/create` というような URL を使ってリソースにアクセスすることが出来ます。
 
 実際には、綺麗な URL を有効にして HTTP 動詞を利用したいというのが普通でしょう。
 例えば、`POST /users` というリクエストが `user/create` アクションへのアクセスを意味するようにする訳です。
-これは、アプリケーションの構成情報で `urlManager` [アプリケーションコンポーネント](structure-application-components.md) を次のように構成することによって容易に達成することが出来ます。
+これは、アプリケーションの構成情報で `urlManager` [アプリケーション・コンポーネント](structure-application-components.md)
+を次のように構成することによって容易に達成することが出来ます。
 
 ```php
 'urlManager' => [
@@ -13,12 +15,13 @@
     'enableStrictParsing' => true,
     'showScriptName' => false,
     'rules' => [
-        ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
+        ['__class' => yii\rest\UrlRule::class, 'controller' => 'user'],
     ],
 ]
 ```
 
-ウェブアプリケーションの URL 管理と比べたときに、上記で目に付く新しいことは、RESTful API リクエストのルーティングに [[yii\rest\UrlRule]] を使用していることです。
+ウェブ・アプリケーションの URL 管理と比べたときに、上記で目に付く新しいことは、RESTful API リクエストのルーティングに
+[[yii\rest\UrlRule]] を使用していることです。
 この特殊な URL 規則クラスが、一揃いの子 URL 規則を作成して、指定されたコントローラのルーティングと URL 生成をサポートします。
 例えば、上記のコードは、おおむね下記の規則と等価です。
 
@@ -51,7 +54,7 @@
 
 ```php
 [
-    'class' => 'yii\rest\UrlRule',
+    '__class' => yii\rest\UrlRule::class,
     'controller' => 'user',
     'except' => ['delete', 'create', 'update'],
 ],
@@ -62,7 +65,7 @@
 
 ```php
 [
-    'class' => 'yii\rest\UrlRule',
+    '__class' => yii\rest\UrlRule::class,
     'controller' => 'user',
     'extraPatterns' => [
         'GET search' => 'search',
@@ -75,15 +78,33 @@
 この振る舞いは [[yii\rest\UrlRule::pluralize]] を `false` に設定することで無効にすることが出来ます。
 
 > Info: コントローラ ID の複数形化は [[yii\helpers\Inflector::pluralize()]] によって行われます。
-  このメソッドは特殊な複数形の規則を考慮します。
-  例えば、`box` という単語の複数形は `boxs` ではなく `boxes` になります。
+  このメソッドは特殊な複数形の規則を考慮します。例えば、`box` という単語の複数形は `boxs` ではなく `boxes` になります。
 
-自動的な複数形化があなたの要求を満たさない場合は、[[yii\rest\UrlRule::controller]] プロパティを構成して、エンドポイント URL で使用される名前とコントローラ ID の対応を明示的に指定することも可能です。
+自動的な複数形化があなたの要求を満たさない場合は、[[yii\rest\UrlRule::controller]] プロパティを構成して、
+エンドポイント URL で使用される名前とコントローラ ID の対応を明示的に指定することも可能です。
 例えば、次のコードはエンドポイント名 `u` をコントローラ ID `user` に割り当てます。
  
 ```php
 [
-    'class' => 'yii\rest\UrlRule',
+    '__class' => yii\rest\UrlRule::class,
     'controller' => ['u' => 'user'],
 ]
+```
+
+## 内蔵の規則に対する追加の構成
+
+時として有益なのが、[[yii\rest\UrlRule]] に内蔵されている規則のすべてに適用される追加の構成を指定することです。
+`expand` パラメータのデフォルト値を指定するなどは好例でしょう。
+
+```php
+[
+    '__class' => yii\rest\UrlRule::class,
+    'controller' => ['user'],
+    'ruleConfig' => [
+        '__class' => yii\web\UrlRule::class,
+        'defaults' => [
+            'expand' => 'profile',
+        ]
+    ],
+],
 ```

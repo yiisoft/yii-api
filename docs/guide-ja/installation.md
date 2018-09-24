@@ -1,18 +1,18 @@
-Installation
+インストール
 ============
 
-## Installing the extension
+## エクステンションをインストールする
 
-In order to install extension use Composer. Either run
+エクステンションをインストールするためには Composer を使います。
 
 ```
 composer require --prefer-dist yiisoft/yii2-rest "~1.0.0"
 ```
 
-or add
+を実行するか、composer.json の `require` セクションに
 
 ```json
 "yiisoft/yii2-rest": "~1.0.0"
 ```
 
-to the `require` section of your composer.json.
+を追加します。
