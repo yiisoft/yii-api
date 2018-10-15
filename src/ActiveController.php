@@ -7,7 +7,7 @@
 
 namespace yii\rest;
 
-use yii\base\InvalidConfigException;
+use yii\exceptions\InvalidConfigException;
 use yii\base\Model;
 use yii\web\ForbiddenHttpException;
 

@@ -8,6 +8,7 @@
 namespace yii\rest;
 
 use Yii;
+use yii\base\Application;
 use yii\base\Arrayable;
 use yii\base\Component;
 use yii\base\Model;
@@ -116,17 +117,32 @@ class Serializer extends Component
      */
     public $preserveKeys = false;
 
+    /**
+     * @var Application
+     */
+    protected $app;
 
     /**
      * {@inheritdoc}
      */
-    public function init()
+    /*public function init()
     {
         if ($this->request === null) {
             $this->request = Yii::$app->getRequest();
         }
         if ($this->response === null) {
             $this->response = Yii::$app->getResponse();
+        }
+    }*/
+
+    public function __construct(Application $app)
+    {
+        $this->app = $app;
+        if ($this->request === null) {
+            $this->request = $this->app->getRequest();
+        }
+        if ($this->response === null) {
+            $this->response = $this->app->getResponse();
         }
     }
 

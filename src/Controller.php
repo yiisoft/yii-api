@@ -7,11 +7,11 @@
 
 namespace yii\rest;
 
-use Yii;
-use yii\filters\auth\CompositeAuth;
-use yii\filters\ContentNegotiator;
-use yii\filters\RateLimiter;
-use yii\filters\VerbFilter;
+use yii\helpers\Yii;
+use yii\web\filters\auth\CompositeAuth;
+use yii\web\filters\ContentNegotiator;
+use yii\web\filters\RateLimiter;
+use yii\web\filters\VerbFilter;
 use yii\web\Response;
 
 /**

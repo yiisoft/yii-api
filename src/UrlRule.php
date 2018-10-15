@@ -7,8 +7,8 @@
 
 namespace yii\rest;
 
-use Yii;
-use yii\base\InvalidConfigException;
+use yii\helpers\Yii;
+use yii\exceptions\InvalidConfigException;
 use yii\helpers\Inflector;
 use yii\web\CompositeUrlRule;
 use yii\web\UrlRule as WebUrlRule;
@@ -143,7 +143,7 @@ class UrlRule extends CompositeUrlRule
     /**
      * {@inheritdoc}
      */
-    public function init()
+    public function init(): void
     {
         if (empty($this->controller)) {
             throw new InvalidConfigException('"controller" must be set.');
@@ -151,7 +151,7 @@ class UrlRule extends CompositeUrlRule
 
         $controllers = [];
         foreach ((array) $this->controller as $urlName => $controller) {
-            if (is_int($urlName)) {
+            if (\is_int($urlName)) {
                 $urlName = $this->pluralize ? Inflector::pluralize($controller) : $controller;
             }
             $controllers[$urlName] = $controller;
@@ -205,7 +205,7 @@ class UrlRule extends CompositeUrlRule
         $config['verb'] = $verbs;
         $config['pattern'] = rtrim($prefix . '/' . strtr($pattern, $this->tokens), '/');
         $config['route'] = $action;
-        if (!empty($verbs) && !in_array('GET', $verbs)) {
+        if (!empty($verbs) && !\in_array('GET', $verbs)) {
             $config['mode'] = WebUrlRule::PARSING_ONLY;
         }
         $config['suffix'] = $this->suffix;
@@ -226,7 +226,7 @@ class UrlRule extends CompositeUrlRule
                     $result = $rule->parseRequest($manager, $request);
                     if (YII_DEBUG) {
                         Yii::debug([
-                            'rule' => method_exists($rule, '__toString') ? $rule->__toString() : get_class($rule),
+                            'rule' => method_exists($rule, '__toString') ? $rule->__toString() : \get_class($rule),
                             'match' => $result !== false,
                             'parent' => self::class
                         ], __METHOD__);

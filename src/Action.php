@@ -8,7 +8,7 @@
 namespace yii\rest;
 
 use Yii;
-use yii\base\InvalidConfigException;
+use yii\exceptions\InvalidConfigException;
 use yii\db\ActiveRecordInterface;
 use yii\web\NotFoundHttpException;
 
@@ -65,7 +65,7 @@ class Action extends \yii\base\Action
     public function init()
     {
         if ($this->modelClass === null) {
-            throw new InvalidConfigException(get_class($this) . '::$modelClass must be set.');
+            throw new InvalidConfigException(\get_class($this) . '::$modelClass must be set.');
         }
     }
 
@@ -82,15 +82,15 @@ class Action extends \yii\base\Action
     public function findModel($id)
     {
         if ($this->findModel !== null) {
-            return call_user_func($this->findModel, $id, $this);
+            return \call_user_func($this->findModel, $id, $this);
         }
 
         /* @var $modelClass ActiveRecordInterface */
         $modelClass = $this->modelClass;
         $keys = $modelClass::primaryKey();
-        if (count($keys) > 1) {
+        if (\count($keys) > 1) {
             $values = explode(',', $id);
-            if (count($keys) === count($values)) {
+            if (\count($keys) === \count($values)) {
                 $model = $modelClass::findOne(array_combine($keys, $values));
             }
         } elseif ($id !== null) {
