@@ -47,7 +47,7 @@ class CreateAction extends Action
         $model->load(Yii::$app->getRequest()->getParsedBody(), '');
         
         if ($this->checkAccess) {
-            call_user_func($this->checkAccess, $this->id);
+            call_user_func($this->checkAccess, $this->id, $model);
         }
         
         if ($model->save()) {
