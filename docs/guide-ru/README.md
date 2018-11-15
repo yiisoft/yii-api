@@ -3,8 +3,8 @@
 
 Расширение предоставляет функционал REST API для [Yii framework](http://www.yiiframework.com).
 
-Первое знакомство
------------------
+Как начать
+----------
 
 * [Установка](installation.md)
 * [Быстрый старт](quick-start.md)
