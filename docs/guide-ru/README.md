@@ -14,7 +14,7 @@
 
 * [Ресурсы](resources.md)
 * [Контроллеры](controllers.md)
-* [Роутинг](routing.md)
+* [Маршрутизация](routing.md)
 * [Форматирование ответа](response-formatting.md)
 * [Аутентификация](authentication.md)
 * [Ограничение частоты запросов](rate-limiting.md)
