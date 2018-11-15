@@ -1,7 +1,7 @@
 Расширение REST для Yii
 =======================
 
-Расширение предоставляет функционал REST API для [Yii framework](http://www.yiiframework.com).
+Расширение предоставляет функционал REST API для [Yii framework](http://www.yiiframework.com)
 
 Как начать
 ----------
