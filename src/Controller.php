@@ -7,12 +7,13 @@
 
 namespace yii\rest;
 
-use Yii;
-use yii\filters\auth\CompositeAuth;
-use yii\filters\ContentNegotiator;
-use yii\filters\RateLimiter;
-use yii\filters\VerbFilter;
+use yii\helpers\Yii;
+use yii\web\filters\auth\CompositeAuth;
+use yii\web\filters\ContentNegotiator;
+use yii\web\filters\RateLimiter;
+use yii\web\filters\VerbFilter;
 use yii\web\Response;
+use yii\base\Action;
 
 /**
  * Controller is the base class for RESTful API controller classes.
@@ -71,7 +72,7 @@ class Controller extends \yii\web\Controller
     /**
      * {@inheritdoc}
      */
-    public function afterAction($action, $result)
+    public function afterAction(Action $action, $result)
     {
         $result = parent::afterAction($action, $result);
         return $this->serializeData($result);
