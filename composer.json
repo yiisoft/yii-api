@@ -1,8 +1,8 @@
 {
     "name": "yiisoft/yii-rest",
     "description": "REST extension for the Yii framework",
-    "keywords": ["yii2", "rest", "api"],
-    "type": "yii2-extension",
+    "keywords": ["yii", "framework", "rest", "api"],
+    "type": "library",
     "license": "BSD-3-Clause",
     "support": {
         "issues": "https://github.com/yiisoft/yii2-rest/issues",
@@ -24,23 +24,29 @@
         }
     ],
     "require": {
-        "yiisoft/core": "^3.0@dev"
+        "yiisoft/yii-core": "^3.0@dev"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.3",
-        "yiisoft/di": "dev-master",
-        "yiisoft/log": "dev-master",
-        "yiisoft/cache": "dev-master"
+        "hiqdev/composer-config-plugin": "^1.0@dev",
+        "yiisoft/di": "^3.0@dev",
+        "yiisoft/log": "^3.0@dev",
+        "yiisoft/cache": "^3.0@dev",
+        "phpunit/phpunit": "^7.3"
     },
     "autoload": {
         "psr-4": {"yii\\rest\\": "src"}
     },
     "autoload-dev": {
-        "psr-4": {"yiiunit\\rest\\": "tests"}
+        "psr-4": {"yii\\rest\\tests\\": "tests"}
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.0.x-dev"
+            "dev-master": "3.0.x-dev"
+        },
+        "config-plugin": {
+            "params": "config/params.php",
+            "web": "config/web.php",
+            "tests": "$web"
         }
     }
 }
