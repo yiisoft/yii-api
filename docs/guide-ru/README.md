@@ -1,20 +1,20 @@
-REST Extension for Yii 2
-========================
+Расширение REST для Yii
+=======================
 
-This extension provides the REST API for the [Yii framework 2.1](http://www.yiiframework.com).
+Расширение предоставляет функционал REST API для [Yii framework](http://www.yiiframework.com)
 
-Getting Started
----------------
+Как начать
+----------
 
 * [Установка](installation.md)
 * [Быстрый старт](quick-start.md)
 
-Usage
------
+Использование
+-------------
 
 * [Ресурсы](resources.md)
 * [Контроллеры](controllers.md)
-* [Роутинг](routing.md)
+* [Маршрутизация](routing.md)
 * [Форматирование ответа](response-formatting.md)
 * [Аутентификация](authentication.md)
 * [Ограничение частоты запросов](rate-limiting.md)
