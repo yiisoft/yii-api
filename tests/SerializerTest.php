@@ -273,99 +273,83 @@ class SerializerTest extends TestCase
 
     public function dataProviderSerializeDataProvider()
     {
+        $adp1 = new ArrayDataProvider();
+        $adp1->allModels = [
+            ['id' => 1, 'username' => 'Bob'],
+            ['id' => 2, 'username' => 'Tom'],
+        ];
+        $adp1->setPagination([
+            'route' => '/',
+        ]);
+
+        $adp2 = new ArrayDataProvider();
+        $adp2->allModels = [
+            ['id' => 1, 'username' => 'Bob'],
+            ['id' => 2, 'username' => 'Tom'],
+        ];
+        $adp2->setPagination([
+            'route' => '/',
+            'pageSize' => 1,
+            'page' => 0,
+        ]);
+
+        $adp3 = new ArrayDataProvider();
+        $adp3->allModels = [
+            ['id' => 1, 'username' => 'Bob'],
+            ['id' => 2, 'username' => 'Tom'],
+        ];
+        $adp3->setPagination([
+            'route' => '/',
+            'pageSize' => 1,
+            'page' => 1,
+        ]);
+
+        $adp4 = new ArrayDataProvider();
+        $adp4->allModels = [
+            'Bob' => ['id' => 1, 'username' => 'Bob'],
+            'Tom' => ['id' => 2, 'username' => 'Tom'],
+        ];
+        $adp4->setPagination([
+            'route' => '/',
+            'pageSize' => 1,
+            'page' => 1,
+        ]);
+
         return [
             [
-                new ArrayDataProvider([
-                    'allModels' => [
-                        ['id' => 1, 'username' => 'Bob'],
-                        ['id' => 2, 'username' => 'Tom'],
-                    ],
-                    'pagination' => [
-                        'route' => '/',
-                    ],
-                ]),
+                $adp1,
                 [
                     ['id' => 1, 'username' => 'Bob'],
                     ['id' => 2, 'username' => 'Tom'],
                 ],
             ],
             [
-                new ArrayDataProvider([
-                    'allModels' => [
-                        ['id' => 1, 'username' => 'Bob'],
-                        ['id' => 2, 'username' => 'Tom'],
-                    ],
-                    'pagination' => [
-                        'route' => '/',
-                        'pageSize' => 1,
-                        'page' => 0,
-                    ],
-                ]),
+                $adp2,
                 [
                     ['id' => 1, 'username' => 'Bob'],
                 ],
             ],
             [
-                new ArrayDataProvider([
-                    'allModels' => [
-                        ['id' => 1, 'username' => 'Bob'],
-                        ['id' => 2, 'username' => 'Tom'],
-                    ],
-                    'pagination' => [
-                        'route' => '/',
-                        'pageSize' => 1,
-                        'page' => 1,
-                    ],
-                ]),
+                $adp3,
                 [
                     ['id' => 2, 'username' => 'Tom'],
                 ],
             ],
             [
-                new ArrayDataProvider([
-                    'allModels' => [
-                        'Bob' => ['id' => 1, 'username' => 'Bob'],
-                        'Tom' => ['id' => 2, 'username' => 'Tom'],
-                    ],
-                    'pagination' => [
-                        'route' => '/',
-                        'pageSize' => 1,
-                        'page' => 1,
-                    ],
-                ]),
+                $adp4,
                 [
                     ['id' => 2, 'username' => 'Tom'],
                 ],
             ],
             [
-                new ArrayDataProvider([
-                    'allModels' => [
-                        ['id' => 1, 'username' => 'Bob'],
-                        ['id' => 2, 'username' => 'Tom'],
-                    ],
-                    'pagination' => [
-                        'route' => '/',
-                        'pageSize' => 1,
-                        'page' => 1,
-                    ],
-                ]),
+                $adp3,
                 [
                     1 => ['id' => 2, 'username' => 'Tom'],
                 ],
                 true,
             ],
             [
-                new ArrayDataProvider([
-                    'allModels' => [
-                        'Bob' => ['id' => 1, 'username' => 'Bob'],
-                        'Tom' => ['id' => 2, 'username' => 'Tom'],
-                    ],
-                    'pagination' => [
-                        'route' => '/',
-                        'pageSize' => 1,
-                        'page' => 1,
-                    ],
-                ]),
+                $adp4,
                 [
                     'Tom' => ['id' => 2, 'username' => 'Tom'],
                 ],
