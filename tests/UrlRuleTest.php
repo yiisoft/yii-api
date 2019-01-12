@@ -7,7 +7,6 @@
 
 namespace yii\rest\tests\unit;
 
-use Yii;
 use yii\helpers\VarDumper;
 use yii\rest\UrlRule;
 use yii\tests\TestCase;
