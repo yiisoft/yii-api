@@ -5,11 +5,11 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yiiunit\rest;
+namespace yii\rest\tests\unit;
 
-use Yii;
 use yii\helpers\VarDumper;
 use yii\rest\UrlRule;
+use yii\tests\TestCase;
 use yii\web\Request;
 use yii\web\UrlManager;
 use yii\web\UrlRule as WebUrlRule;
@@ -35,8 +35,8 @@ class UrlRuleTest extends TestCase
 
     public function testParseRequest()
     {
-        $manager = new UrlManager(['cache' => null]);
-        $request = new Request(['hostInfo' => 'http://en.example.com', 'methodParam' => '_METHOD']);
+        $manager = new UrlManager($this->app, $this->app->urlManager->normalizer);
+        $request = new Request($this->app);
         $suites = $this->getTestsForParseRequest();
         foreach ($suites as $i => [$name, $config, $tests]) {
             $rule = new UrlRule($config);
@@ -346,15 +346,10 @@ class UrlRuleTest extends TestCase
     public function testCreateUrl($ruleConfig, $tests)
     {
         foreach ($tests as [$params, $expected]) {
-            $this->mockWebApplication();
-            Yii::$app->set('request', new Request(['hostInfo' => 'http://api.example.com', 'scriptUrl' => '/index.php']));
             $route = array_shift($params);
 
-            $manager = new UrlManager([
-                'cache' => null,
-            ]);
             $rule = new UrlRule($ruleConfig);
-            $this->assertEquals($expected, $rule->createUrl($manager, $route, $params));
+            $this->assertEquals($expected, $rule->createUrl($this->app->urlManager, $route, $params));
         }
     }
 
@@ -368,16 +363,11 @@ class UrlRuleTest extends TestCase
         foreach ($tests as $test) {
             [$params, $expected, $status] = $test;
 
-            $this->mockWebApplication();
-            Yii::$app->set('request', new Request(['hostInfo' => 'http://api.example.com', 'scriptUrl' => '/index.php']));
             $route = array_shift($params);
 
-            $manager = new UrlManager([
-                'cache' => null,
-            ]);
             $rule = new UrlRule($ruleConfig);
             $errorMessage = 'Failed test: ' . VarDumper::dumpAsString($test);
-            $this->assertSame($expected, $rule->createUrl($manager, $route, $params), $errorMessage);
+            $this->assertSame($expected, $rule->createUrl($this->app->urlManager, $route, $params), $errorMessage);
             $this->assertNotNull($status, $errorMessage);
             if ($status > 0) {
                 $this->assertSame($status, $rule->getCreateUrlStatus() & $status, $errorMessage);

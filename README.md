@@ -12,9 +12,9 @@ For license information check the [LICENSE](LICENSE.md)-file.
 
 Documentation is at [docs/guide/README.md](docs/guide/README.md).
 
-[![Latest Stable Version](https://poser.pugx.org/yiisoft/yii2-rest/v/stable.png)](https://packagist.org/packages/yiisoft/yii2-rest)
-[![Total Downloads](https://poser.pugx.org/yiisoft/yii2-rest/downloads.png)](https://packagist.org/packages/yiisoft/yii2-rest)
-[![Build Status](https://travis-ci.org/yiisoft/yii2-rest.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-rest)
+[![Latest Stable Version](https://poser.pugx.org/yiisoft/yii-rest/v/stable.png)](https://packagist.org/packages/yiisoft/yii-rest)
+[![Total Downloads](https://poser.pugx.org/yiisoft/yii-rest/downloads.png)](https://packagist.org/packages/yiisoft/yii-rest)
+[![Build Status](https://travis-ci.org/yiisoft/yii-rest.svg?branch=master)](https://travis-ci.org/yiisoft/yii-rest)
 
 
 Installation

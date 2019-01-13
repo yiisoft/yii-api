@@ -7,8 +7,6 @@
 
 namespace yii\rest;
 
-use Yii;
-
 /**
  * ViewAction implements the API endpoint for returning the detailed information about a model.
  *
@@ -28,7 +26,7 @@ class ViewAction extends Action
     {
         $model = $this->findModel($id);
         if ($this->checkAccess) {
-            call_user_func($this->checkAccess, $this->id, $model);
+            \call_user_func($this->checkAccess, $this->id, $model);
         }
 
         return $model;

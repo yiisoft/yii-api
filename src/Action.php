@@ -7,9 +7,7 @@
 
 namespace yii\rest;
 
-use Yii;
-use yii\base\InvalidConfigException;
-use yii\db\ActiveRecordInterface;
+use yii\exceptions\InvalidConfigException;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -24,7 +22,7 @@ class Action extends \yii\base\Action
 {
     /**
      * @var string class name of the model which will be handled by this action.
-     * The model class must implement [[ActiveRecordInterface]].
+     * The model class must implement [[yii\activerecord\ActiveRecordInterface]].
      * This property must be set.
      */
     public $modelClass;
@@ -65,7 +63,7 @@ class Action extends \yii\base\Action
     public function init()
     {
         if ($this->modelClass === null) {
-            throw new InvalidConfigException(get_class($this) . '::$modelClass must be set.');
+            throw new InvalidConfigException(\get_class($this) . '::$modelClass must be set.');
         }
     }
 
@@ -76,21 +74,21 @@ class Action extends \yii\base\Action
      * the ID must be a string of the primary key values separated by commas.
      * The order of the primary key values should follow that returned by the `primaryKey()` method
      * of the model.
-     * @return ActiveRecordInterface the model found
+     * @return yii\activerecord\ActiveRecordInterface the model found
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function findModel($id)
     {
         if ($this->findModel !== null) {
-            return call_user_func($this->findModel, $id, $this);
+            return \call_user_func($this->findModel, $id, $this);
         }
 
-        /* @var $modelClass ActiveRecordInterface */
+        /* @var $modelClass yii\activerecord\ActiveRecordInterface */
         $modelClass = $this->modelClass;
         $keys = $modelClass::primaryKey();
-        if (count($keys) > 1) {
+        if (\count($keys) > 1) {
             $values = explode(',', $id);
-            if (count($keys) === count($values)) {
+            if (\count($keys) === \count($values)) {
                 $model = $modelClass::findOne(array_combine($keys, $values));
             }
         } elseif ($id !== null) {
