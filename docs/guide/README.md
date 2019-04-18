@@ -1,5 +1,5 @@
 REST Extension for Yii framework
-========================
+================================
 
 This extension provides the REST API for the [Yii framework](http://www.yiiframework.com).
 
