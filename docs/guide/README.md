@@ -1,7 +1,7 @@
-REST Extension for Yii 2
+REST Extension for Yii framework
 ========================
 
-This extension provides the REST API for the [Yii framework 2.1](http://www.yiiframework.com).
+This extension provides the REST API for the [Yii framework](http://www.yiiframework.com).
 
 Getting Started
 ---------------
