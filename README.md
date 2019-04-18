@@ -1,12 +1,12 @@
 <p align="center">
-    <a href="https://github.com/yiisoft" target="_blank">
-        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
+    <a href="http://www.yiiframework.com/" target="_blank">
+        <img src="https://www.yiiframework.com/files/logo/yii.png" width="400" alt="Yii Framework" />
     </a>
-    <h1 align="center">REST Extension for Yii 2</h1>
+    <h1 align="center">Yii Framework REST API Extension</h1>
     <br>
 </p>
 
-This extension provides the REST API for the [Yii framework 2.1](http://www.yiiframework.com).
+This extension provides the REST API for the [Yii framework](http://www.yiiframework.com).
 
 For license information check the [LICENSE](LICENSE.md)-file.
 
@@ -22,16 +22,6 @@ Installation
 
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
 
-Either run
-
 ```
-php composer.phar require --prefer-dist yiisoft/yii2-rest
+php composer.phar require --prefer-dist yiisoft/yii-rest
 ```
-
-or add
-
-```
-"yiisoft/yii2-rest": "~1.0.0"
-```
-
-to the require section of your composer.json.
