@@ -1,18 +1,8 @@
 インストール
-============
+------------
 
-## エクステンションをインストールする
-
-エクステンションをインストールするためには Composer を使います。
+このエクステンションをインストールするのに推奨される方法は [composer](http://getcomposer.org/download/) を使うことです。
 
 ```
-composer require --prefer-dist yiisoft/yii2-rest "~1.0.0"
+php composer.phar require --prefer-dist yiisoft/yii-rest
 ```
-
-を実行するか、composer.json の `require` セクションに
-
-```json
-"yiisoft/yii2-rest": "~1.0.0"
-```
-
-を追加します。

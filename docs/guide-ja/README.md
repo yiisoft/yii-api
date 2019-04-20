@@ -1,22 +1,22 @@
-REST Extension for Yii 2
-========================
+Yii フレームワーク用 REST エクステンション
+==========================================
 
-This extension provides the REST API for the [Yii framework 2.1](http://www.yiiframework.com).
+このエクステンションは [Yii フレームワーク](http://www.yiiframework.com) に REST API を提供するものです。
 
-Getting Started
----------------
+始めよう
+--------
 
-* [Installation](installation.md)
-* [Quick Start](quick-start.md)
+* [インストール](installation.md)
+* [クイック・スタート](quick-start.md)
 
-Usage
------
+使用方法
+--------
 
-* [Resources](resources.md)
-* [Controllers](controllers.md)
-* [Routing](routing.md)
-* [Response Formatting](response-formatting.md)
-* [Authentication](authentication.md)
-* [Rate Limiting](rate-limiting.md)
-* [Versioning](versioning.md)
-* [Error Handling](error-handling.md)
+* [リソース](resources.md)
+* [コントローラ](controllers.md)
+* [ルーティング](routing.md)
+* [レスポンス形式の設定](response-formatting.md)
+* [認証](authentication.md)
+* [レート制限](rate-limiting.md)
+* [バージョン管理](versioning.md)
+* [エラー処理](error-handling.md)
