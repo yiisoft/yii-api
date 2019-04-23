@@ -122,6 +122,6 @@ Después de que un usuario se ha autenticado, probablementer querrás comprobar 
 la acción solicitada. Este proceso es llamado *autorización (authorization)* y está cubierto en detalle
 en la [Sección de Autorización](security-authorization.md).
 
-Si tus controladores extienden de [[yii\rest\ActiveController]], puedes sobreescribir
-el método [[yii\rest\ActiveController::checkAccess()|checkAccess()]] para realizar la comprobación de la autorización.
-El método será llamado por las acciones contenidas en [[yii\rest\ActiveController]].
+Si tus controladores extienden de [[Yiisoft\Rest\ActiveController]], puedes sobreescribir
+el método [[Yiisoft\Rest\ActiveController::checkAccess()|checkAccess()]] para realizar la comprobación de la autorización.
+El método será llamado por las acciones contenidas en [[Yiisoft\Rest\ActiveController]].

@@ -16,7 +16,7 @@ Do celów obsługi powyższych metod można wykorzystać dwie dodatkowe kolumny 
 Po ustaleniu tych wartości, metody `loadAllowance()` i `saveAllowance()` mogą być poprawnie zaimplementowane do odczytu i zapisu tych wartości dla aktualnego 
 zautoryzowanego użytkownika. Aby zwiększyć wydajność tego mechanizmu, należy rozważyć użycie pamięci podręcznej lub bazy typu NoSQL.
 
-Po zaimplemetowaniu wymaganego interfejsu, Yii automatycznie użyje [[yii\filters\RateLimiter|RateLimiter]], skonfigurowanego jako filtr akcji dla [[yii\rest\Controller|Controller]], 
+Po zaimplemetowaniu wymaganego interfejsu, Yii automatycznie użyje [[yii\filters\RateLimiter|RateLimiter]], skonfigurowanego jako filtr akcji dla [[Yiisoft\Rest\Controller|Controller]], 
 aby pilnować limitu użycia API. Mechanizm rzuci wyjątek [[yii\web\TooManyRequestsHttpException|TooManyRequestsHttpException]], kiedy limit zostanie przekroczony. 
 
 Po dodaniu limitu, każda odpowiedź będzie domyślnie zawierała następujące nagłówki HTTP, zawierające informacje o aktualnym użyciu limitu:

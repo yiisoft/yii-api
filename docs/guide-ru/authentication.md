@@ -117,6 +117,6 @@ class User extends ActiveRecord implements IdentityInterface
 После аутентификации пользователя необходимо проверить, есть ли у него или у неё разрешение на выполнение запрошенного
 действия с запрошенным ресурсом. Этот процесс называется *авторизацией* и подробно описан в разделе «[Авторизация](security-authorization.md)».
 
-Если ваши контроллеры унаследованы от [[yii\rest\ActiveController]], вы можете переопределить
-метод [[yii\rest\Controller::checkAccess()|checkAccess()]] для выполнения авторизации. Этот метод будет вызываться
-встроенными действиями, предоставляемыми контроллером [[yii\rest\ActiveController]].
+Если ваши контроллеры унаследованы от [[Yiisoft\Rest\ActiveController]], вы можете переопределить
+метод [[Yiisoft\Rest\Controller::checkAccess()|checkAccess()]] для выполнения авторизации. Этот метод будет вызываться
+встроенными действиями, предоставляемыми контроллером [[Yiisoft\Rest\ActiveController]].

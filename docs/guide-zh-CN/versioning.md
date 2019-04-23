@@ -76,8 +76,8 @@ return [
             'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
-                ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/user', 'v1/post']],
-                ['class' => 'yii\rest\UrlRule', 'controller' => ['v2/user', 'v2/post']],
+                ['class' => 'Yiisoft\Rest\UrlRule', 'controller' => ['v1/user', 'v1/post']],
+                ['class' => 'Yiisoft\Rest\UrlRule', 'controller' => ['v2/user', 'v2/post']],
             ],
         ],
     ],

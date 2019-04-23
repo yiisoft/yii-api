@@ -122,6 +122,6 @@ class User extends ActiveRecord implements IdentityInterface
 *権限付与* と呼ばれるこのプロセスについては、[権限付与](security-authorization.md)
 のセクションで詳細に説明されています。
 
-あなたのコントローラが [[yii\rest\ActiveController]] から拡張したものである場合は、[[yii\rest\ActiveController::checkAccess()|checkAccess()]]
+あなたのコントローラが [[Yiisoft\Rest\ActiveController]] から拡張したものである場合は、[[Yiisoft\Rest\ActiveController::checkAccess()|checkAccess()]]
 メソッドをオーバーライドして権限付与のチェックを実行することが出来ます。
-このメソッドが [[yii\rest\ActiveController]] によって提供されている内蔵のアクションから呼び出されます。
+このメソッドが [[Yiisoft\Rest\ActiveController]] によって提供されている内蔵のアクションから呼び出されます。

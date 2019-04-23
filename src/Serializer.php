@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\rest;
+namespace Yiisoft\Rest;
 
 use yii\base\Application;
 use yii\base\Arrayable;

@@ -12,7 +12,7 @@ Para habilitar o limitador de acesso, a [[yii\web\User::identityClass|classe de 
 Você pode usar duas colunas na tabela de usuários para registrar estas informações. Com esses campos definidos, então `loadAllowance()` e `saveAllowance()` podem ser implementados para ler e guardar os valores das duas colunas correspondentes ao atual usuário autenticado.
 Para melhorar o desempenho, você também pode considerar armazenar essas informações em um cache ou armazenamento NoSQL.
 
-Uma vez que a classe de identidade do usuário estiver com a interface necessária implementada, o Yii automaticamente usará a classe [[yii\filters\RateLimiter]] configurada como um filtro da ação para o [[yii\rest\Controller]] realizar a verificação da limitação do acesso. O limitador de acesso lançará uma exceção [[yii\web\TooManyRequestsHttpException]] quando o limite for excedido.
+Uma vez que a classe de identidade do usuário estiver com a interface necessária implementada, o Yii automaticamente usará a classe [[yii\filters\RateLimiter]] configurada como um filtro da ação para o [[Yiisoft\Rest\Controller]] realizar a verificação da limitação do acesso. O limitador de acesso lançará uma exceção [[yii\web\TooManyRequestsHttpException]] quando o limite for excedido.
 
 Você pode configurar o limitador de acesso da seguinte forma em suas classes controller REST:
 

@@ -18,7 +18,7 @@
 考虑使用缓存或 NoSQL 存储这些信息。
 
 一旦 identity 实现所需的接口， Yii 会自动使用 [[yii\filters\RateLimiter]]
-为 [[yii\rest\Controller]] 配置一个行为过滤器来执行速率限制检查。如果速度超出限制，该速率限制器将抛出一个 [[yii\web\TooManyRequestsHttpException]]。你可以参考以下代码在你的 REST 控制器类里配置速率限制：
+为 [[Yiisoft\Rest\Controller]] 配置一个行为过滤器来执行速率限制检查。如果速度超出限制，该速率限制器将抛出一个 [[yii\web\TooManyRequestsHttpException]]。你可以参考以下代码在你的 REST 控制器类里配置速率限制：
 
 ```php
 public function behaviors()

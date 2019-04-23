@@ -15,13 +15,13 @@ como sigue:
     'enableStrictParsing' => true,
     'showScriptName' => false,
     'rules' => [
-        ['__class' => yii\rest\UrlRule::class, 'controller' => 'user'],
+        ['__class' => Yiisoft\Rest\UrlRule::class, 'controller' => 'user'],
     ],
 ]
 ```
 
 En comparación con la gestión de URL en las aplicaciones Web, lo principalmente nuevo de lo anterior es el uso de
-[[yii\rest\UrlRule]] para el enrutamiento de las peticiones con el API RESTful. Esta clase especial de regla URL creará
+[[Yiisoft\Rest\UrlRule]] para el enrutamiento de las peticiones con el API RESTful. Esta clase especial de regla URL creará
 un conjunto completo de reglas URL hijas para soportar el enrutamiento y creación de URL para el/los controlador/es especificados.
 Por ejemplo, el código anterior es equivalente a las siguientes reglas:
 
@@ -54,7 +54,7 @@ deshabilitar, respectivamente. Por ejemplo,
 
 ```php
 [
-    '__class' => yii\rest\UrlRule::class,
+    '__class' => Yiisoft\Rest\UrlRule::class,
     'controller' => 'user',
     'except' => ['delete', 'create', 'update'],
 ],
@@ -65,7 +65,7 @@ Por ejemplo, para soportar una nueva acción `search` por  el punto final `GET /
 
 ```php
 [
-    '__class' => yii\rest\UrlRule::class,
+    '__class' => Yiisoft\Rest\UrlRule::class,
     'controller' => 'user',
     'extraPatterns' => [
         'GET search' => 'search',
@@ -74,19 +74,19 @@ Por ejemplo, para soportar una nueva acción `search` por  el punto final `GET /
 ```
 
 Puedes haber notado que el ID del controlador `user` aparece en formato plural `users` en los puntos finales de las URLs.
-Esto se debe a que [[yii\rest\UrlRule]] automáticamente pluraliza los IDs de los controladores al crear reglas URL hijas.
-Puedes desactivar este comportamiento definiendo la propiedad [[yii\rest\UrlRule::pluralize]] como `false`. 
+Esto se debe a que [[Yiisoft\Rest\UrlRule]] automáticamente pluraliza los IDs de los controladores al crear reglas URL hijas.
+Puedes desactivar este comportamiento definiendo la propiedad [[Yiisoft\Rest\UrlRule::pluralize]] como `false`. 
 
 > Info: La pluralización de los IDs de los controladores es realizada por [[yii\helpers\Inflector::pluralize()]]. Este método respeta
   reglas especiales de pluralización. Por ejemplo, la palabra `box` (caja) será pluralizada como `boxes` en vez de `boxs`.
 
 En caso de que la pluralización automática no encaje en tus requerimientos, puedes además configurar la propiedad 
-[[yii\rest\UrlRule::controller]] para especificar exlpícitamente cómo mapear un nombre utilizado en un punto final URL
+[[Yiisoft\Rest\UrlRule::controller]] para especificar exlpícitamente cómo mapear un nombre utilizado en un punto final URL
 a un ID de controlador. Por ejemplo, el siguiente código mapea el nombre `u` al ID del controlador `user`.  
  
 ```php
 [
-    '__class' => yii\rest\UrlRule::class,
+    '__class' => Yiisoft\Rest\UrlRule::class,
     'controller' => ['u' => 'user'],
 ]
 ```

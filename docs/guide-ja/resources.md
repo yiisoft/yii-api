@@ -24,7 +24,7 @@ RESTful API を通じて返すことが出来るデータを指定する方法�
 
 RESTful API のレスポンスにリソースを含めるとき、リソースは文字列にシリアライズされる必要があります。
 Yii はこのプロセスを二つのステップに分けます。
-最初に、リソースは [[yii\rest\Serializer]] によって配列に変換されます。
+最初に、リソースは [[Yiisoft\Rest\Serializer]] によって配列に変換されます。
 次に、その配列が [[yii\web\ResponseFormatterInterface|レスポンス・フォーマッタ]] によって、リクエストされた形式 (例えば JSON や XML) の文字列にシリアライズされます。
 リソース・クラスを開発するときに主として力を注ぐべきなのは、最初のステップです。
 
@@ -223,7 +223,7 @@ class UserResource extends Model implements Linkable
 ```php
 namespace app\controllers;
 
-use yii\rest\Controller;
+use Yiisoft\Rest\Controller;
 use yii\data\ActiveDataProvider;
 use app\models\Post;
 
@@ -238,9 +238,9 @@ class PostController extends Controller
 }
 ```
 
-データプロバイダが RESTful API のレスポンスで送信される場合は、[[yii\rest\Serializer]] が現在のページのリソースを取り出して、
+データプロバイダが RESTful API のレスポンスで送信される場合は、[[Yiisoft\Rest\Serializer]] が現在のページのリソースを取り出して、
 リソースオブジェクトの配列としてシリアライズします。
-それだけでなく、[[yii\rest\Serializer]] は次の HTTP ヘッダを使ってページネーション情報もレスポンスに含めます。
+それだけでなく、[[Yiisoft\Rest\Serializer]] は次の HTTP ヘッダを使ってページネーション情報もレスポンスに含めます。
 
 * `X-Pagination-Total-Count`: リソースの総数
 * `X-Pagination-Page-Count`: ページ数

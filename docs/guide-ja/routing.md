@@ -15,13 +15,13 @@
     'enableStrictParsing' => true,
     'showScriptName' => false,
     'rules' => [
-        ['__class' => yii\rest\UrlRule::class, 'controller' => 'user'],
+        ['__class' => Yiisoft\Rest\UrlRule::class, 'controller' => 'user'],
     ],
 ]
 ```
 
 ウェブ・アプリケーションの URL 管理と比べたときに、上記で目に付く新しいことは、RESTful API リクエストのルーティングに
-[[yii\rest\UrlRule]] を使用していることです。
+[[Yiisoft\Rest\UrlRule]] を使用していることです。
 この特殊な URL 規則クラスが、一揃いの子 URL 規則を作成して、指定されたコントローラのルーティングと URL 生成をサポートします。
 例えば、上記のコードは、おおむね下記の規則と等価です。
 
@@ -54,7 +54,7 @@
 
 ```php
 [
-    '__class' => yii\rest\UrlRule::class,
+    '__class' => Yiisoft\Rest\UrlRule::class,
     'controller' => 'user',
     'except' => ['delete', 'create', 'update'],
 ],
@@ -65,7 +65,7 @@
 
 ```php
 [
-    '__class' => yii\rest\UrlRule::class,
+    '__class' => Yiisoft\Rest\UrlRule::class,
     'controller' => 'user',
     'extraPatterns' => [
         'GET search' => 'search',
@@ -74,31 +74,31 @@
 ```
 
 エンドポイントの URL ではコントローラ ID `user` が `users` という複数形で出現していることに気が付いたかもしれません。
-これは、[[yii\rest\UrlRule]] が子 URL 規則を作るときに、コントローラの ID を自動的に複数形にするためです。
-この振る舞いは [[yii\rest\UrlRule::pluralize]] を `false` に設定することで無効にすることが出来ます。
+これは、[[Yiisoft\Rest\UrlRule]] が子 URL 規則を作るときに、コントローラの ID を自動的に複数形にするためです。
+この振る舞いは [[Yiisoft\Rest\UrlRule::pluralize]] を `false` に設定することで無効にすることが出来ます。
 
 > Info: コントローラ ID の複数形化は [[yii\helpers\Inflector::pluralize()]] によって行われます。
   このメソッドは特殊な複数形の規則を考慮します。例えば、`box` という単語の複数形は `boxs` ではなく `boxes` になります。
 
-自動的な複数形化があなたの要求を満たさない場合は、[[yii\rest\UrlRule::controller]] プロパティを構成して、
+自動的な複数形化があなたの要求を満たさない場合は、[[Yiisoft\Rest\UrlRule::controller]] プロパティを構成して、
 エンドポイント URL で使用される名前とコントローラ ID の対応を明示的に指定することも可能です。
 例えば、次のコードはエンドポイント名 `u` をコントローラ ID `user` に割り当てます。
  
 ```php
 [
-    '__class' => yii\rest\UrlRule::class,
+    '__class' => Yiisoft\Rest\UrlRule::class,
     'controller' => ['u' => 'user'],
 ]
 ```
 
 ## 内蔵の規則に対する追加の構成
 
-時として有益なのが、[[yii\rest\UrlRule]] に内蔵されている規則のすべてに適用される追加の構成を指定することです。
+時として有益なのが、[[Yiisoft\Rest\UrlRule]] に内蔵されている規則のすべてに適用される追加の構成を指定することです。
 `expand` パラメータのデフォルト値を指定するなどは好例でしょう。
 
 ```php
 [
-    '__class' => yii\rest\UrlRule::class,
+    '__class' => Yiisoft\Rest\UrlRule::class,
     'controller' => ['user'],
     'ruleConfig' => [
         '__class' => yii\web\UrlRule::class,
