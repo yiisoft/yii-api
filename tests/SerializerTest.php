@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace Yiisoft\Rest\Test\Unit;
+namespace Yiisoft\Rest\Tests\Unit;
 
 use yii\base\Model;
 use yii\data\ArrayDataProvider;
