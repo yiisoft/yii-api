@@ -28,6 +28,7 @@ class UrlRuleTest extends TestCase
         foreach ($suites as $i => [$name, $tests]) {
             foreach ($tests as $j => [$config, $expected]) {
                 $rule = new UrlRule($config);
+                $rule->init();
                 $this->assertEquals($expected, $rule->controller, "Test#$i-$j: $name");
             }
         }
@@ -40,6 +41,7 @@ class UrlRuleTest extends TestCase
         $suites = $this->getTestsForParseRequest();
         foreach ($suites as $i => [$name, $config, $tests]) {
             $rule = new UrlRule($config);
+            $rule->init();
             foreach ($tests as $j => $test) {
                 [$request->pathInfo, $route] = $test;
                 $params = $test[2] ?? [];
@@ -349,6 +351,7 @@ class UrlRuleTest extends TestCase
             $route = array_shift($params);
 
             $rule = new UrlRule($ruleConfig);
+            $rule->init();
             $this->assertEquals($expected, $rule->createUrl($this->app->urlManager, $route, $params));
         }
     }
@@ -366,6 +369,7 @@ class UrlRuleTest extends TestCase
             $route = array_shift($params);
 
             $rule = new UrlRule($ruleConfig);
+            $rule->init();
             $errorMessage = 'Failed test: ' . VarDumper::dumpAsString($test);
             $this->assertSame($expected, $rule->createUrl($this->app->urlManager, $route, $params), $errorMessage);
             $this->assertNotNull($status, $errorMessage);
