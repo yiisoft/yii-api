@@ -5,13 +5,13 @@
 является создание действий контроллеров для предоставления ресурсов конечным пользователям через RESTful API.
 
 В Yii есть два базовых класса контроллеров для упрощения вашей работы по созданию RESTful-действий:
-[[Yiisoft\Rest\Controller]] и [[Yiisoft\Rest\ActiveController]]. Разница между этими двумя контроллерами в том,
+[[Yiisoft\Yii\Rest\Controller]] и [[Yiisoft\Yii\Rest\ActiveController]]. Разница между этими двумя контроллерами в том,
 что у последнего есть набор действий по умолчанию, который специально создан для работы с ресурсами,
 представленными [Active Record](db-active-record.md). Так что если вы используете [Active Record](db-active-record.md)
 и вас устраивает предоставленный набор встроенных действий, вы можете унаследовать классы ваших контроллеров
-от [[Yiisoft\Rest\ActiveController]], что позволит вам создать полноценные RESTful API, написав минимум кода.
+от [[Yiisoft\Yii\Rest\ActiveController]], что позволит вам создать полноценные RESTful API, написав минимум кода.
 
-[[Yiisoft\Rest\Controller]] и [[Yiisoft\Rest\ActiveController]] имеют следующие возможности, некоторые из которых
+[[Yiisoft\Yii\Rest\Controller]] и [[Yiisoft\Yii\Rest\ActiveController]] имеют следующие возможности, некоторые из которых
 будут подробно описаны в следующих разделах:
 
 * Проверка HTTP-метода;
@@ -19,7 +19,7 @@
 * [Аутентификация](rest-authentication.md);
 * [Ограничение частоты запросов](rest-rate-limiting.md).
 
-Кроме того, [[Yiisoft\Rest\ActiveController]] предоставляет дополнительные возможности:
+Кроме того, [[Yiisoft\Yii\Rest\ActiveController]] предоставляет дополнительные возможности:
 
 * Набор наиболее часто используемых действий: `index`, `view`, `create`, `update`, `delete` и `options`;
 * Авторизация пользователя для запрашиваемого действия и ресурса.
@@ -33,7 +33,7 @@
 Создание нового действия похоже на создание действия для Web-приложения. Единственное отличие в том,
 что в RESTful-действиях вместо рендера результата в представлении с помощью вызова метода `render()`
 вы просто возвращаете данные. Выполнение преобразования исходных данных в запрошенный формат ложится на
-[[Yiisoft\Rest\Controller::serializer|сериализатор]] и [[yii\web\Response|объект ответа]]. Например:
+[[Yiisoft\Yii\Rest\Controller::serializer|сериализатор]] и [[yii\web\Response|объект ответа]]. Например:
 
 ```php
 public function actionView($id)
@@ -45,7 +45,7 @@ public function actionView($id)
 
 ## Фильтры <span id="filters"></span>
 
-Большинство возможностей RESTful API, предоставляемых [[Yiisoft\Rest\Controller]], реализовано на основе [фильтров](structure-filters.md).
+Большинство возможностей RESTful API, предоставляемых [[Yiisoft\Yii\Rest\Controller]], реализовано на основе [фильтров](structure-filters.md).
 В частности, следующие фильтры будут выполняться в том порядке, в котором они перечислены:
 
 * [[yii\filters\ContentNegotiator|contentNegotiator]]: обеспечивает согласование содержимого, более подробно описан 
@@ -56,7 +56,7 @@ public function actionView($id)
 * [[yii\filters\RateLimiter|rateLimiter]]: обеспечивает ограничение частоты запросов, более подробно описан 
   в разделе [Ограничение частоты запросов](rest-rate-limiting.md).
 
-Эти именованные фильтры объявлены в методе [[Yiisoft\Rest\Controller::behaviors()|behaviors()]].
+Эти именованные фильтры объявлены в методе [[Yiisoft\Yii\Rest\Controller::behaviors()|behaviors()]].
 Вы можете переопределить этот метод для настройки отдельных фильтров, отключения каких-либо из них или для добавления собственных фильтров. Например, если вы хотите использовать только базовую HTTP-аутентификацию, вы можете написать такой код:
 
 ```php
@@ -75,23 +75,23 @@ public function behaviors()
 
 ## Наследование от `ActiveController` <span id="extending-active-controller"></span>
 
-Если ваш класс контроллера наследуется от [[Yiisoft\Rest\ActiveController]], вам следует установить
-значение его свойства [[Yiisoft\Rest\ActiveController::modelClass|modelClass]] равным имени класса ресурса,
+Если ваш класс контроллера наследуется от [[Yiisoft\Yii\Rest\ActiveController]], вам следует установить
+значение его свойства [[Yiisoft\Yii\Rest\ActiveController::modelClass|modelClass]] равным имени класса ресурса,
 который вы планируете обслуживать с помощью этого контроллера. Класс ресурса должен быть унаследован от [[yii\db\ActiveRecord]].
 
 
 ### Настройка действий <span id="customizing-actions"></span>
 
-По умолчанию [[Yiisoft\Rest\ActiveController]] предоставляет набор из следующих действий:
+По умолчанию [[Yiisoft\Yii\Rest\ActiveController]] предоставляет набор из следующих действий:
 
-* [[Yiisoft\Rest\IndexAction|index]]: постраничный список ресурсов;
-* [[Yiisoft\Rest\ViewAction|view]]: возвращает подробную информацию об указанном ресурсе;
-* [[Yiisoft\Rest\CreateAction|create]]: создание нового ресурса;
-* [[Yiisoft\Rest\UpdateAction|update]]: обновление существующего ресурса;
-* [[Yiisoft\Rest\DeleteAction|delete]]: удаление указанного ресурса;
-* [[Yiisoft\Rest\OptionsAction|options]]: возвращает поддерживаемые HTTP-методы.
+* [[Yiisoft\Yii\Rest\IndexAction|index]]: постраничный список ресурсов;
+* [[Yiisoft\Yii\Rest\ViewAction|view]]: возвращает подробную информацию об указанном ресурсе;
+* [[Yiisoft\Yii\Rest\CreateAction|create]]: создание нового ресурса;
+* [[Yiisoft\Yii\Rest\UpdateAction|update]]: обновление существующего ресурса;
+* [[Yiisoft\Yii\Rest\DeleteAction|delete]]: удаление указанного ресурса;
+* [[Yiisoft\Yii\Rest\OptionsAction|options]]: возвращает поддерживаемые HTTP-методы.
 
-Все эти действия объявляются в методе [[Yiisoft\Rest\ActiveController::actions()|actions()]].
+Все эти действия объявляются в методе [[Yiisoft\Yii\Rest\ActiveController::actions()|actions()]].
 Вы можете настроить эти действия или отключить какие-то из них, переопределив метод `actions()`, как показано ниже:
 
 ```php
@@ -120,8 +120,8 @@ public function prepareDataProvider()
 ### Выполнение контроля доступа <span id="performing-access-check"></span>
 
 При предоставлении ресурсов через RESTful API часто бывает нужно проверять, имеет ли текущий пользователь разрешение
-на доступ к запрошенному ресурсу (или ресурсам) и манипуляцию им (или ими). Для [[Yiisoft\Rest\ActiveController]] эта задача
-может быть решена переопределением метода [[Yiisoft\Rest\ActiveController::checkAccess()|checkAccess()]] следующим образом:
+на доступ к запрошенному ресурсу (или ресурсам) и манипуляцию им (или ими). Для [[Yiisoft\Yii\Rest\ActiveController]] эта задача
+может быть решена переопределением метода [[Yiisoft\Yii\Rest\ActiveController::checkAccess()|checkAccess()]] следующим образом:
 
 ```php
 /**
@@ -147,7 +147,7 @@ public function checkAccess($action, $model = null, $params = [])
 }
 ```
 
-Метод `checkAccess()` будет вызван действиями по умолчанию контроллера [[Yiisoft\Rest\ActiveController]]. Если вы создаёте
+Метод `checkAccess()` будет вызван действиями по умолчанию контроллера [[Yiisoft\Yii\Rest\ActiveController]]. Если вы создаёте
 новые действия и хотите в них выполнять контроль доступа, вы должны вызвать этот метод явно в своих новых действиях.
 
 > Tip: вы можете реализовать метод `checkAccess()` с помощью ["Контроля доступа на основе ролей" (RBAC)](security-authorization.md).

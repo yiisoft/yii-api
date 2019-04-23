@@ -27,7 +27,7 @@ Primeiramente, crie uma classe [controller](structure-controllers.md) `app\contr
 ```php
 namespace app\controllers;
 
-use Yiisoft\Rest\ActiveController;
+use Yiisoft\Yii\Rest\ActiveController;
 
 class UserController extends ActiveController
 {
@@ -35,7 +35,7 @@ class UserController extends ActiveController
 }
 ```
 
-A classe controller estende de [[Yiisoft\Rest\ActiveController]], que implementa um conjunto comum de ações RESTful. Especificando [[Yiisoft\Rest\ActiveController::modelClass|modelClass]]
+A classe controller estende de [[Yiisoft\Yii\Rest\ActiveController]], que implementa um conjunto comum de ações RESTful. Especificando [[Yiisoft\Yii\Rest\ActiveController::modelClass|modelClass]]
 como `app\models\User`, o controller sabe qual o model que pode ser usado para a recuperação e manipulação de dados.
 
 
@@ -50,7 +50,7 @@ Em seguida, modifique a configuração do componente `urlManager` na configuraç
    'enableStrictParsing' => true,
    'showScriptName' => false,
    'rules' => [
-       ['__class' => Yiisoft\Rest\UrlRule::class, 'controller' => 'user'],
+       ['__class' => Yiisoft\Yii\Rest\UrlRule::class, 'controller' => 'user'],
    ],
 ]
 ```
@@ -88,7 +88,7 @@ Com o mínimo de esforço acima, você já terminou sua tarefa de criar as APIs 
 * `OPTIONS /users/123`: mostra os métodos suportados em relação à URL `/users/123`.
 
 > Observação: O Yii vai pluralizar automaticamente nomes de controllers para uso em URLs (também chamadas *endpoints*).
-> Você pode configurar isso usando a propriedade [[Yiisoft\Rest\UrlRule::$pluralize]].
+> Você pode configurar isso usando a propriedade [[Yiisoft\Yii\Rest\UrlRule::$pluralize]].
 
 Você pode acessar suas APIs com o comando `curl` mostrado abaixo,
 
@@ -186,7 +186,7 @@ Usando o framework API RESTful do Yii, você implementa uma URL desses campos, c
 
 Os recursos são representados como modelos de dados, que se estendem a partir da classe [[yii\base\Model]]. Se você estiver trabalhando com bancos de dados (relacional ou NoSQL), é recomendado que você use [[yii\db\ActiveRecord|ActiveRecord]] para representar recursos.
 
-Você pode usar [[Yiisoft\Rest\UrlRule]] para simplificar o roteamento para suas URLs da API.
+Você pode usar [[Yiisoft\Yii\Rest\UrlRule]] para simplificar o roteamento para suas URLs da API.
 
 
 Embora não seja exigido, é recomendável que você desenvolva suas APIs RESTful  como uma aplicação separada, diferente do seu frontend e backend para facilitar a manutenção.

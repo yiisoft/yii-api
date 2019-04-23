@@ -5,10 +5,10 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace Yiisoft\Rest\Tests\Unit;
+namespace Yiisoft\Yii\Rest\Tests\Unit;
 
 use yii\helpers\VarDumper;
-use Yiisoft\Rest\UrlRule;
+use Yiisoft\Yii\Rest\UrlRule;
 use yii\tests\TestCase;
 use yii\web\Request;
 use yii\web\UrlManager;

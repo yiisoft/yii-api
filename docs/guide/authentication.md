@@ -122,6 +122,6 @@ After a user is authenticated, you probably want to check if he or she has the p
 action for the requested resource. This process is called *authorization* which is covered in detail in
 the [Authorization section](security-authorization.md).
 
-If your controllers extend from [[Yiisoft\Rest\ActiveController]], you may override
-the [[Yiisoft\Rest\ActiveController::checkAccess()|checkAccess()]] method to perform authorization check. The method
-will be called by the built-in actions provided by [[Yiisoft\Rest\ActiveController]].
+If your controllers extend from [[Yiisoft\Yii\Rest\ActiveController]], you may override
+the [[Yiisoft\Yii\Rest\ActiveController::checkAccess()|checkAccess()]] method to perform authorization check. The method
+will be called by the built-in actions provided by [[Yiisoft\Yii\Rest\ActiveController]].

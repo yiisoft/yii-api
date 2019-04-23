@@ -6,7 +6,7 @@
 1. Определяет различные факторы, которые могут повлиять на формат ответа, такие как media type, язык, версия и т.д.
    Этот процесс также известен как [согласование содержимого](http://en.wikipedia.org/wiki/Content_negotiation).
 2. Конвертирует объекты ресурсов в массивы, как описано в секции [Ресурсы](rest-resources.md).
-   Этим занимается [[Yiisoft\Rest\Serializer]].
+   Этим занимается [[Yiisoft\Yii\Rest\Serializer]].
 3. Конвертирует массивы в строки исходя из формата, определенного на этапе согласования содержимого. Это задача для
    [[yii\web\ResponseFormatterInterface|форматтера ответов]], регистрируемого с помощью компонента приложения
    [[yii\web\Response::formatters|response]].
@@ -15,7 +15,7 @@
 ## Согласование содержимого <span id="content-negotiation"></span>
 
 Yii поддерживает согласование содержимого с помощью фильтра [[yii\filters\ContentNegotiator]]. Базовый класс
-контроллера RESTful API - [[Yiisoft\Rest\Controller]] - использует этот фильтр под именем `contentNegotiator`.
+контроллера RESTful API - [[Yiisoft\Yii\Rest\Controller]] - использует этот фильтр под именем `contentNegotiator`.
 Фильтр обеспечивает соответствие формата ответа и определяет используемый язык. Например, если запрос к RESTful API 
 содержит следующий заголовок:
 
@@ -58,7 +58,7 @@ Content-Type: application/json; charset=UTF-8
 Под капотом происходит следующее: прежде, чем *действие* RESTful API контроллера будет выполнено, фильтр
 [[yii\filters\ContentNegotiator]] проверит HTTP-заголовок `Accept` в запросе и установит, что
 [[yii\web\Response::format|формат ответа]] должен быть в `'json'`. После того, как *действие* будет выполнено и вернет
-итоговый объект ресурса или коллекцию, [[Yiisoft\Rest\Serializer]] конвертирует результат в массив.
+итоговый объект ресурса или коллекцию, [[Yiisoft\Yii\Rest\Serializer]] конвертирует результат в массив.
 И, наконец, [[yii\web\JsonResponseFormatter]] сериализует массив в строку в формате JSON и включит ее в тело ответа.
 
 По умолчанию, RESTful API поддерживает и JSON, и XML форматы. Для того, чтобы добавить поддержку нового формата,
@@ -82,25 +82,25 @@ public function behaviors()
 
 ## Сериализация данных <span id="data-serializing"></span>
 
-Как уже описывалось выше, [[Yiisoft\Rest\Serializer]] - это центральное место, отвечающее за конвертацию объектов ресурсов
+Как уже описывалось выше, [[Yiisoft\Yii\Rest\Serializer]] - это центральное место, отвечающее за конвертацию объектов ресурсов
 или коллекций в массивы. Он реализует интерфейсы [[yii\base\Arrayable]] и [[yii\data\DataProviderInterface]].
 Для объектов ресурсов, как правило, реализуется интерфейс [[yii\base\Arrayable]], а для коллекций -
 [[yii\data\DataProviderInterface]].
 
-Вы можете переконфигурировать сериализатор с помощью настройки свойства [[Yiisoft\Rest\Controller::serializer]], используя
+Вы можете переконфигурировать сериализатор с помощью настройки свойства [[Yiisoft\Yii\Rest\Controller::serializer]], используя
 конфигурационный массив. Например, иногда вам может быть нужно помочь упростить разработку клиентской части
 приложения с помощью добавления информации о пагинации непосредственно в тело ответа. Чтобы сделать это,
-переконфигурируйте свойство [[Yiisoft\Rest\Serializer::collectionEnvelope]] следующим образом:
+переконфигурируйте свойство [[Yiisoft\Yii\Rest\Serializer::collectionEnvelope]] следующим образом:
 
 
 ```php
-use Yiisoft\Rest\ActiveController;
+use Yiisoft\Yii\Rest\ActiveController;
 
 class UserController extends ActiveController
 {
     public $modelClass = \app\models\User::class;
     public $serializer = [
-        '__class' => \Yiisoft\Rest\Serializer::class,
+        '__class' => \Yiisoft\Yii\Rest\Serializer::class,
         'collectionEnvelope' => 'items',
     ];
 }

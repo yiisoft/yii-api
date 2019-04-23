@@ -7,7 +7,7 @@ con el formato de la respuesta:
 1. Determinar varios factores que pueden afectar al formato de la respuesta, como son el tipo de medio, lenguaje, versión, etc.
    Este proceso es también conocido como [negociación de contenido (content negotiation)](http://en.wikipedia.org/wiki/Content_negotiation).
 2. La conversión de objetos recurso en arrays, como está descrito en la sección [Recursos (Resources)](rest-resources.md).
-   Esto es realizado por la clase [[Yiisoft\Rest\Serializer]].
+   Esto es realizado por la clase [[Yiisoft\Yii\Rest\Serializer]].
 3. La conversión de arrays en cadenas con el formato determinado por el paso de negociación de contenido. Esto es
    realizado por los [[yii\web\ResponseFormatterInterface|formatos de respuesta]] registrados
    con la propiedad [[yii\web\Response::formatters|formatters]] del
@@ -17,7 +17,7 @@ con el formato de la respuesta:
 ## Negociación de contenido (Content Negotiation) <span id="content-negotiation"></span>
 
 Yii soporta la negociación de contenido a través del filtro [[yii\filters\ContentNegotiator]]. La clase de controlador base
-del API RESTful [[Yiisoft\Rest\Controller]] está equipada con este filtro bajo el nombre `contentNegotiator`.
+del API RESTful [[Yiisoft\Yii\Rest\Controller]] está equipada con este filtro bajo el nombre `contentNegotiator`.
 El filtro provee tanto un formato de respuesta de negociación como una negociación de lenguaje. Por ejemplo, si la petición API RESTful
 contiene la siguiente cabecera,
 
@@ -60,7 +60,7 @@ Content-Type: application/json; charset=UTF-8
 Detrás de escena, antes de que sea ejecutada una acción del controlador del API RESTful, el filtro [[yii\filters\ContentNegotiator]]
 comprobará la cabecera HTTP `Accept` de la petición y definirá el [[yii\web\Response::format|response format]]
 como `'json'`. Después de que la acción sea ejecutada y devuelva el objeto recurso o la colección resultante,
-[[Yiisoft\Rest\Serializer]] convertirá el resultado en un array. Y finalmente, [[yii\web\JsonResponseFormatter]]
+[[Yiisoft\Yii\Rest\Serializer]] convertirá el resultado en un array. Y finalmente, [[yii\web\JsonResponseFormatter]]
 serializará el array en una cadena JSON incluyéndola en el cuerpo de la respuesta.
 
 Por defecto, el API RESTful soporta tanto el formato JSON como el XML. Para soportar un nuevo formato, debes configurar
@@ -84,24 +84,24 @@ los cuales deben ser soportados en [[yii\web\Response::formatters]].
 
 ## Serialización de Datos <span id="data-serializing"></span>
 
-Como hemos descrito antes, [[Yiisoft\Rest\Serializer]] es la pieza central responsable de convertir
+Como hemos descrito antes, [[Yiisoft\Yii\Rest\Serializer]] es la pieza central responsable de convertir
 objetos recurso o colecciones en arrays. Reconoce objetos tanto implementando [[yii\base\ArrayableInterface]]
 como [[yii\data\DataProviderInterface]]. El primer formateador es implementado principalmente para objetos recursos,
 mientras que el segundo para recursos collección.
 
-Puedes configurar el serializador definiendo la propiedad [[Yiisoft\Rest\Controller::serializer]] con un array de configuración.
+Puedes configurar el serializador definiendo la propiedad [[Yiisoft\Yii\Rest\Controller::serializer]] con un array de configuración.
 Por ejemplo, a veces puedes querer ayudar a simplificar el trabajo de desarrollo del cliente incluyendo información de la paginación
-directamente en el cuerpo de la respuesta. Para hacer esto, configura la propiedad [[Yiisoft\Rest\Serializer::collectionEnvelope]]
+directamente en el cuerpo de la respuesta. Para hacer esto, configura la propiedad [[Yiisoft\Yii\Rest\Serializer::collectionEnvelope]]
 como sigue:
 
 ```php
-use Yiisoft\Rest\ActiveController;
+use Yiisoft\Yii\Rest\ActiveController;
 
 class UserController extends ActiveController
 {
     public $modelClass = app\models\User::class;
     public $serializer = [
-        '__class' => Yiisoft\Rest\Serializer::class,
+        '__class' => Yiisoft\Yii\Rest\Serializer::class,
         'collectionEnvelope' => 'items',
     ];
 }

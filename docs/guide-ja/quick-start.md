@@ -30,7 +30,7 @@ Yii は、RESTful ウェブ・サービス API を実装する仕事を簡単に
 ```php
 namespace app\controllers;
 
-use Yiisoft\Rest\ActiveController;
+use Yiisoft\Yii\Rest\ActiveController;
 
 class UserController extends ActiveController
 {
@@ -38,8 +38,8 @@ class UserController extends ActiveController
 }
 ```
 
-このコントローラ・クラスは、よく使用される一揃いの RESTful アクションを実装した [[Yiisoft\Rest\ActiveController]] を拡張するものです。
-[[Yiisoft\Rest\ActiveController::modelClass|modelClass]] を `app\models\User` と指定することによって、
+このコントローラ・クラスは、よく使用される一揃いの RESTful アクションを実装した [[Yiisoft\Yii\Rest\ActiveController]] を拡張するものです。
+[[Yiisoft\Yii\Rest\ActiveController::modelClass|modelClass]] を `app\models\User` と指定することによって、
 データの取得と操作にどのモデルが使用できるかをコントローラに教えてやります。
 
 
@@ -53,7 +53,7 @@ class UserController extends ActiveController
     'enableStrictParsing' => true,
     'showScriptName' => false,
     'rules' => [
-        ['__class' => \Yiisoft\Rest\UrlRule::class, 'controller' => 'user'],
+        ['__class' => \Yiisoft\Yii\Rest\UrlRule::class, 'controller' => 'user'],
     ],
 ]
 ```
@@ -62,7 +62,7 @@ class UserController extends ActiveController
 意味のある HTTP 動詞によってアクセスおよび操作できるようにするものです。
 
 > Info: Yii はコントローラの名前を自動的に複数形にしてエンドポイントとして使用します (下の「試してみる」(#trying-it-out) を参照してください)。
-> この振る舞いは [[Yiisoft\Rest\UrlRule::$pluralize]] プロパティを使って構成することが可能です。
+> この振る舞いは [[Yiisoft\Yii\Rest\UrlRule::$pluralize]] プロパティを使って構成することが可能です。
 
 
 ## JSON の入力を可能にする <span id="enabling-json-input"></span>
@@ -203,7 +203,7 @@ Yii の RESTful API フレームワークを使う場合は、API エンドポ�
 データベース (リレーショナルまたは NoSQL) を扱っている場合は、[[yii\db\ActiveRecord|ActiveRecord]]
 を使ってリソースを表現することが推奨されます。
 
-[[Yiisoft\Rest\UrlRule]] を使って API エンドポイントへのルーティングを簡単にすることが出来ます。
+[[Yiisoft\Yii\Rest\UrlRule]] を使って API エンドポイントへのルーティングを簡単にすることが出来ます。
 
 これは要求されてはいませんが、RESTful API は、保守を容易にするために、
 ウェブのフロントエンドやバックエンドとは別の独立したアプリケーションとして開発することが推奨されます。

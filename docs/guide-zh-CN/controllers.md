@@ -3,19 +3,19 @@
 
 在创建资源类和指定资源格输出式化后，下一步就是创建控制器操作将资源通过RESTful APIs展现给终端用户。
 
-Yii 提供两个控制器基类来简化创建RESTful 操作的工作:[[Yiisoft\Rest\Controller]] 和 [[Yiisoft\Rest\ActiveController]]，
+Yii 提供两个控制器基类来简化创建RESTful 操作的工作:[[Yiisoft\Yii\Rest\Controller]] 和 [[Yiisoft\Yii\Rest\ActiveController]]，
 两个类的差别是后者提供一系列将资源处理成[Active Record](db-active-record.md)的操作。
 因此如果使用[Active Record](db-active-record.md)内置的操作会比较方便，可考虑将控制器类
-继承[[Yiisoft\Rest\ActiveController]]，它会让你用最少的代码完成强大的RESTful APIs.
+继承[[Yiisoft\Yii\Rest\ActiveController]]，它会让你用最少的代码完成强大的RESTful APIs.
 
-[[Yiisoft\Rest\Controller]] 和 [[Yiisoft\Rest\ActiveController]] 提供以下功能，一些功能在后续章节详细描述：
+[[Yiisoft\Yii\Rest\Controller]] 和 [[Yiisoft\Yii\Rest\ActiveController]] 提供以下功能，一些功能在后续章节详细描述：
 
 * HTTP 方法验证;
 * [内容协商和数据格式化](rest-response-formatting.md);
 * [认证](rest-authentication.md);
 * [频率限制](rest-rate-limiting.md).
 
-[[Yiisoft\Rest\ActiveController]] 额外提供一下功能:
+[[Yiisoft\Yii\Rest\ActiveController]] 额外提供一下功能:
 
 * 一系列常用操作: `index`, `view`, `create`, `update`, `delete`, `options`;
 * 对操作和资源进行用户认证.
@@ -27,7 +27,7 @@ Yii 提供两个控制器基类来简化创建RESTful 操作的工作:[[Yiisoft\
 可命名为`UserController`.
 
 创建新的操作和Web应用中创建操作类似，唯一的差别是Web应用中调用`render()`方法渲染一个视图作为返回值，
-对于RESTful操作直接返回数据，[[Yiisoft\Rest\Controller::serializer|serializer]] 和
+对于RESTful操作直接返回数据，[[Yiisoft\Yii\Rest\Controller::serializer|serializer]] 和
 [[yii\web\Response|response object]] 会处理原始数据到请求格式的转换，例如
 
 ```php
@@ -40,7 +40,7 @@ public function actionView($id)
 
 ## 过滤器 <span id="filters"></span>
 
-[[Yiisoft\Rest\Controller]]提供的大多数RESTful API功能通过[过滤器](structure-filters.md)实现.
+[[Yiisoft\Yii\Rest\Controller]]提供的大多数RESTful API功能通过[过滤器](structure-filters.md)实现.
 特别是以下过滤器会按顺序执行：
 
 * [[yii\filters\ContentNegotiator|contentNegotiator]]: 支持内容协商，在 [响应格式化](rest-response-formatting.md) 一节描述;
@@ -49,7 +49,7 @@ public function actionView($id)
 * [[yii\filters\auth\AuthMethod|authenticator]]: 支持用户认证，在[认证](rest-authentication.md)一节描述;
 * [[yii\filters\RateLimiter|rateLimiter]]: 支持频率限制，在[频率限制](rest-rate-limiting.md) 一节描述.
 
-这些过滤器都在[[Yiisoft\Rest\Controller::behaviors()|behaviors()]]方法中声明，
+这些过滤器都在[[Yiisoft\Yii\Rest\Controller::behaviors()|behaviors()]]方法中声明，
 可覆盖该方法来配置单独的过滤器，禁用某个或增加你自定义的过滤器。
 例如，如果你只想用HTTP 基础认证，可编写如下代码：
 
@@ -69,22 +69,22 @@ public function behaviors()
 
 ## 继承 `ActiveController` <span id="extending-active-controller"></span>
 
-如果你的控制器继承[[Yiisoft\Rest\ActiveController]]，应设置[[Yiisoft\Rest\ActiveController::modelClass|modelClass]] 属性
+如果你的控制器继承[[Yiisoft\Yii\Rest\ActiveController]]，应设置[[Yiisoft\Yii\Rest\ActiveController::modelClass|modelClass]] 属性
 为通过该控制器返回给用户的资源类名，该类必须继承[[yii\db\ActiveRecord]].
 
 
 ### 自定义操作 <span id="customizing-actions"></span>
 
-[[Yiisoft\Rest\ActiveController]] 默认提供一下操作:
+[[Yiisoft\Yii\Rest\ActiveController]] 默认提供一下操作:
 
-* [[Yiisoft\Rest\IndexAction|index]]: 按页列出资源;
-* [[Yiisoft\Rest\ViewAction|view]]: 返回指定资源的详情;
-* [[Yiisoft\Rest\CreateAction|create]]: 创建新的资源;
-* [[Yiisoft\Rest\UpdateAction|update]]: 更新一个存在的资源;
-* [[Yiisoft\Rest\DeleteAction|delete]]: 删除指定的资源;
-* [[Yiisoft\Rest\OptionsAction|options]]: 返回支持的HTTP方法.
+* [[Yiisoft\Yii\Rest\IndexAction|index]]: 按页列出资源;
+* [[Yiisoft\Yii\Rest\ViewAction|view]]: 返回指定资源的详情;
+* [[Yiisoft\Yii\Rest\CreateAction|create]]: 创建新的资源;
+* [[Yiisoft\Yii\Rest\UpdateAction|update]]: 更新一个存在的资源;
+* [[Yiisoft\Yii\Rest\DeleteAction|delete]]: 删除指定的资源;
+* [[Yiisoft\Yii\Rest\OptionsAction|options]]: 返回支持的HTTP方法.
 
-所有这些操作通过[[Yiisoft\Rest\ActiveController::actions()|actions()]] 方法申明，可覆盖`actions()`方法配置或禁用这些操作，
+所有这些操作通过[[Yiisoft\Yii\Rest\ActiveController::actions()|actions()]] 方法申明，可覆盖`actions()`方法配置或禁用这些操作，
 如下所示：
 
 ```php
@@ -113,7 +113,7 @@ public function prepareDataProvider()
 ### 执行访问检查 <span id="performing-access-check"></span>
 
 通过RESTful APIs显示数据时，经常需要检查当前用户是否有权限访问和操作所请求的资源，
-在[[Yiisoft\Rest\ActiveController]]中，可覆盖[[Yiisoft\Rest\ActiveController::checkAccess()|checkAccess()]]方法来完成权限检查。
+在[[Yiisoft\Yii\Rest\ActiveController]]中，可覆盖[[Yiisoft\Yii\Rest\ActiveController::checkAccess()|checkAccess()]]方法来完成权限检查。
 
 ```php
 /**
@@ -141,7 +141,7 @@ public function checkAccess($action, $model = null, $params = [])
 }
 ```
 
-`checkAccess()` 方法默认会被[[Yiisoft\Rest\ActiveController]]默认操作所调用，如果创建新的操作并想执行权限检查，
+`checkAccess()` 方法默认会被[[Yiisoft\Yii\Rest\ActiveController]]默认操作所调用，如果创建新的操作并想执行权限检查，
 应在新的操作中明确调用该方法。
 
 > Tip: 可使用[Role-Based Access Control (RBAC) 基于角色权限控制组件](security-authorization.md)实现`checkAccess()`。

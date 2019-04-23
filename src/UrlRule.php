@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace Yiisoft\Rest;
+namespace Yiisoft\Yii\Rest;
 
 use yii\helpers\Yii;
 use yii\exceptions\InvalidConfigException;
@@ -21,7 +21,7 @@ use yii\web\UrlRuleInterface;
  *
  * ```php
  * [
- *     '__class' => \Yiisoft\Rest\UrlRule::class,
+ *     '__class' => \Yiisoft\Yii\Rest\UrlRule::class,
  *     'controller' => 'user',
  * ]
  * ```
@@ -43,7 +43,7 @@ use yii\web\UrlRuleInterface;
  *
  * ```php
  * [
- *     '__class' => \Yiisoft\Rest\UrlRule::class,
+ *     '__class' => \Yiisoft\Yii\Rest\UrlRule::class,
  *     'controller' => ['user', 'post'],
  *     'except' => ['delete'],
  * ]

@@ -5,13 +5,13 @@
 次は、RESTful API を通じてエンド・ユーザにリソースを公開するコントローラ・アクションを作成します。
 
 Yii は、RESTful アクションを作成する仕事を簡単にするための二つの基底コントローラ・クラスを提供しています。
-すなわち、[[Yiisoft\Rest\Controller]] と [[Yiisoft\Rest\ActiveController]] です。
+すなわち、[[Yiisoft\Yii\Rest\Controller]] と [[Yiisoft\Yii\Rest\ActiveController]] です。
 二つのコントローラの違いは、後者は [アクティブ・レコード](db-active-record.md) として表現されるリソースの扱いに特化した一連のアクションをデフォルトで提供する、という点にあります。
 従って、あなたが [アクティブ・レコード](db-active-record.md) を使っていて、提供される組み込みのアクションに満足できるのであれば、
-コントローラ・クラスを [[Yiisoft\Rest\ActiveController]] から拡張することを検討すると良いでしょう。
+コントローラ・クラスを [[Yiisoft\Yii\Rest\ActiveController]] から拡張することを検討すると良いでしょう。
 そうすれば、最小限のコードで強力な RESTful API を作成することが出来ます。
 
-[[Yiisoft\Rest\Controller]] と [[Yiisoft\Rest\ActiveController]] は、ともに、下記の機能を提供します。
+[[Yiisoft\Yii\Rest\Controller]] と [[Yiisoft\Yii\Rest\ActiveController]] は、ともに、下記の機能を提供します。
 これらのいくつかについては、後続の節で詳細に説明します。
 
 * HTTP メソッドのバリデーション
@@ -19,7 +19,7 @@ Yii は、RESTful アクションを作成する仕事を簡単にするため�
 * [認証](rest-authentication.md)
 * [レート制限](rest-rate-limiting.md)
 
-[[Yiisoft\Rest\ActiveController]] は次の機能を追加で提供します。
+[[Yiisoft\Yii\Rest\ActiveController]] は次の機能を追加で提供します。
 
 * 普通は必要とされる一連のアクション: `index`、`view`、`create`、`update`、`delete`、`options`
 * リクエストされたアクションとリソースに対するユーザへの権限付与
@@ -34,7 +34,7 @@ Yii は、RESTful アクションを作成する仕事を簡単にするため�
 新しいアクションを作成する仕方はウェブ・アプリケーションの場合とほぼ同じです。
 唯一の違いは、`render()` メソッドを呼んでビューを使って結果を表示する代りに、
 RESTful アクションの場合はデータを直接に返す、という点です。
-[[Yiisoft\Rest\Controller::serializer|シリアライザ]] と [[yii\web\Response|レスポンス・オブジェクト]] が、元のデータからリクエストされた形式への変換を処理します。
+[[Yiisoft\Yii\Rest\Controller::serializer|シリアライザ]] と [[yii\web\Response|レスポンス・オブジェクト]] が、元のデータからリクエストされた形式への変換を処理します。
 例えば、
 
 ```php
@@ -47,7 +47,7 @@ public function actionView($id)
 
 ## フィルタ <span id="filters"></span>
 
-[[Yiisoft\Rest\Controller]] によって提供される RESTful API 機能のほとんどは [フィルタ](structure-filters.md) の形で実装されています。
+[[Yiisoft\Yii\Rest\Controller]] によって提供される RESTful API 機能のほとんどは [フィルタ](structure-filters.md) の形で実装されています。
 具体的に言うと、次のフィルタがリストされた順に従って実行されます。
 
 * [[yii\filters\ContentNegotiator|contentNegotiator]]: コンテント・ネゴシエーションをサポート。
@@ -58,7 +58,7 @@ public function actionView($id)
 * [[yii\filters\RateLimiter|rateLimiter]]: レート制限をサポート。
   [レート制限](rest-rate-limiting.md) の節で説明します。
 
-これらの名前付きのフィルタは、[[Yiisoft\Rest\Controller::behaviors()|behaviors()]] メソッドで宣言されます。
+これらの名前付きのフィルタは、[[Yiisoft\Yii\Rest\Controller::behaviors()|behaviors()]] メソッドで宣言されます。
 このメソッドをオーバーライドして、個々のフィルタを構成したり、どれかを無効にしたり、あなた自身のフィルタを追加したりすることが出来ます。
 例えば、HTTP 基本認証だけを使いたい場合は、次のようなコードを書くことが出来ます。
 
@@ -83,7 +83,7 @@ public function behaviors()
 他のフィルタとは少し異なるアプローチが必要だからです。
 また、ブラウザが認証クレデンシャルを送信する必要なく、リクエストが出来るかどうかを前もって安全に判断できるように、
 [CORS プリフライト・リクエスト](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS#Preflighted_requests) の認証を無効にする必要もあります。
-下記のコードは、[[Yiisoft\Rest\ActiveController]] を拡張した既存のコントローラに [[yii\filters\Cors]] フィルタを追加するのに必要なコードを示しています。
+下記のコードは、[[Yiisoft\Yii\Rest\ActiveController]] を拡張した既存のコントローラに [[yii\filters\Cors]] フィルタを追加するのに必要なコードを示しています。
 
 ```php
 use yii\filters\auth\HttpBasicAuth;
@@ -113,23 +113,23 @@ public function behaviors()
 
 ## `ActiveController` を拡張する <span id="extending-active-controller"></span>
 
-コントローラを [[Yiisoft\Rest\ActiveController]] から拡張する場合は、このコントローラを通じて提供しようとしているリソース・クラスの名前を
-[[Yiisoft\Rest\ActiveController::modelClass|modelClass]] プロパティにセットしなければなりません。
+コントローラを [[Yiisoft\Yii\Rest\ActiveController]] から拡張する場合は、このコントローラを通じて提供しようとしているリソース・クラスの名前を
+[[Yiisoft\Yii\Rest\ActiveController::modelClass|modelClass]] プロパティにセットしなければなりません。
 リソース・クラスは [[yii\db\ActiveRecord]] から拡張しなければなりません。
 
 
 ### アクションをカスタマイズする <span id="customizing-actions"></span>
 
-デフォルトでは、[[Yiisoft\Rest\ActiveController]] は次のアクションを提供します。
+デフォルトでは、[[Yiisoft\Yii\Rest\ActiveController]] は次のアクションを提供します。
 
-* [[Yiisoft\Rest\IndexAction|index]]: リソースをページごとにリストする。
-* [[Yiisoft\Rest\ViewAction|view]]: 指定されたリソースの詳細を返す。
-* [[Yiisoft\Rest\CreateAction|create]]: 新しいリソースを作成する。
-* [[Yiisoft\Rest\UpdateAction|update]]: 既存のリソースを更新する。
-* [[Yiisoft\Rest\DeleteAction|delete]]: 指定されたりソースを削除する。
-* [[Yiisoft\Rest\OptionsAction|options]]: サポートされている HTTP メソッドを返す。
+* [[Yiisoft\Yii\Rest\IndexAction|index]]: リソースをページごとにリストする。
+* [[Yiisoft\Yii\Rest\ViewAction|view]]: 指定されたリソースの詳細を返す。
+* [[Yiisoft\Yii\Rest\CreateAction|create]]: 新しいリソースを作成する。
+* [[Yiisoft\Yii\Rest\UpdateAction|update]]: 既存のリソースを更新する。
+* [[Yiisoft\Yii\Rest\DeleteAction|delete]]: 指定されたりソースを削除する。
+* [[Yiisoft\Yii\Rest\OptionsAction|options]]: サポートされている HTTP メソッドを返す。
 
-これらのアクションは全て [[Yiisoft\Rest\ActiveController::actions()|actions()]] メソッドによって宣言されます。
+これらのアクションは全て [[Yiisoft\Yii\Rest\ActiveController::actions()|actions()]] メソッドによって宣言されます。
 `actions()` メソッドをオーバーライドすることによって、これらのアクションを構成したり、そのいくつかを無効化したりすることが出来ます。例えば、
 
 ```php
@@ -159,7 +159,7 @@ public function prepareDataProvider()
 
 RESTful API によってリソースを公開するときには、たいてい、現在のユーザがリクエストしているリソースにアクセスしたり操作したりする許可を持っているか否かを
 チェックする必要があります。
-これは、[[Yiisoft\Rest\ActiveController]] を使う場合は、[[Yiisoft\Rest\ActiveController::checkAccess()|checkAccess()]] メソッドを次のようにオーバーライドすることによって出来ます。
+これは、[[Yiisoft\Yii\Rest\ActiveController]] を使う場合は、[[Yiisoft\Yii\Rest\ActiveController::checkAccess()|checkAccess()]] メソッドを次のようにオーバーライドすることによって出来ます。
 
 ```php
 /**
@@ -185,7 +185,7 @@ public function checkAccess($action, $model = null, $params = [])
 }
 ```
 
-`checkAccess()` メソッドは [[Yiisoft\Rest\ActiveController]] のデフォルトのアクションから呼ばれます。
+`checkAccess()` メソッドは [[Yiisoft\Yii\Rest\ActiveController]] のデフォルトのアクションから呼ばれます。
 新しいアクションを作成して、それに対してもアクセス・チェックをしたい場合は、新しいアクションの中からこのメソッドを明示的に呼び出さなければなりません。
 
 > Tip: [ロール・ベース・アクセス制御 (RBAC) コンポーネント](security-authorization.md) を使って `checkAccess()` を実装することも可能です。

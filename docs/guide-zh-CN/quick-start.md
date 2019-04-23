@@ -29,7 +29,7 @@ Yii 提供了一整套用来简化实现 RESTful 风格的 Web Service 服务的
 ```php
 namespace app\controllers;
 
-use Yiisoft\Rest\ActiveController;
+use Yiisoft\Yii\Rest\ActiveController;
 
 class UserController extends ActiveController
 {
@@ -37,7 +37,7 @@ class UserController extends ActiveController
 }
 ```
 
-控制器类扩展自 [[Yiisoft\Rest\ActiveController]]。通过指定 [[Yiisoft\Rest\ActiveController::modelClass|modelClass]]
+控制器类扩展自 [[Yiisoft\Yii\Rest\ActiveController]]。通过指定 [[Yiisoft\Yii\Rest\ActiveController::modelClass|modelClass]]
 作为 `app\models\User`， 控制器就能知道使用哪个模型去获取和处理数据。
 
 
@@ -51,7 +51,7 @@ class UserController extends ActiveController
     'enableStrictParsing' => true,
     'showScriptName' => false,
     'rules' => [
-        ['class' => 'Yiisoft\Rest\UrlRule', 'controller' => 'user'],
+        ['class' => 'Yiisoft\Yii\Rest\UrlRule', 'controller' => 'user'],
     ],
 ]
 ```
@@ -93,7 +93,7 @@ class UserController extends ActiveController
 * `OPTIONS /users/123`: 显示有关末端 `/users/123` 支持的动词
 
 > Info: Yii 将在末端使用的控制器的名称自动变为复数。（译注：个人感觉这里应该变为注意）
-> 你可以用 [[Yiisoft\Rest\UrlRule::$pluralize]]-属性来配置此项。
+> 你可以用 [[Yiisoft\Yii\Rest\UrlRule::$pluralize]]-属性来配置此项。
 
 你可以访问你的API用 `curl` 命令如下，
 
@@ -196,7 +196,7 @@ Content-Type: application/json; charset=UTF-8
 如果你在使用（关系或非关系）数据库，推荐你使用 [[yii\db\ActiveRecord|ActiveRecord]]
 来表示资源。
 
-你可以使用 [[Yiisoft\Rest\UrlRule]] 简化路由到你的 API 末端。
+你可以使用 [[Yiisoft\Yii\Rest\UrlRule]] 简化路由到你的 API 末端。
 
 为了方便维护你的WEB前端和后端，建议你开发接口作为一个单独的应用程序，
 虽然这不是必须的。

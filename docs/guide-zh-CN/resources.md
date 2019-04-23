@@ -18,7 +18,7 @@ RESTful 的 API 都是关于访问和操作 *资源*，可将资源看成MVC模�
 ## 字段 <span id="fields"></span>
 
 当RESTful API响应中包含一个资源时，该资源需要序列化成一个字符串。
-Yii将这个过程分成两步，首先，资源会被[[Yiisoft\Rest\Serializer]]转换成数组，
+Yii将这个过程分成两步，首先，资源会被[[Yiisoft\Yii\Rest\Serializer]]转换成数组，
 然后，该数组会通过[[yii\web\ResponseFormatterInterface|response formatters]]根据请求格式(如JSON, XML)被序列化成字符串。
 当开发一个资源类时应重点关注第一步。
 
@@ -171,7 +171,7 @@ class User extends ActiveRecord implements Linkable
 ```php
 namespace app\controllers;
 
-use Yiisoft\Rest\Controller;
+use Yiisoft\Yii\Rest\Controller;
 use yii\data\ActiveDataProvider;
 use app\models\Post;
 
@@ -186,8 +186,8 @@ class PostController extends Controller
 }
 ```
 
-当在RESTful API响应中发送data provider 时， [[Yiisoft\Rest\Serializer]] 会取出资源的当前页并组装成资源对象数组，
-[[Yiisoft\Rest\Serializer]] 也通过如下HTTP头包含页码信息：
+当在RESTful API响应中发送data provider 时， [[Yiisoft\Yii\Rest\Serializer]] 会取出资源的当前页并组装成资源对象数组，
+[[Yiisoft\Yii\Rest\Serializer]] 也通过如下HTTP头包含页码信息：
 
 * `X-Pagination-Total-Count`: 资源所有数量;
 * `X-Pagination-Page-Count`: 页数;

@@ -15,13 +15,13 @@
     'enableStrictParsing' => true,
     'showScriptName' => false,
     'rules' => [
-        ['__class' => Yiisoft\Rest\UrlRule::class, 'controller' => 'user'],
+        ['__class' => Yiisoft\Yii\Rest\UrlRule::class, 'controller' => 'user'],
     ],
 ]
 ```
 
 Главное отличие в коде выше по сравнению с управлением URL-адресами в web-приложениях состоит в использовании
-[[Yiisoft\Rest\UrlRule]] для маршрутизации запросов к RESTful API. Этот особый класс URL-правил будет создавать целый набор дочерних URL-правил для поддержки маршрутизации и создания URL-адресов для указанного контроллера (или контроллеров).
+[[Yiisoft\Yii\Rest\UrlRule]] для маршрутизации запросов к RESTful API. Этот особый класс URL-правил будет создавать целый набор дочерних URL-правил для поддержки маршрутизации и создания URL-адресов для указанного контроллера (или контроллеров).
 Например, приведенный выше код является приближенным аналогом следующего набора правил:
 
 ```php
@@ -53,7 +53,7 @@
 
 ```php
 [
-    '__class' => Yiisoft\Rest\UrlRule::class,
+    '__class' => Yiisoft\Yii\Rest\UrlRule::class,
     'controller' => 'user',
     'except' => ['delete', 'create', 'update'],
 ],
@@ -63,7 +63,7 @@
 
 ```php
 [
-    '__class' => Yiisoft\Rest\UrlRule::class,
+    '__class' => Yiisoft\Yii\Rest\UrlRule::class,
     'controller' => 'user',
     'extraPatterns' => [
         'GET search' => 'search',
@@ -72,19 +72,19 @@
 ```
 
 Как вы могли заметить, ID контроллера `user` в этих точках входа используется в форме множественного числа (как `users`).
-Это происходит потому, что [[Yiisoft\Rest\UrlRule]] автоматически приводит идентификаторы контроллеров к множественной форме.
-Вы можете отключить такое поведение, назначив свойству [[Yiisoft\Rest\UrlRule::pluralize]] значение `false`.
+Это происходит потому, что [[Yiisoft\Yii\Rest\UrlRule]] автоматически приводит идентификаторы контроллеров к множественной форме.
+Вы можете отключить такое поведение, назначив свойству [[Yiisoft\Yii\Rest\UrlRule::pluralize]] значение `false`.
 
 > Info: Приведение ID контроллера к множественной форме производится в методе [[yii\helpers\Inflector::pluralize()]].
   При этом соблюдаются правила английского языка. Например, `box` будет преобразован в `boxes`, а не в `boxs`.
 
 В том случае, если автоматическое приведение к множественному числу вам не подходит, вы можете настроить 
-свойство [[Yiisoft\Rest\UrlRule::controller]], где указать явное соответствие имени в URL и ID контроллера.
+свойство [[Yiisoft\Yii\Rest\UrlRule::controller]], где указать явное соответствие имени в URL и ID контроллера.
 Например, код ниже ставит в соответствие имя `u` и ID контроллера `user`.  
 
 ```php
 [
-    '__class' => Yiisoft\Rest\UrlRule::class,
+    '__class' => Yiisoft\Yii\Rest\UrlRule::class,
     'controller' => ['u' => 'user'],
 ]
 ```

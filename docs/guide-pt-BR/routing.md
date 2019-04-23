@@ -13,12 +13,12 @@ Isto pode ser feito facilmente através da configuração do [componente de apli
    'enableStrictParsing' => true,
    'showScriptName' => false,
    'rules' => [
-       ['__class' => Yiisoft\Rest\UrlRule::class, 'controller' => 'user'],
+       ['__class' => Yiisoft\Yii\Rest\UrlRule::class, 'controller' => 'user'],
    ],
 ]
 ```
 
-Em comparação com o gerenciamento de URL para aplicações Web, a principal novidade acima é o uso de [[Yiisoft\Rest\UrlRule]] para rotear requisições API RESTful. Esta classe especial criará um conjunto de regras de URL filhas para dar suporte ao roteamento e a criação de URL para o controller especificado.
+Em comparação com o gerenciamento de URL para aplicações Web, a principal novidade acima é o uso de [[Yiisoft\Yii\Rest\UrlRule]] para rotear requisições API RESTful. Esta classe especial criará um conjunto de regras de URL filhas para dar suporte ao roteamento e a criação de URL para o controller especificado.
 Por exemplo, o código acima é mais ou menos equivalente às seguintes regras:
 
 ```php
@@ -49,7 +49,7 @@ Você pode configurar as opções `only` e `except` para listar explicitamente q
 
 ```php
 [
-   '__class' => Yiisoft\Rest\UrlRule::class,
+   '__class' => Yiisoft\Yii\Rest\UrlRule::class,
    'controller' => 'user',
    'except' => ['delete', 'create', 'update'],
 ],
@@ -59,7 +59,7 @@ Você também pode configurar `patterns` ou `extraPatterns` para redefinir padr�
 
 ```php
 [
-   '__class' => Yiisoft\Rest\UrlRule::class,
+   '__class' => Yiisoft\Yii\Rest\UrlRule::class,
    'controller' => 'user',
    'extraPatterns' => [
        'GET search' => 'search',
@@ -67,17 +67,17 @@ Você também pode configurar `patterns` ou `extraPatterns` para redefinir padr�
 ]
 ```
 
-Você deve ter notado que o ID `user` de controller aparece no plural como `users` na extremidade das  URLs. Isto acontece porque [[Yiisoft\Rest\UrlRule]] pluraliza os IDs de controllers automaticamente na criação de regras de URLs filhas.
-Você pode desabilitar este comportamento configurando [[Yiisoft\Rest\UrlRule::pluralize]] para `false`.
+Você deve ter notado que o ID `user` de controller aparece no plural como `users` na extremidade das  URLs. Isto acontece porque [[Yiisoft\Yii\Rest\UrlRule]] pluraliza os IDs de controllers automaticamente na criação de regras de URLs filhas.
+Você pode desabilitar este comportamento configurando [[Yiisoft\Yii\Rest\UrlRule::pluralize]] para `false`.
 
 > Observação: A pluralização dos IDs de controllers são feitas pelo método [[yii\helpers\Inflector::pluralize()]]. O método respeita as regras especiais de pluralização. Por exemplo, a palavra `box` será pluralizada para `boxes` em vez de `boxs`.
 
 
-Caso a pluralização automática não encontre uma opção para a palavra requerida, você pode configurar a propriedade [[Yiisoft\Rest\UrlRule::controller]] para especificar explicitamente como mapear um nome para ser usado como uma URL para um ID de controller. Por exemplo, o seguinte código mapeia o nome `u` para o ID `user` de controller.  
+Caso a pluralização automática não encontre uma opção para a palavra requerida, você pode configurar a propriedade [[Yiisoft\Yii\Rest\UrlRule::controller]] para especificar explicitamente como mapear um nome para ser usado como uma URL para um ID de controller. Por exemplo, o seguinte código mapeia o nome `u` para o ID `user` de controller.  
 
 ```php
 [
-   '__class' => Yiisoft\Rest\UrlRule::class,
+   '__class' => Yiisoft\Yii\Rest\UrlRule::class,
    'controller' => ['u' => 'user'],
 ]
 ```

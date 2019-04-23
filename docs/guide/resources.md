@@ -23,7 +23,7 @@ then all its public member variables will be returned.
 ## Fields <span id="fields"></span>
 
 When including a resource in a RESTful API response, the resource needs to be serialized into a string.
-Yii breaks this process into two steps. First, the resource is converted into an array by [[Yiisoft\Rest\Serializer]].
+Yii breaks this process into two steps. First, the resource is converted into an array by [[Yiisoft\Yii\Rest\Serializer]].
 Second, the array is serialized into a string in a requested format (e.g. JSON, XML) by
 [[yii\web\ResponseFormatterInterface|response formatters]]. The first step is what you should mainly focus when
 developing a resource class.
@@ -223,7 +223,7 @@ the following action returns a data provider about the post resources:
 ```php
 namespace app\controllers;
 
-use Yiisoft\Rest\Controller;
+use Yiisoft\Yii\Rest\Controller;
 use yii\data\ActiveDataProvider;
 use app\models\Post;
 
@@ -238,8 +238,8 @@ class PostController extends Controller
 }
 ```
 
-When a data provider is being sent in a RESTful API response, [[Yiisoft\Rest\Serializer]] will take out the current
-page of resources and serialize them as an array of resource objects. Additionally, [[Yiisoft\Rest\Serializer]]
+When a data provider is being sent in a RESTful API response, [[Yiisoft\Yii\Rest\Serializer]] will take out the current
+page of resources and serialize them as an array of resource objects. Additionally, [[Yiisoft\Yii\Rest\Serializer]]
 will also include the pagination information by the following HTTP headers:
 
 * `X-Pagination-Total-Count`: The total number of resources;

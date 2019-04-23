@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace Yiisoft\Rest;
+namespace Yiisoft\Yii\Rest;
 
 use yii\exceptions\InvalidConfigException;
 use yii\web\NotFoundHttpException;

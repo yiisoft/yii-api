@@ -7,7 +7,7 @@ RESTful API のリクエストを処理するとき、アプリケーション�
 1. レスポンス形式に影響するさまざまな要因、例えば、メディア・タイプ、言語、バージョンなどを決定します。
    このプロセスは [コンテント・ネゴシエーション](http://en.wikipedia.org/wiki/Content_negotiation) としても知られるものです。
 2. リソース・オブジェクトを配列に変換します。
-   [リソース](rest-resources.md) の節で説明したように、この作業は [[Yiisoft\Rest\Serializer]] によって実行されます。
+   [リソース](rest-resources.md) の節で説明したように、この作業は [[Yiisoft\Yii\Rest\Serializer]] によって実行されます。
 3. 配列をコンテントネゴシエーションのステップで決定された形式の文字列に変換します。
    この作業は、`response` [アプリケーション・コンポーネント](structure-application-components.md) の
    [[yii\web\Response::formatters|formatters]] プロパティに登録された
@@ -17,7 +17,7 @@ RESTful API のリクエストを処理するとき、アプリケーション�
 ## コンテント・ネゴシエーション <span id="content-negotiation"></span>
 
 Yii は [[yii\filters\ContentNegotiator]] フィルタによってコンテント・ネゴシエーションをサポートします。
-RESTful API の基底コントローラ・クラス [[Yiisoft\Rest\Controller]] は `contentNegotiator` という名前でこのフィルタを持っています。
+RESTful API の基底コントローラ・クラス [[Yiisoft\Yii\Rest\Controller]] は `contentNegotiator` という名前でこのフィルタを持っています。
 このフィルタは、レスポンス形式のネゴシエーションと同時に言語のネゴシエーションも提供します。
 例えば、RESTful API リクエストが下記のヘッダを含んでいるとします。
 
@@ -60,7 +60,7 @@ Content-Type: application/json; charset=UTF-8
 舞台裏では、RESTful API コントローラアクションが実行される前に、[[yii\filters\ContentNegotiator]] 
 ィルタがリクエストの `Accept` HTTP ヘッダをチェックして、[[yii\web\Response::format|レスポンス形式]] を `'json'` に設定します。
 アクションが実行されて、その結果のリソースのオブジェクトまたはコレクションが返されると、
-[[Yiisoft\Rest\Serializer]] が結果を配列に変換します。
+[[Yiisoft\Yii\Rest\Serializer]] が結果を配列に変換します。
 そして最後に、[[yii\web\JsonResponseFormatter]] が配列を JSON 文字列に変換して、それをレスポンスボディに入れます。
 
 デフォルトでは、RESTful API は JSON と XML の両方の形式をサポートします。
@@ -84,24 +84,24 @@ public function behaviors()
 
 ## データのシリアライズ <span id="data-serializing"></span>
 
-上記で説明したように、[[Yiisoft\Rest\Serializer]] が、リソースのオブジェクトやコレクションを配列に変換する際に、中心的な役割を果たします。
+上記で説明したように、[[Yiisoft\Yii\Rest\Serializer]] が、リソースのオブジェクトやコレクションを配列に変換する際に、中心的な役割を果たします。
 `Serializer` は、[[yii\base\Arrayable]] および [[yii\data\DataProviderInterface]] のインタフェイスを実装したオブジェクトを認識します。
 前者は主としてリソース・オブジェクトによって実装され、
 後者はリソース・コレクションによって実装されています。
 
-[[Yiisoft\Rest\Controller::serializer]] プロパティに構成情報配列をセットしてシリアライザを構成することが出来ます。
+[[Yiisoft\Yii\Rest\Controller::serializer]] プロパティに構成情報配列をセットしてシリアライザを構成することが出来ます。
 例えば、場合によっては、クライアントの開発作業を単純化するために、
 ページネーション情報をレスポンス・ボディに直接に含ませたいことがあるでしょう。
-そうするためには、[[Yiisoft\Rest\Serializer::collectionEnvelope]] プロパティを次のように構成します。
+そうするためには、[[Yiisoft\Yii\Rest\Serializer::collectionEnvelope]] プロパティを次のように構成します。
 
 ```php
-use Yiisoft\Rest\ActiveController;
+use Yiisoft\Yii\Rest\ActiveController;
 
 class UserController extends ActiveController
 {
     public $modelClass = 'app\models\User';
     public $serializer = [
-        '__class' => \Yiisoft\Rest\Serializer::class,
+        '__class' => \Yiisoft\Yii\Rest\Serializer::class,
         'collectionEnvelope' => 'items',
     ];
 }

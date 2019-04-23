@@ -39,7 +39,7 @@ public function saveAllowance($request, $action, $allowance, $timestamp)
 }
 ```
 
-アイデンティティのクラスに必要なインタフェイスを実装すると、Yii は [[Yiisoft\Rest\Controller]] のアクション・フィルタとして構成された
+アイデンティティのクラスに必要なインタフェイスを実装すると、Yii は [[Yiisoft\Yii\Rest\Controller]] のアクション・フィルタとして構成された
 [[yii\filters\RateLimiter]] を使って、自動的にレート制限のチェックを行うようになります。
 レート制限を超えると、レート・リミッタが [[yii\web\TooManyRequestsHttpException]] を投げます。
 

@@ -30,7 +30,7 @@ First, create a [controller](structure-controllers.md) class `app\controllers\Us
 ```php
 namespace app\controllers;
 
-use Yiisoft\Rest\ActiveController;
+use Yiisoft\Yii\Rest\ActiveController;
 
 class UserController extends ActiveController
 {
@@ -38,8 +38,8 @@ class UserController extends ActiveController
 }
 ```
 
-The controller class extends from [[Yiisoft\Rest\ActiveController]], which implements a common set of RESTful actions.
-By specifying [[Yiisoft\Rest\ActiveController::modelClass|modelClass]]
+The controller class extends from [[Yiisoft\Yii\Rest\ActiveController]], which implements a common set of RESTful actions.
+By specifying [[Yiisoft\Yii\Rest\ActiveController::modelClass|modelClass]]
 as `app\models\User`, the controller knows which model can be used for fetching and manipulating data.
 
 
@@ -53,7 +53,7 @@ Then, modify the configuration of the `urlManager` component in your application
     'enableStrictParsing' => true,
     'showScriptName' => false,
     'rules' => [
-        ['__class' => \Yiisoft\Rest\UrlRule::class, 'controller' => 'user'],
+        ['__class' => \Yiisoft\Yii\Rest\UrlRule::class, 'controller' => 'user'],
     ],
 ]
 ```
@@ -62,7 +62,7 @@ The above configuration mainly adds a URL rule for the `user` controller so that
 can be accessed and manipulated with pretty URLs and meaningful HTTP verbs.
 
 > Note: Yii will automatically pluralize controller names for use in endpoints (see [Trying it Out](#trying-it-out) section below).
-> You can configure this using the [[Yiisoft\Rest\UrlRule::$pluralize]] property.
+> You can configure this using the [[Yiisoft\Yii\Rest\UrlRule::$pluralize]] property.
 
 
 ## Enabling JSON Input <span id="enabling-json-input"></span>
@@ -203,7 +203,7 @@ Resources are represented as data models which extend from the [[yii\base\Model]
 If you are working with databases (relational or NoSQL), it is recommended you use [[yii\db\ActiveRecord|ActiveRecord]]
 to represent resources.
 
-You may use [[Yiisoft\Rest\UrlRule]] to simplify the routing to your API endpoints.
+You may use [[Yiisoft\Yii\Rest\UrlRule]] to simplify the routing to your API endpoints.
 
 While not required, it is recommended that you develop your RESTful APIs as a separate application, different from
 your Web front end and back end for easier maintenance.
