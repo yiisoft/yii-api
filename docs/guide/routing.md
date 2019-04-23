@@ -15,13 +15,13 @@ in the application configuration like the following:
     'enableStrictParsing' => true,
     'showScriptName' => false,
     'rules' => [
-        ['__class' => yii\rest\UrlRule::class, 'controller' => 'user'],
+        ['__class' => Yiisoft\Yii\Rest\UrlRule::class, 'controller' => 'user'],
     ],
 ]
 ```
 
 Compared to the URL management for Web applications, the main new thing above is the use of
-[[yii\rest\UrlRule]] for routing RESTful API requests. This special URL rule class will
+[[Yiisoft\Yii\Rest\UrlRule]] for routing RESTful API requests. This special URL rule class will
 create a whole set of child URL rules to support routing and URL creation for the specified controller(s).
 For example, the above code is roughly equivalent to the following rules:
 
@@ -54,7 +54,7 @@ actions should be disabled, respectively. For example,
 
 ```php
 [
-    '__class' => yii\rest\UrlRule::class,
+    '__class' => Yiisoft\Yii\Rest\UrlRule::class,
     'controller' => 'user',
     'except' => ['delete', 'create', 'update'],
 ],
@@ -65,7 +65,7 @@ For example, to support a new action `search` by the endpoint `GET /users/search
 
 ```php
 [
-    '__class' => yii\rest\UrlRule::class,
+    '__class' => Yiisoft\Yii\Rest\UrlRule::class,
     'controller' => 'user',
     'extraPatterns' => [
         'GET search' => 'search',
@@ -74,31 +74,31 @@ For example, to support a new action `search` by the endpoint `GET /users/search
 ```
 
 You may have noticed that the controller ID `user` appears in plural form as `users` in the endpoint URLs.
-This is because [[yii\rest\UrlRule]] automatically pluralizes controller IDs when creating child URL rules.
-You may disable this behavior by setting [[yii\rest\UrlRule::pluralize]] to be `false`. 
+This is because [[Yiisoft\Yii\Rest\UrlRule]] automatically pluralizes controller IDs when creating child URL rules.
+You may disable this behavior by setting [[Yiisoft\Yii\Rest\UrlRule::pluralize]] to be `false`. 
 
 > Info: The pluralization of controller IDs is done by [[yii\helpers\Inflector::pluralize()]]. The method respects
   special pluralization rules. For example, the word `box` will be pluralized as `boxes` instead of `boxs`.
 
 In case when the automatic pluralization does not meet your requirement, you may also configure the 
-[[yii\rest\UrlRule::controller]] property to explicitly specify how to map a name used in endpoint URLs to 
+[[Yiisoft\Yii\Rest\UrlRule::controller]] property to explicitly specify how to map a name used in endpoint URLs to 
 a controller ID. For example, the following code maps the name `u` to the controller ID `user`.  
  
 ```php
 [
-    '__class' => yii\rest\UrlRule::class,
+    '__class' => Yiisoft\Yii\Rest\UrlRule::class,
     'controller' => ['u' => 'user'],
 ]
 ```
 
 ## Extra configuration for contained rules
 
-It could be useful to specify extra configuration that is applied to each rule contained within [[yii\rest\UrlRule]].
+It could be useful to specify extra configuration that is applied to each rule contained within [[Yiisoft\Yii\Rest\UrlRule]].
 A good example would be specifying defaults for `expand` parameter:
 
 ```php
 [
-    '__class' => yii\rest\UrlRule::class,
+    '__class' => Yiisoft\Yii\Rest\UrlRule::class,
     'controller' => ['user'],
     'ruleConfig' => [
         '__class' => yii\web\UrlRule::class,

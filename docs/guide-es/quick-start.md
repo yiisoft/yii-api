@@ -30,7 +30,7 @@ Primero, crea una clase controladora `app\controllers\UserController` como la si
 ```php
 namespace app\controllers;
 
-use yii\rest\ActiveController;
+use Yiisoft\Yii\Rest\ActiveController;
 
 class UserController extends ActiveController
 {
@@ -38,7 +38,7 @@ class UserController extends ActiveController
 }
 ```
 
-La clase controladora extiende de [[yii\rest\ActiveController]]. Especificado por [[yii\rest\ActiveController::modelClass|modelClass]]
+La clase controladora extiende de [[Yiisoft\Yii\Rest\ActiveController]]. Especificado por [[Yiisoft\Yii\Rest\ActiveController::modelClass|modelClass]]
 como `app\models\User`, el controlador sabe que modelo puede ser usado para recoger y manipular sus datos.
 
 
@@ -52,7 +52,7 @@ A continuación, modifica la configuración del componente `urlManager` en la co
     'enableStrictParsing' => true,
     'showScriptName' => false,
     'rules' => [
-        ['__class' => yii\rest\UrlRule::class, 'controller' => 'user'],
+        ['__class' => Yiisoft\Yii\Rest\UrlRule::class, 'controller' => 'user'],
     ],
 ]
 ```
@@ -94,7 +94,7 @@ para acceder a los datos de user. Las APIs que tienes creado incluyen:
 * `OPTIONS /users/123`: muestra los verbos compatibles respecto al punto final `/users/123`.
 
 > Info: Yii automáticamente pluraliza los nombres de los controladores para usarlo en los puntos finales.
-> Puedes configurar esto usando la propiedad [[yii\rest\UrlRule::$pluralize]].
+> Puedes configurar esto usando la propiedad [[Yiisoft\Yii\Rest\UrlRule::$pluralize]].
 
 Puedes acceder a tus APIs con el comando `curl` de la siguiente manera,
 
@@ -197,7 +197,7 @@ Los recursos son representados como modelos de datos que extienden de la clase [
 Si estás trabajando con bases de datos (relacionales o NoSQL), es recomendable utilizar [[yii\db\ActiveRecord|ActiveRecord]]
 para representar los recursos.
 
-Puedes utilizar [[yii\rest\UrlRule]] para simplificar el enrutamiento de los puntos finales de tu API.
+Puedes utilizar [[Yiisoft\Yii\Rest\UrlRule]] para simplificar el enrutamiento de los puntos finales de tu API.
 
 Aunque no es obligatorio, es recomendable que desarrolles tus APIs RESTful como una aplicación separada, diferente de
 tu WEB front end y tu back end para facilitar el mantenimiento.

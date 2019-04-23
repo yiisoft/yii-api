@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\rest;
+namespace Yiisoft\Yii\Rest;
 
 /**
  * ViewAction implements the API endpoint for returning the detailed information about a model.

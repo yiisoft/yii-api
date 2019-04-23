@@ -15,13 +15,13 @@
     'enableStrictParsing' => true,
     'showScriptName' => false,
     'rules' => [
-        ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
+        ['class' => 'Yiisoft\Yii\Rest\UrlRule', 'controller' => 'user'],
     ],
 ]
 ```
 
 相比于URL管理的Web应用程序，上述主要的新东西是通过RESTful API
-请求[[yii\rest\UrlRule]]。这个特殊的URL规则类将会
+请求[[Yiisoft\Yii\Rest\UrlRule]]。这个特殊的URL规则类将会
 建立一整套子URL规则来支持路由和URL创建的指定的控制器。
 例如， 上面的代码中是大致按照下面的规则:
 
@@ -54,7 +54,7 @@
 
 ```php
 [
-    'class' => 'yii\rest\UrlRule',
+    'class' => 'Yiisoft\Yii\Rest\UrlRule',
     'controller' => 'user',
     'except' => ['delete', 'create', 'update'],
 ],
@@ -65,7 +65,7 @@
 
 ```php
 [
-    'class' => 'yii\rest\UrlRule',
+    'class' => 'Yiisoft\Yii\Rest\UrlRule',
     'controller' => 'user',
     'extraPatterns' => [
         'GET search' => 'search',
@@ -73,6 +73,6 @@
 ```
 
 您可能已经注意到控制器ID`user`以复数形式出现在`users`末端。
-这是因为 [[yii\rest\UrlRule]] 能够为他们使用的末端全自动复数化控制器ID。
-您可以通过设置 [[yii\rest\UrlRule::pluralize]] 为false 来禁用此行为，如果您想
-使用一些特殊的名字您可以通过配置 [[yii\rest\UrlRule::controller]] 属性。
+这是因为 [[Yiisoft\Yii\Rest\UrlRule]] 能够为他们使用的末端全自动复数化控制器ID。
+您可以通过设置 [[Yiisoft\Yii\Rest\UrlRule::pluralize]] 为false 来禁用此行为，如果您想
+使用一些特殊的名字您可以通过配置 [[Yiisoft\Yii\Rest\UrlRule::controller]] 属性。

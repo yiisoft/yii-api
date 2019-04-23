@@ -18,7 +18,7 @@ entonces `loadAllowance()` y `saveAllowance()` pueden ser utilizados para leer y
 Para mejorar el desempeño, también puedes considerar almacenar esas piezas de información en caché o almacenamiento NoSQL.
 
 Una vez que la clase de identidad implementa la interfaz requerida, Yii utilizará automáticamente [[yii\filters\RateLimiter]]
-configurado como un filtro de acción para que [[yii\rest\Controller]] compruebe el límite de rango. El limitador de rango
+configurado como un filtro de acción para que [[Yiisoft\Yii\Rest\Controller]] compruebe el límite de rango. El limitador de rango
 lanzará una excepeción [[yii\web\TooManyRequestsHttpException]] cuando el límite del rango sea excedido.
 
 Puedes configurar el limitador de rango
