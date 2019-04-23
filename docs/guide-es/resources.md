@@ -15,7 +15,7 @@ En esta sección, vamos principalmente a describir como la clase con recursos qu
 ## Campos (fields) <span id="fields"></span>
 
 Cuando incluimos un recurso en una respuesta de la API RESTful, el recurso necesita ser serializado en una cadena.
-Yii divide este proceso en dos pasos. Primero, el recurso es convertido en un array por [[yii\rest\Serializer]].
+Yii divide este proceso en dos pasos. Primero, el recurso es convertido en un array por [[Yiisoft\Yii\Rest\Serializer]].
 Segundo, el array es serializado en una cadena en  el formato requerido (p.e. JSON, XML) por [[yii\web\ResponseFormatterInterface|response formatters]]. El primer paso es en el que debes de concentrarte principalmente cuando desarrolles una clase de un recurso.
 
 Sobreescribiendo [[yii\base\Model::fields()|fields()]] y/o [[yii\base\Model::extraFields()|extraFields()]],
@@ -163,7 +163,7 @@ Las colecciones pueden ser representadas como arrays pero, es usualmente más de
 ```php
 namespace app\controllers;
 
-use yii\rest\Controller;
+use Yiisoft\Yii\Rest\Controller;
 use yii\data\ActiveDataProvider;
 use app\models\Post;
 
@@ -178,7 +178,7 @@ class PostController extends Controller
 }
 ```
 
-Cuando un proveedor de datos está enviando una respuesta con el API RESTful, [[yii\rest\Serializer]] llevará la actual página de los recursos y los serializa como un array de recursos objeto. Adicionalmente, [[yii\rest\Serializer]]
+Cuando un proveedor de datos está enviando una respuesta con el API RESTful, [[Yiisoft\Yii\Rest\Serializer]] llevará la actual página de los recursos y los serializa como un array de recursos objeto. Adicionalmente, [[Yiisoft\Yii\Rest\Serializer]]
 puede incluir también la información de paginación a través de las cabeceras HTTP siguientes:
 
 * `X-Pagination-Total-Count`: Número total de recursos;

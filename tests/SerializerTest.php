@@ -5,11 +5,11 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\rest\tests\unit;
+namespace Yiisoft\Yii\Rest\Tests\Unit;
 
 use yii\base\Model;
 use yii\data\ArrayDataProvider;
-use yii\rest\Serializer;
+use Yiisoft\Yii\Rest\Serializer;
 use yii\tests\TestCase;
 
 class SerializerTest extends TestCase

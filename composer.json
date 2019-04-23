@@ -37,12 +37,12 @@
     },
     "autoload": {
         "psr-4": {
-            "yii\\rest\\": "src"
+            "Yiisoft\\Yii\\Rest\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "yii\\rest\\test\\": "tests"
+            "Yiisoft\\Yii\\Rest\\Tests\\": "tests"
         }
     },
     "extra": {

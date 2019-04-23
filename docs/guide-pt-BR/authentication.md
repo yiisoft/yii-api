@@ -100,5 +100,5 @@ Se a autenticação falhar, uma resposta  HTTP com status 401 será enviado de v
 
 Após um usuário se autenticar, você provavelmente vai querer verificar se ele ou ela tem a permissão para executar a ação do recurso solicitado. Este processo é chamado de *autorização* que é tratada em pormenor na seção de [Autorização](security-authorization.md).
 
-Se o seu controller estende de [[yii\rest\ActiveController]], você pode sobrescrever o método [[yii\rest\Controller::checkAccess()|checkAccess()]] para executar a verificação de autorização. O método será chamado pelas ações incorporadas fornecidas pelo [[yii\rest\ActiveController]].
+Se o seu controller estende de [[Yiisoft\Yii\Rest\ActiveController]], você pode sobrescrever o método [[Yiisoft\Yii\Rest\Controller::checkAccess()|checkAccess()]] para executar a verificação de autorização. O método será chamado pelas ações incorporadas fornecidas pelo [[Yiisoft\Yii\Rest\ActiveController]].
 

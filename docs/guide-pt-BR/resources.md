@@ -14,7 +14,7 @@ Nesta seção, vamos principalmente descrever como uma classe de recurso que se 
 
 ## Campos <span id="fields"></span>
 
-Ao incluir um recurso em uma resposta da API RESTful, o recurso precisa ser serializado em uma string. O Yii quebra este processo em duas etapas. Primeiro, o recurso é convertido em um array utilizando [[yii\rest\Serializer]]. Por último, o array é serializado em uma string no formato solicitado (ex. JSON, XML) através do [[yii\web\ResponseFormatterInterface|response formatters]]. O primeiro passo é o que você deve centrar-se principalmente no desenvolvimento de uma classe de recurso.
+Ao incluir um recurso em uma resposta da API RESTful, o recurso precisa ser serializado em uma string. O Yii quebra este processo em duas etapas. Primeiro, o recurso é convertido em um array utilizando [[Yiisoft\Yii\Rest\Serializer]]. Por último, o array é serializado em uma string no formato solicitado (ex. JSON, XML) através do [[yii\web\ResponseFormatterInterface|response formatters]]. O primeiro passo é o que você deve centrar-se principalmente no desenvolvimento de uma classe de recurso.
 
 Sobrescrevendo [[yii\base\Model::fields()|fields()]] e/ou [[yii\base\Model::extraFields()|extraFields()]], você pode especificar quais os dados, chamados *fields*, no recurso podem ser colocados no array.
 A diferença entre estes dois métodos é que o primeiro especifica o conjunto padrão de campos que devem ser incluídos no array, enquanto que o último especifica campos adicionais que podem ser incluídos no array, se um usuário final solicitá-los via o parâmetro de pesquisa `expand`. Por exemplo:
@@ -164,7 +164,7 @@ Embora os collections podem ser representados como arrays, normalmente, é prefe
 ```php
 namespace app\controllers;
 
-use yii\rest\Controller;
+use Yiisoft\Yii\Rest\Controller;
 use yii\data\ActiveDataProvider;
 use app\models\Post;
 
@@ -179,7 +179,7 @@ class PostController extends Controller
 }
 ```
 
-Quando um data provider está enviando uma resposta com a API RESTful, o [[yii\rest\Serializer]] pegará a página atual de recursos e a serializa como um array de objetos de recurso. Adicionalmente, o [[yii\rest\Serializer]] também incluirá as informações de paginação pelo seguinte cabeçalho HTTP:
+Quando um data provider está enviando uma resposta com a API RESTful, o [[Yiisoft\Yii\Rest\Serializer]] pegará a página atual de recursos e a serializa como um array de objetos de recurso. Adicionalmente, o [[Yiisoft\Yii\Rest\Serializer]] também incluirá as informações de paginação pelo seguinte cabeçalho HTTP:
 
 * `X-Pagination-Total-Count`: O número total de recursos;
 * `X-Pagination-Page-Count`: O número de páginas;

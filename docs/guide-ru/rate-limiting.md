@@ -43,7 +43,7 @@ public function saveAllowance($request, $action, $allowance, $timestamp)
 
 
 Как только соответствующий интерфейс будет реализован в классе identity, Yii начнёт автоматически проверять ограничения
-частоты запросов при помощи [[yii\filters\RateLimiter]], фильтра действий для [[yii\rest\Controller]]. При превышении
+частоты запросов при помощи [[yii\filters\RateLimiter]], фильтра действий для [[Yiisoft\Yii\Rest\Controller]]. При превышении
 ограничений будет выброшено исключение [[yii\web\TooManyRequestsHttpException]].
 
 Вы можете настроить ограничитель частоты запросов в ваших классах REST-контроллеров следующим образом:

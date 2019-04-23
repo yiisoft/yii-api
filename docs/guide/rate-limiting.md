@@ -40,7 +40,7 @@ public function saveAllowance($request, $action, $allowance, $timestamp)
 ```
 
 Once the identity class implements the required interface, Yii will automatically use [[yii\filters\RateLimiter]]
-configured as an action filter for [[yii\rest\Controller]] to perform rate limiting check. The rate limiter
+configured as an action filter for [[Yiisoft\Yii\Rest\Controller]] to perform rate limiting check. The rate limiter
 will throw a [[yii\web\TooManyRequestsHttpException]] when the rate limit is exceeded. 
 
 You may configure the rate limiter

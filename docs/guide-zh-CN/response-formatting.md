@@ -7,7 +7,7 @@
 1. 确定可能影响响应格式的各种因素， 例如媒介类型， 语言， 版本， 等等。
    这个过程也被称为 [content negotiation](http://en.wikipedia.org/wiki/Content_negotiation)。
 2. 资源对象转换为数组， 如在 [Resources](rest-resources.md) 部分中所描述的。
-   通过 [[yii\rest\Serializer]] 来完成。
+   通过 [[Yiisoft\Yii\Rest\Serializer]] 来完成。
 3. 通过内容协商步骤将数组转换成字符串。
    [[yii\web\ResponseFormatterInterface|response formatters]] 通过
    [[yii\web\Response::formatters|response]] 应用程序组件来注册完成。
@@ -16,7 +16,7 @@
 ## 内容协商 <span id="content-negotiation"></span>
 
 Yii 提供了通过 [[yii\filters\ContentNegotiator]] 过滤器支持内容协商。RESTful API 基于
-控制器类 [[yii\rest\Controller]] 在 `contentNegotiator` 下配备这个过滤器。
+控制器类 [[Yiisoft\Yii\Rest\Controller]] 在 `contentNegotiator` 下配备这个过滤器。
 文件管理器提供了涉及的响应格式和语言。 例如， 如果一个 RESTful
 API 请求中包含以下 header，
 
@@ -59,7 +59,7 @@ Content-Type: application/json; charset=UTF-8
 幕后，执行一个 RESTful API 控制器动作之前，[[yii\filters\ContentNegotiator]]
 filter 将检查 `Accept` HTTP header 在请求时和配置 [[yii\web\Response::format|response format]]
 为 `'json'`。 之后的动作被执行并返回得到的资源对象或集合，
-[[yii\rest\Serializer]] 将结果转换成一个数组。最后，[[yii\web\JsonResponseFormatter]]
+[[Yiisoft\Yii\Rest\Serializer]] 将结果转换成一个数组。最后，[[yii\web\JsonResponseFormatter]]
 该数组将序列化为JSON字符串，并将其包括在响应主体。
 
 默认, RESTful APIs 同时支持JSON和XML格式。为了支持新的格式，你应该
@@ -83,24 +83,24 @@ public function behaviors()
 
 ## 数据序列化 <span id="data-serializing"></span>
 
-正如我们上面所描述的，[[yii\rest\Serializer]] 负责转换资源的中间件
+正如我们上面所描述的，[[Yiisoft\Yii\Rest\Serializer]] 负责转换资源的中间件
 对象或集合到数组。它将对象 [[yii\base\ArrayableInterface]] 作为
 [[yii\data\DataProviderInterface]]。 前者主要由资源对象实现， 而
 后者是资源集合。
 
-你可以通过设置 [[yii\rest\Controller::serializer]] 属性和一个配置数组。
+你可以通过设置 [[Yiisoft\Yii\Rest\Controller::serializer]] 属性和一个配置数组。
 例如，有时你可能想通过直接在响应主体内包含分页信息来
-简化客户端的开发工作。这样做，按照如下规则配置 [[yii\rest\Serializer::collectionEnvelope]] 
+简化客户端的开发工作。这样做，按照如下规则配置 [[Yiisoft\Yii\Rest\Serializer::collectionEnvelope]] 
 属性：
 
 ```php
-use yii\rest\ActiveController;
+use Yiisoft\Yii\Rest\ActiveController;
 
 class UserController extends ActiveController
 {
     public $modelClass = 'app\models\User';
     public $serializer = [
-        'class' => 'yii\rest\Serializer',
+        'class' => 'Yiisoft\Yii\Rest\Serializer',
         'collectionEnvelope' => 'items',
     ];
 }

@@ -1,18 +1,8 @@
 Installation
-============
+------------
 
-## Installing the extension
-
-In order to install extension use Composer. Either run
+The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
 
 ```
-composer require --prefer-dist yiisoft/yii2-rest "~1.0.0"
+php composer.phar require --prefer-dist yiisoft/yii-rest
 ```
-
-or add
-
-```json
-"yiisoft/yii2-rest": "~1.0.0"
-```
-
-to the `require` section of your composer.json.

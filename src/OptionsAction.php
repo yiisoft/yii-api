@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\rest;
+namespace Yiisoft\Yii\Rest;
 
 use Yii;
 
