@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace Yiisoft\Rest\tests\unit;
+namespace Yiisoft\Rest\Tests\Unit;
 
 use yii\helpers\VarDumper;
 use Yiisoft\Rest\UrlRule;
