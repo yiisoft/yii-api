@@ -7,8 +7,6 @@
 
 namespace Yiisoft\Yii\Rest;
 
-use Yii;
-
 /**
  * OptionsAction responds to the OPTIONS request by sending back an `Allow` header.
  *
@@ -35,11 +33,12 @@ class OptionsAction extends \yii\base\Action
      */
     public function run($id = null)
     {
-        if (Yii::$app->getRequest()->getMethod() !== 'OPTIONS') {
-            Yii::$app->getResponse()->setStatusCode(405);
+        $app = $this->getApp();
+        if ($app->getRequest()->getMethod() !== 'OPTIONS') {
+            $app->getResponse()->setStatusCode(405);
         }
         $options = $id === null ? $this->collectionOptions : $this->resourceOptions;
-        Yii::$app->getResponse()->getHeaderCollection()->set('Allow', implode(', ', $options));
-        Yii::$app->getResponse()->getHeaderCollection()->set('Access-Control-Allow-Method', implode(', ', $options));
+        $app->getResponse()->getHeaderCollection()->set('Allow', implode(', ', $options));
+        $app->getResponse()->getHeaderCollection()->set('Access-Control-Allow-Method', implode(', ', $options));
     }
 }

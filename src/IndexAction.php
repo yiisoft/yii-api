@@ -8,7 +8,7 @@
 namespace Yiisoft\Yii\Rest;
 
 use Yii;
-use yii\data\ActiveDataProvider;
+use yii\activerecord\data\ActiveDataProvider;
 use yii\data\DataFilter;
 
 /**

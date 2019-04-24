@@ -20,7 +20,7 @@ class ViewAction extends Action
     /**
      * Displays a model.
      * @param string $id the primary key of the model.
-     * @return \yii\db\ActiveRecordInterface the model being displayed
+     * @return \yii\activerecord\ActiveRecordInterface the model being displayed
      */
     public function run($id)
     {
