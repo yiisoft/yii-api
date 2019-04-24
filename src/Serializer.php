@@ -8,15 +8,15 @@
 namespace Yiisoft\Yii\Rest;
 
 use yii\base\Application;
-use yii\base\Arrayable;
 use yii\base\Component;
 use yii\base\Model;
 use yii\data\DataProviderInterface;
 use yii\data\Pagination;
-use yii\helpers\ArrayHelper;
 use yii\web\Link;
 use yii\web\Request;
 use yii\web\Response;
+use Yiisoft\Arrays\Arrayable;
+use Yiisoft\Arrays\ArrayHelper;
 
 /**
  * Serializer converts resource objects and collections into array representation.
