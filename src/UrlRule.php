@@ -9,7 +9,7 @@ namespace Yiisoft\Yii\Rest;
 
 use yii\helpers\Yii;
 use yii\exceptions\InvalidConfigException;
-use Yiisoft\Helpers\InflectorHelper;
+use Yiisoft\Inflector\InflectorHelper;
 use yii\web\CompositeUrlRule;
 use yii\web\UrlRule as WebUrlRule;
 use yii\web\UrlRuleInterface;
