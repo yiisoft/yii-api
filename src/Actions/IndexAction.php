@@ -90,7 +90,6 @@ class IndexAction extends Action
      */
     public function run()
     {
-
         if ($this->checkAccess) {
             call_user_func($this->checkAccess, $this->id);
         }
