@@ -7,7 +7,7 @@
 
 namespace Yiisoft\Yii\Rest;
 
-use yii\exceptions\InvalidConfigException;
+use yii\base\Module;
 use yii\base\Model;
 use yii\web\ForbiddenHttpException;
 
@@ -54,16 +54,10 @@ class ActiveController extends Controller
      */
     public $createScenario = Model::SCENARIO_DEFAULT;
 
-
-    /**
-     * {@inheritdoc}
-     */
-    public function init()
+    public function __construct(string $id, Module $module, string $modelClass)
     {
-        parent::init();
-        if ($this->modelClass === null) {
-            throw new InvalidConfigException('The "modelClass" property must be set.');
-        }
+        parent::__construct($id, $module);
+        $this->modelClass = $modelClass;
     }
 
     /**
@@ -73,34 +67,34 @@ class ActiveController extends Controller
     {
         return [
             'index' => [
-                '__class' => IndexAction::class,
+                '__class' => Actions\IndexAction::class,
                 'modelClass' => $this->modelClass,
                 'checkAccess' => [$this, 'checkAccess'],
             ],
             'view' => [
-                '__class' => ViewAction::class,
+                '__class' => Actions\ViewAction::class,
                 'modelClass' => $this->modelClass,
                 'checkAccess' => [$this, 'checkAccess'],
             ],
             'create' => [
-                '__class' => CreateAction::class,
+                '__class' => Actions\CreateAction::class,
                 'modelClass' => $this->modelClass,
                 'checkAccess' => [$this, 'checkAccess'],
                 'scenario' => $this->createScenario,
             ],
             'update' => [
-                '__class' => UpdateAction::class,
+                '__class' => Actions\UpdateAction::class,
                 'modelClass' => $this->modelClass,
                 'checkAccess' => [$this, 'checkAccess'],
                 'scenario' => $this->updateScenario,
             ],
             'delete' => [
-                '__class' => DeleteAction::class,
+                '__class' => Actions\DeleteAction::class,
                 'modelClass' => $this->modelClass,
                 'checkAccess' => [$this, 'checkAccess'],
             ],
             'options' => [
-                '__class' => OptionsAction::class,
+                '__class' => Actions\OptionsAction::class,
             ],
         ];
     }
@@ -108,7 +102,7 @@ class ActiveController extends Controller
     /**
      * {@inheritdoc}
      */
-    protected function verbs()
+    protected function verbs(): array
     {
         return [
             'index' => ['GET', 'HEAD'],
@@ -131,7 +125,7 @@ class ActiveController extends Controller
      * @param array $params additional parameters
      * @throws ForbiddenHttpException if the user does not have access
      */
-    public function checkAccess($action, $model = null, $params = [])
+    public function checkAccess($action, $model = null, $params = []): void
     {
     }
 }

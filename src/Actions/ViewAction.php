@@ -5,7 +5,9 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace Yiisoft\Yii\Rest;
+namespace Yiisoft\Yii\Rest\Actions;
+
+use Yiisoft\Yii\Rest\Action;
 
 /**
  * ViewAction implements the API endpoint for returning the detailed information about a model.
@@ -21,8 +23,9 @@ class ViewAction extends Action
      * Displays a model.
      * @param string $id the primary key of the model.
      * @return \yii\activerecord\ActiveRecordInterface the model being displayed
+     * @throws \yii\web\NotFoundHttpException
      */
-    public function run($id)
+    public function run($id): \yii\activerecord\ActiveRecordInterface
     {
         $model = $this->findModel($id);
         if ($this->checkAccess) {

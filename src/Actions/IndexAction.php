@@ -5,11 +5,14 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace Yiisoft\Yii\Rest;
+namespace Yiisoft\Yii\Rest\Actions;
 
-use Yii;
+use yii\db\ConnectionInterface;
+use yii\base\Request;
+use yii\helpers\Yii;
 use yii\activerecord\data\ActiveDataProvider;
 use yii\data\DataFilter;
+use Yiisoft\Yii\Rest\Action;
 
 /**
  * IndexAction implements the API endpoint for listing multiple models.
@@ -66,13 +69,28 @@ class IndexAction extends Action
      * @see DataFilter
      */
     public $dataFilter;
+    /**
+     * @var \yii\web\Request
+     */
+    protected $request;
+    /**
+     * @var \yii\db\ConnectionInterface
+     */
+    protected $db;
 
+    public function __construct($id, $controller, Request $request, ConnectionInterface $db)
+    {
+        parent::__construct($id, $controller);
+        $this->request = $request;
+        $this->db = $db;
+    }
 
     /**
      * @return ActiveDataProvider
      */
     public function run()
     {
+
         if ($this->checkAccess) {
             call_user_func($this->checkAccess, $this->id);
         }
@@ -86,9 +104,9 @@ class IndexAction extends Action
      */
     protected function prepareDataProvider()
     {
-        $requestParams = Yii::$app->getRequest()->getParsedBody();
+        $requestParams = $this->request->getParsedBody();
         if (empty($requestParams)) {
-            $requestParams = Yii::$app->getRequest()->getQueryParams();
+            $requestParams = $this->request->getQueryParams();
         }
 
         $filter = null;
@@ -106,7 +124,7 @@ class IndexAction extends Action
             return call_user_func($this->prepareDataProvider, $this, $filter);
         }
 
-        /* @var $modelClass \yii\db\BaseActiveRecord */
+        /* @var $modelClass \yii\activerecord\BaseActiveRecord */
         $modelClass = $this->modelClass;
 
         $query = $modelClass::find();
@@ -114,15 +132,11 @@ class IndexAction extends Action
             $query->andWhere($filter);
         }
 
-        return Yii::createObject([
-            '__class' => ActiveDataProvider::class,
-            'query' => $query,
-            'pagination' => [
-                'params' => $requestParams,
-            ],
-            'sort' => [
-                'params' => $requestParams,
-            ],
-        ]);
+
+        $dataProvider = new ActiveDataProvider($this->db, $query);
+        $dataProvider->setPagination(['params' => $requestParams]);
+        $dataProvider->setSort(['params' => $requestParams]);
+
+        return $dataProvider;
     }
 }
