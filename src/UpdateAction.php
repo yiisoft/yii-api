@@ -9,7 +9,7 @@ namespace Yiisoft\Yii\Rest;
 
 use Yii;
 use yii\base\Model;
-use yii\activerecord\ActiveRecord;
+use Yiisoft\ActiveRecord\ActiveRecord;
 use yii\web\ServerErrorHttpException;
 
 /**
@@ -31,7 +31,7 @@ class UpdateAction extends Action
     /**
      * Updates an existing model.
      * @param string $id the primary key of the model.
-     * @return \yii\activerecord\ActiveRecordInterface the model being updated
+     * @return \Yiisoft\ActiveRecord\ActiveRecordInterface the model being updated
      * @throws ServerErrorHttpException if there is any error when updating the model
      */
     public function run($id)
