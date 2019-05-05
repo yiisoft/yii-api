@@ -10,8 +10,8 @@ namespace Yiisoft\Yii\Rest\Actions;
 use yii\db\ConnectionInterface;
 use yii\base\Request;
 use yii\helpers\Yii;
-use yii\activerecord\data\ActiveDataProvider;
 use yii\data\DataFilter;
+use Yiisoft\ActiveRecord\Data\ActiveDataProvider;
 use Yiisoft\Yii\Rest\Action;
 
 /**
@@ -123,7 +123,7 @@ class IndexAction extends Action
             return call_user_func($this->prepareDataProvider, $this, $filter);
         }
 
-        /* @var $modelClass \yii\activerecord\BaseActiveRecord */
+        /* @var $modelClass \Yiisoft\ActiveRecord\BaseActiveRecord */
         $modelClass = $this->modelClass;
 
         $query = $modelClass::find();

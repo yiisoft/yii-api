@@ -22,10 +22,10 @@ class ViewAction extends Action
     /**
      * Displays a model.
      * @param string $id the primary key of the model.
-     * @return \yii\activerecord\ActiveRecordInterface the model being displayed
+     * @return \Yiisoft\ActiveRecord\ActiveRecordInterface the model being displayed
      * @throws \yii\web\NotFoundHttpException
      */
-    public function run($id): \yii\activerecord\ActiveRecordInterface
+    public function run($id): \Yiisoft\ActiveRecord\ActiveRecordInterface
     {
         $model = $this->findModel($id);
         if ($this->checkAccess) {

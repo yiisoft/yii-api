@@ -8,9 +8,9 @@
 namespace Yiisoft\Yii\Rest\Actions;
 
 use yii\base\Model;
-use yii\activerecord\ActiveRecord;
 use yii\base\Request;
 use yii\web\ServerErrorHttpException;
+use Yiisoft\ActiveRecord\ActiveRecord;
 use Yiisoft\Yii\Rest\Action;
 
 /**
@@ -41,13 +41,13 @@ class UpdateAction extends Action
     /**
      * Updates an existing model.
      * @param string $id the primary key of the model.
-     * @return \yii\activerecord\ActiveRecordInterface the model being updated
+     * @return \Yiisoft\ActiveRecord\ActiveRecordInterface the model being updated
      * @throws ServerErrorHttpException if there is any error when updating the model
      * @throws \yii\exceptions\InvalidConfigException
      * @throws \yii\web\NotFoundHttpException
      * @throws \yii\web\UnsupportedMediaTypeHttpException
      */
-    public function run($id): \yii\activerecord\ActiveRecordInterface
+    public function run($id): \Yiisoft\ActiveRecord\ActiveRecordInterface
     {
         /* @var $model ActiveRecord */
         $model = $this->findModel($id);

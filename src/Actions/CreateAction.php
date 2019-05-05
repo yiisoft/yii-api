@@ -50,7 +50,7 @@ class CreateAction extends Action
 
     /**
      * Creates a new model.
-     * @return \yii\activerecord\ActiveRecordInterface the model newly created
+     * @return \Yiisoft\ActiveRecord\ActiveRecordInterface the model newly created
      * @throws ServerErrorHttpException if there is any error when creating the model
      */
     public function run()
@@ -59,7 +59,7 @@ class CreateAction extends Action
             call_user_func($this->checkAccess, $this->id);
         }
 
-        /* @var $model \yii\activerecord\ActiveRecord */
+        /* @var $model \Yiisoft\ActiveRecord\ActiveRecord */
         $model = new $this->modelClass([
             'scenario' => $this->scenario,
         ]);
