@@ -77,7 +77,7 @@ Cada elemento em `authMethods` deve ser o nome de uma classe de método de auten
 Implementação de `findIdentityByAccessToken()` é específico por aplicação. Por exemplo, em cenários simples quando cada usuário só pode ter um token de acesso, você pode armazenar o token de acesso em uma coluna `access_token` na tabela `user`. O método pode então ser facilmente implementado na classe `User` como o seguinte:
 
 ```php
-use yii\db\ActiveRecord;
+use Yiisoft\Db\ActiveRecord;
 use yii\web\IdentityInterface;
 
 class User extends ActiveRecord implements IdentityInterface

@@ -3,11 +3,11 @@ Recursos
 
 APIs RESTful tratam de como acessar e manipular *recursos*. Você pode ver recursos como [models](structure-models.md) no paradigma MVC.
 
-Embora não haja restrição na forma de representar um recurso, no Yii você normalmente representaria recursos como objetos de [[yii\base\Model]] ou de uma classe filha (ex. [[yii\db\ActiveRecord]]), pelas seguintes razões:
+Embora não haja restrição na forma de representar um recurso, no Yii você normalmente representaria recursos como objetos de [[yii\base\Model]] ou de uma classe filha (ex. [[Yiisoft\Db\ActiveRecord]]), pelas seguintes razões:
 
 * [[yii\base\Model]] implementa a interface [[yii\base\Arrayable]], que permite que você personalize como você deseja expor dados de recursos através das APIs RESTful.
 * [[yii\base\Model]] suporta [validação de dados de entrada](input-validation.md), que é importante se as suas APIs RESTful precisarem suportar entrada de dados.
-* [[yii\db\ActiveRecord]] fornece acesso poderoso a banco de dados com suporte a manipulação dos dados, o que o torna um ajuste perfeito se seus dados de recursos estiverem armazenado em bases de dados.
+* [[Yiisoft\Db\ActiveRecord]] fornece acesso poderoso a banco de dados com suporte a manipulação dos dados, o que o torna um ajuste perfeito se seus dados de recursos estiverem armazenado em bases de dados.
 
 Nesta seção, vamos principalmente descrever como uma classe de recurso que se estende de [[yii\base\Model]] (ou alguma classe filha) pode especificar quais os dados podem ser retornados via APIs RESTful. Se a classe de recurso não estender de [[yii\base\Model]], então todas as suas variáveis públicas serão retornadas.
 
@@ -36,7 +36,7 @@ http://localhost/users?fields=id,email&expand=profile
 
 ### Sobrescrevendo `fields()` <span id="overriding-fields"></span>
 
-Por padrão, [[yii\base\Model::fields()]] retorna todos os atributos do model como campos, enquanto [[yii\db\ActiveRecord::fields()]] só retorna os atributos que tenham sido preenchidos a partir do DB.
+Por padrão, [[yii\base\Model::fields()]] retorna todos os atributos do model como campos, enquanto [[Yiisoft\Db\ActiveRecord::fields()]] só retorna os atributos que tenham sido preenchidos a partir do DB.
 
 Você pode sobrescrever `fields()` para adicionar, remover, renomear ou redefinir campos. O valor do retorno de `fields()` deve ser um array. As chaves do array são os nomes dos campos e os valores são as definições dos campos correspondentes, que podem ser tanto nomes de propriedade/atributo ou funções anônimas retornando o valor do campo correspondente. No caso especial de um nome de um campo for o mesmo que sua definição de nome de atributo, você pode omitir a chave do array. Por exemplo:
 
@@ -82,7 +82,7 @@ public function fields()
 
 ### Sobrescrevendo `extraFields()` <span id="overriding-extra-fields"></span>
 
-Por padrão, o [[yii\base\Model::extraFields()]] não retorna nada, enquanto o [[yii\db\ActiveRecord::extraFields()]] retorna os nomes das relações que foram populadas a partir do DB.
+Por padrão, o [[yii\base\Model::extraFields()]] não retorna nada, enquanto o [[Yiisoft\Db\ActiveRecord::extraFields()]] retorna os nomes das relações que foram populadas a partir do DB.
 
 O formato do retorno dos dados do `extraFields()` é o mesmo de `fields()`. Geralmente, `extraFields()` é mais usado para especificar os campos cujos valores são objetos. Por exemplo, dada a seguinte declaração de campo,
 
@@ -123,7 +123,7 @@ Suas classes de recursos podem suportar HATEOAS implementando a interface [[yii\
 Tipicamente, você deve retornar pelo menos o link `self` representando a URL para o mesmo objeto de recurso. Por exemplo:
 
 ```php
-use yii\db\ActiveRecord;
+use Yiisoft\Db\ActiveRecord;
 use yii\web\Link;
 use yii\web\Linkable;
 use yii\helpers\Url;

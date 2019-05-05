@@ -115,7 +115,7 @@ public function behaviors()
 
 コントローラを [[Yiisoft\Yii\Rest\ActiveController]] から拡張する場合は、このコントローラを通じて提供しようとしているリソース・クラスの名前を
 [[Yiisoft\Yii\Rest\ActiveController::modelClass|modelClass]] プロパティにセットしなければなりません。
-リソース・クラスは [[yii\db\ActiveRecord]] から拡張しなければなりません。
+リソース・クラスは [[Yiisoft\Db\ActiveRecord]] から拡張しなければなりません。
 
 
 ### アクションをカスタマイズする <span id="customizing-actions"></span>

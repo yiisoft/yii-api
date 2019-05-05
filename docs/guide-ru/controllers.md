@@ -77,7 +77,7 @@ public function behaviors()
 
 Если ваш класс контроллера наследуется от [[Yiisoft\Yii\Rest\ActiveController]], вам следует установить
 значение его свойства [[Yiisoft\Yii\Rest\ActiveController::modelClass|modelClass]] равным имени класса ресурса,
-который вы планируете обслуживать с помощью этого контроллера. Класс ресурса должен быть унаследован от [[yii\db\ActiveRecord]].
+который вы планируете обслуживать с помощью этого контроллера. Класс ресурса должен быть унаследован от [[Yiisoft\Db\ActiveRecord]].
 
 
 ### Настройка действий <span id="customizing-actions"></span>

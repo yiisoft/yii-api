@@ -184,7 +184,7 @@ Usando os parâmetros `fields` e `expand`, você também pode especificar os cam
 
 Usando o framework API RESTful do Yii, você implementa uma URL desses campos, conforme descrito na seção de ações do controller, um controller para organizar as ações que implementam as URLs para um único tipo de recurso.
 
-Os recursos são representados como modelos de dados, que se estendem a partir da classe [[yii\base\Model]]. Se você estiver trabalhando com bancos de dados (relacional ou NoSQL), é recomendado que você use [[yii\db\ActiveRecord|ActiveRecord]] para representar recursos.
+Os recursos são representados como modelos de dados, que se estendem a partir da classe [[yii\base\Model]]. Se você estiver trabalhando com bancos de dados (relacional ou NoSQL), é recomendado que você use [[Yiisoft\Db\ActiveRecord|ActiveRecord]] para representar recursos.
 
 Você pode usar [[Yiisoft\Yii\Rest\UrlRule]] para simplificar o roteamento para suas URLs da API.
 

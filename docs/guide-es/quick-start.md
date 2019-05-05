@@ -20,7 +20,7 @@ En particular, Yii soporta las siguientes características sobre APIs RESTful;
 A continuación, utilizamos un ejemplo para ilustrar como se puede construir un conjunto de APIs RESTful con un esfuerzo mínimo de codificación.
 
 Supongamos que deseas exponer los datos de los usuarios vía APIs RESTful. Los datos de usuario son almacenados en la tabla DB `user`,
-y ya tienes creado la clase [[yii\db\ActiveRecord|ActiveRecord]] `app\models\User` para acceder a los datos del usuario.
+y ya tienes creado la clase [[Yiisoft\Db\ActiveRecord|ActiveRecord]] `app\models\User` para acceder a los datos del usuario.
 
 
 ## Creando un controlador <span id="creating-controller"></span>
@@ -194,7 +194,7 @@ Utilizando el framework Yii API RESTful, implementa un punto final API en térmi
 un controlador para organizar las acciones que implementan los puntos finales para un sólo tipo de recurso.
 
 Los recursos son representados como modelos de datos que extienden de la clase [[yii\base\Model]].
-Si estás trabajando con bases de datos (relacionales o NoSQL), es recomendable utilizar [[yii\db\ActiveRecord|ActiveRecord]]
+Si estás trabajando con bases de datos (relacionales o NoSQL), es recomendable utilizar [[Yiisoft\Db\ActiveRecord|ActiveRecord]]
 para representar los recursos.
 
 Puedes utilizar [[Yiisoft\Yii\Rest\UrlRule]] para simplificar el enrutamiento de los puntos finales de tu API.

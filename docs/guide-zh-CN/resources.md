@@ -4,12 +4,12 @@
 RESTful 的 API 都是关于访问和操作 *资源*，可将资源看成MVC模式中的
 [模型](structure-models.md)
 
-在如何代表一个资源没有固定的限定，在Yii中通常使用 [[yii\base\Model]] 或它的子类（如 [[yii\db\ActiveRecord]]）
+在如何代表一个资源没有固定的限定，在Yii中通常使用 [[yii\base\Model]] 或它的子类（如 [[Yiisoft\Db\ActiveRecord]]）
 代表资源，是为以下原因：
 
 * [[yii\base\Model]] 实现了 [[yii\base\Arrayable]] 接口，它允许你通过RESTful API自定义你想要公开的资源数据。
 * [[yii\base\Model]] 支持 [输入验证](input-validation.md), 在你的RESTful API需要支持数据输入时非常有用。
-* [[yii\db\ActiveRecord]] 提供了强大的数据库访问和操作方面的支持，如资源数据需要存到数据库它提供了完美的支持。
+* [[Yiisoft\Db\ActiveRecord]] 提供了强大的数据库访问和操作方面的支持，如资源数据需要存到数据库它提供了完美的支持。
 
 本节主要描述资源类如何从 [[yii\base\Model]] (或它的子类) 继承并指定哪些数据可通过RESTful API返回，如果资源类没有
 继承 [[yii\base\Model]] 会将它所有的公开成员变量返回。
@@ -45,7 +45,7 @@ http://localhost/users?fields=id,email&expand=profile
 ### 覆盖 `fields()` 方法 <span id="overriding-fields"></span>
 
 [[yii\base\Model::fields()]] 默认返回模型的所有属性作为字段，
-[[yii\db\ActiveRecord::fields()]] 只返回和数据表关联的属性作为字段。
+[[Yiisoft\Db\ActiveRecord::fields()]] 只返回和数据表关联的属性作为字段。
 
 可覆盖 `fields()` 方法来增加、删除、重命名、重定义字段，`fields()` 的返回值应为数组，数组的键为字段名
 数组的值为对应的字段定义，可为属性名或返回对应的字段值的匿名函数，特殊情况下，如果字段名和属性名相同，
@@ -85,7 +85,7 @@ public function fields()
 
 ### 覆盖 `extraFields()` 方法 <span id="overriding-extra-fields"></span>
 
-[[yii\base\Model::extraFields()]] 默认返回空值，[[yii\db\ActiveRecord::extraFields()]] 返回和数据表关联的属性。
+[[yii\base\Model::extraFields()]] 默认返回空值，[[Yiisoft\Db\ActiveRecord::extraFields()]] 返回和数据表关联的属性。
 
 `extraFields()` 返回的数据格式和 `fields()` 相同，一般`extraFields()` 主要用于指定哪些值为对象的字段，
 例如，给定以下字段申明
@@ -128,7 +128,7 @@ public function extraFields()
 [[yii\web\Link|links]] 列表，典型情况下应返回包含代表本资源对象URL的 `self` 链接，例如
 
 ```php
-use yii\db\ActiveRecord;
+use Yiisoft\Db\ActiveRecord;
 use yii\web\Link;
 use yii\web\Linkable;
 use yii\helpers\Url;

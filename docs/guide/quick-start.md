@@ -200,7 +200,7 @@ Using the Yii RESTful API framework, you implement an API endpoint in terms of a
 a controller to organize the actions that implement the endpoints for a single type of resource.
 
 Resources are represented as data models which extend from the [[yii\base\Model]] class.
-If you are working with databases (relational or NoSQL), it is recommended you use [[yii\db\ActiveRecord|ActiveRecord]]
+If you are working with databases (relational or NoSQL), it is recommended you use [[Yiisoft\Db\ActiveRecord|ActiveRecord]]
 to represent resources.
 
 You may use [[Yiisoft\Yii\Rest\UrlRule]] to simplify the routing to your API endpoints.
