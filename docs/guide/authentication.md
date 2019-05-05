@@ -94,7 +94,7 @@ when each user can only have one access token, you may store the access token in
 in the user table. The method can then be readily implemented in the `User` class as follows,
 
 ```php
-use yii\db\ActiveRecord;
+use Yiisoft\Db\ActiveRecord;
 use yii\web\IdentityInterface;
 
 class User extends ActiveRecord implements IdentityInterface

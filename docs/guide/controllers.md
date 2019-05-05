@@ -115,7 +115,7 @@ public function behaviors()
 
 If your controller class extends from [[Yiisoft\Yii\Rest\ActiveController]], you should set
 its [[Yiisoft\Yii\Rest\ActiveController::modelClass|modelClass]] property to be the name of the resource class
-that you plan to serve through this controller. The class must extend from [[yii\db\ActiveRecord]].
+that you plan to serve through this controller. The class must extend from [[Yiisoft\Db\ActiveRecord]].
 
 
 ### Customizing Actions <span id="customizing-actions"></span>

@@ -14,7 +14,7 @@ use yii\web\ForbiddenHttpException;
 /**
  * ActiveController implements a common set of actions for supporting RESTful access to ActiveRecord.
  *
- * The class of the ActiveRecord should be specified via [[modelClass]], which must implement [[\yii\db\ActiveRecordInterface]].
+ * The class of the ActiveRecord should be specified via [[modelClass]], which must implement [[\Yiisoft\Db\ActiveRecordInterface]].
  * By default, the following actions are supported:
  *
  * - `index`: list of models

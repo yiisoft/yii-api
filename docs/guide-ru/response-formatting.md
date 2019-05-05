@@ -182,4 +182,4 @@ Content-Type: application/json; charset=UTF-8
 
 При работе с базой данных через [DAO](db-dao.md), все данные представляются в виде строк, что не всегда корректно.
 Особенно учитывая, что в JSON для чисел есть соответствующий тип. При использовании ActiveRecord значения числовых
-столбцов приводятся к integer на этапе выборки из базы: [[yii\db\ActiveRecord::populateRecord()]].
+столбцов приводятся к integer на этапе выборки из базы: [[Yiisoft\Db\ActiveRecord::populateRecord()]].

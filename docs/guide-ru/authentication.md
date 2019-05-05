@@ -90,7 +90,7 @@ public function behaviors()
 таблицы пользователей. В этом случае метод `findIdentityByAccessToken()` может быть легко реализован в классе `User` следующим образом:
 
 ```php
-use yii\db\ActiveRecord;
+use Yiisoft\Db\ActiveRecord;
 use yii\web\IdentityInterface;
 
 class User extends ActiveRecord implements IdentityInterface

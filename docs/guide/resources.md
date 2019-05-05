@@ -5,14 +5,14 @@ RESTful APIs are all about accessing and manipulating *resources*. You may view 
 [models](structure-models.md) in the MVC paradigm.
 
 While there is no restriction in how to represent a resource, in Yii you usually would represent resources
-in terms of objects of [[yii\base\Model]] or its child classes (e.g. [[yii\db\ActiveRecord]]), for the
+in terms of objects of [[yii\base\Model]] or its child classes (e.g. [[Yiisoft\Db\ActiveRecord]]), for the
 following reasons:
 
 * [[yii\base\Model]] implements the [[yii\base\Arrayable]] interface, which allows you to
   customize how you want to expose resource data through RESTful APIs.
 * [[yii\base\Model]] supports [input validation](input-validation.md), which is useful if your RESTful APIs
   need to support data input.
-* [[yii\db\ActiveRecord]] provides powerful DB data access and manipulation support, which makes it
+* [[Yiisoft\Db\ActiveRecord]] provides powerful DB data access and manipulation support, which makes it
   a perfect fit if your resource data is stored in databases.
 
 In this section, we will mainly describe how a resource class extending from [[yii\base\Model]] (or its child classes)
@@ -56,7 +56,7 @@ http://localhost/users?fields=id,email&expand=profile
 ### Overriding `fields()` <span id="overriding-fields"></span>
 
 By default, [[yii\base\Model::fields()]] returns all model attributes as fields, while
-[[yii\db\ActiveRecord::fields()]] only returns the attributes which have been populated from DB.
+[[Yiisoft\Db\ActiveRecord::fields()]] only returns the attributes which have been populated from DB.
 
 You can override `fields()` to add, remove, rename or redefine fields. The return value of `fields()`
 should be an array. The array keys are the field names, and the array values are the corresponding
@@ -102,7 +102,7 @@ public function fields()
 
 ### Overriding `extraFields()` <span id="overriding-extra-fields"></span>
 
-By default, [[yii\base\Model::extraFields()]] returns an empty array, while [[yii\db\ActiveRecord::extraFields()]]
+By default, [[yii\base\Model::extraFields()]] returns an empty array, while [[Yiisoft\Db\ActiveRecord::extraFields()]]
 returns the names of the relations that have been populated from DB.
 
 The return data format of `extraFields()` is the same as that of `fields()`. Usually, `extraFields()`

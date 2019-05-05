@@ -60,7 +60,7 @@ public function behaviors()
 
 ## Estendendo `ActiveController` <span id="extending-active-controller"></span>
 
-Se a sua classe controller estende de [[Yiisoft\Yii\Rest\ActiveController]], você deve configurar a propriedade [[Yiisoft\Yii\Rest\ActiveController::modelClass|modelClass]] para ser o nome da classe de recurso que você pretende servir através deste controller. A classe deve estender de [[yii\db\ActiveRecord]].
+Se a sua classe controller estende de [[Yiisoft\Yii\Rest\ActiveController]], você deve configurar a propriedade [[Yiisoft\Yii\Rest\ActiveController::modelClass|modelClass]] para ser o nome da classe de recurso que você pretende servir através deste controller. A classe deve estender de [[Yiisoft\Db\ActiveRecord]].
 
 
 ### Customizando Ações <span id="customizing-actions"></span>

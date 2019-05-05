@@ -94,7 +94,7 @@ cuando cada usuario sólo puede tener un token de acceso, puedes almacenar este 
 en la tabla de usuario. El método debe de ser inmediatamente implementado en la clase  `User` como sigue,
 
 ```php
-use yii\db\ActiveRecord;
+use Yiisoft\Db\ActiveRecord;
 use yii\web\IdentityInterface;
 
 class User extends ActiveRecord implements IdentityInterface

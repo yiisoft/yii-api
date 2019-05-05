@@ -106,7 +106,7 @@ class IndexAction extends Action
             return call_user_func($this->prepareDataProvider, $this, $filter);
         }
 
-        /* @var $modelClass \yii\db\BaseActiveRecord */
+        /* @var $modelClass \Yiisoft\Db\BaseActiveRecord */
         $modelClass = $this->modelClass;
 
         $query = $modelClass::find();

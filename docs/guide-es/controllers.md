@@ -80,7 +80,7 @@ public function behaviors()
 
 Si tu clase controlador extiende de [[Yiisoft\Yii\Rest\ActiveController]], debe establecer
 su propiedad [[Yiisoft\Yii\Rest\ActiveController::modelClass|modelClass]] con el nombre de la clase del recurso
-que planeas servir a través de este controlador. La clase debe extender de [[yii\db\ActiveRecord]].
+que planeas servir a través de este controlador. La clase debe extender de [[Yiisoft\Db\ActiveRecord]].
 
 
 ### Personalizando Acciones <span id="customizing-actions"></span>
