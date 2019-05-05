@@ -7,11 +7,11 @@
 
 namespace Yiisoft\Yii\Rest\Actions;
 
-use yii\db\ConnectionInterface;
 use yii\base\Request;
 use yii\helpers\Yii;
 use yii\data\DataFilter;
 use Yiisoft\ActiveRecord\Data\ActiveDataProvider;
+use Yiisoft\Db\ConnectionInterface;
 use Yiisoft\Yii\Rest\Action;
 
 /**
@@ -74,7 +74,7 @@ class IndexAction extends Action
      */
     protected $request;
     /**
-     * @var \yii\db\ConnectionInterface
+     * @var \Yiisoft\Db\ConnectionInterface
      */
     protected $db;
 
