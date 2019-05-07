@@ -9,7 +9,7 @@ namespace Yiisoft\Yii\Rest;
 
 use yii\helpers\Yii;
 use yii\exceptions\InvalidConfigException;
-use Yiisoft\Inflector\InflectorHelper;
+use Yiisoft\Strings\Inflector;
 use yii\web\CompositeUrlRule;
 use yii\web\UrlRule as WebUrlRule;
 use yii\web\UrlRuleInterface;
@@ -152,7 +152,7 @@ class UrlRule extends CompositeUrlRule
         $controllers = [];
         foreach ((array) $this->controller as $urlName => $controller) {
             if (\is_int($urlName)) {
-                $urlName = $this->pluralize ? InflectorHelper::pluralize($controller) : $controller;
+                $urlName = $this->pluralize ? Inflector::pluralize($controller) : $controller;
             }
             $controllers[$urlName] = $controller;
         }

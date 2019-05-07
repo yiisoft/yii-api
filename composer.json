@@ -28,7 +28,7 @@
     "require": {
         "yiisoft/arrays": "^3.0@dev",
         "yiisoft/active-record": "^3.0@dev",
-        "yiisoft/inflector": "^3.0@dev",
+        "yiisoft/strings": "^3.0@dev",
         "yiisoft/yii-core": "^3.0@dev",
         "yiisoft/yii-web": "^3.0@dev"
     },

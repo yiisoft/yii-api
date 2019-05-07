@@ -77,7 +77,7 @@ Puedes haber notado que el ID del controlador `user` aparece en formato plural `
 Esto se debe a que [[Yiisoft\Yii\Rest\UrlRule]] automáticamente pluraliza los IDs de los controladores al crear reglas URL hijas.
 Puedes desactivar este comportamiento definiendo la propiedad [[Yiisoft\Yii\Rest\UrlRule::pluralize]] como `false`. 
 
-> Info: La pluralización de los IDs de los controladores es realizada por [[Yiisoft\Inflector\InflectorHelper::pluralize()]]. Este método respeta
+> Info: La pluralización de los IDs de los controladores es realizada por [[Yiisoft\Inflector\Inflector::pluralize()]]. Este método respeta
   reglas especiales de pluralización. Por ejemplo, la palabra `box` (caja) será pluralizada como `boxes` en vez de `boxs`.
 
 En caso de que la pluralización automática no encaje en tus requerimientos, puedes además configurar la propiedad 
