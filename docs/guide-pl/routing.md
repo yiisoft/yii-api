@@ -75,7 +75,7 @@ Na pewno zwróciłeś uwagę na to, że ID kontrolera `user` występuje tu w for
 Dzieje się tak, ponieważ [[Yiisoft\Yii\Rest\UrlRule|UrlRule]] automatycznie przechodzi na formę mnogą dla ID kontrolerów podczas tworzenia potomnych zasad URL.
 Zachowanie to można wyłączyć ustawiając [[Yiisoft\Yii\Rest\UrlRule::pluralize|pluralize]] na `false`. 
 
-> Info: forma mnoga ID kontrolerów jest tworzona poprzez metodę [[Yiisoft\Inflector\Inflector::pluralize()|pluralize()]]. Uwzględnia ona specjalne zasady tworzenia form mnogich. 
+> Info: forma mnoga ID kontrolerów jest tworzona poprzez metodę [[Yiisoft\Strings\Inflector::pluralize()|pluralize()]]. Uwzględnia ona specjalne zasady tworzenia form mnogich. 
 > Dla przykładu, od słowa `box` zostanie utworzona liczba mnoga `boxes` a nie `boxs`.
 
 W przypadku, gdy mechanizm automatycznego tworzenia formy mnogiej nie spełnia Twoich oczekiwań, możesz również skonfigurować właściwość 
