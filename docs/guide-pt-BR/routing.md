@@ -70,7 +70,7 @@ Você também pode configurar `patterns` ou `extraPatterns` para redefinir padr�
 Você deve ter notado que o ID `user` de controller aparece no plural como `users` na extremidade das  URLs. Isto acontece porque [[Yiisoft\Yii\Rest\UrlRule]] pluraliza os IDs de controllers automaticamente na criação de regras de URLs filhas.
 Você pode desabilitar este comportamento configurando [[Yiisoft\Yii\Rest\UrlRule::pluralize]] para `false`.
 
-> Observação: A pluralização dos IDs de controllers são feitas pelo método [[Yiisoft\Inflector\InflectorHelper::pluralize()]]. O método respeita as regras especiais de pluralização. Por exemplo, a palavra `box` será pluralizada para `boxes` em vez de `boxs`.
+> Observação: A pluralização dos IDs de controllers são feitas pelo método [[Yiisoft\Strings\Inflector::pluralize()]]. O método respeita as regras especiais de pluralização. Por exemplo, a palavra `box` será pluralizada para `boxes` em vez de `boxs`.
 
 
 Caso a pluralização automática não encontre uma opção para a palavra requerida, você pode configurar a propriedade [[Yiisoft\Yii\Rest\UrlRule::controller]] para especificar explicitamente como mapear um nome para ser usado como uma URL para um ID de controller. Por exemplo, o seguinte código mapeia o nome `u` para o ID `user` de controller.  
