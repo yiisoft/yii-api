@@ -56,7 +56,6 @@ class Action extends \yii\base\Action
      */
     public $checkAccess;
 
-
     /**
      * {@inheritdoc}
      */
@@ -74,16 +73,17 @@ class Action extends \yii\base\Action
      * the ID must be a string of the primary key values separated by commas.
      * The order of the primary key values should follow that returned by the `primaryKey()` method
      * of the model.
-     * @return Yiisoft\ActiveRecord\ActiveRecordInterface the model found
+     * @return \Yiisoft\ActiveRecord\ActiveRecordInterface the model found
      * @throws NotFoundHttpException if the model cannot be found
+     * @throws InvalidConfigException
      */
-    public function findModel($id)
+    public function findModel($id): \Yiisoft\ActiveRecord\ActiveRecordInterface
     {
         if ($this->findModel !== null) {
             return \call_user_func($this->findModel, $id, $this);
         }
 
-        /* @var $modelClass Yiisoft\ActiveRecord\ActiveRecordInterface */
+        /* @var $modelClass \Yiisoft\ActiveRecord\ActiveRecordInterface */
         $modelClass = $this->modelClass;
         $keys = $modelClass::primaryKey();
         if (\count($keys) > 1) {

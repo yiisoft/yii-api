@@ -5,12 +5,13 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace Yiisoft\Yii\Rest;
+namespace Yiisoft\Yii\Rest\Actions;
 
-use Yii;
 use yii\base\Model;
-use Yiisoft\ActiveRecord\ActiveRecord;
+use yii\base\Request;
 use yii\web\ServerErrorHttpException;
+use Yiisoft\ActiveRecord\ActiveRecord;
+use Yiisoft\Yii\Rest\Action;
 
 /**
  * UpdateAction implements the API endpoint for updating a model.
@@ -26,15 +27,27 @@ class UpdateAction extends Action
      * @var string the scenario to be assigned to the model before it is validated and updated.
      */
     public $scenario = Model::SCENARIO_DEFAULT;
+    /**
+     * @var \yii\web\Request
+     */
+    protected $request;
 
+    public function __construct($id, $controller, Request $request)
+    {
+        parent::__construct($id, $controller);
+        $this->request = $request;
+    }
 
     /**
      * Updates an existing model.
      * @param string $id the primary key of the model.
      * @return \Yiisoft\ActiveRecord\ActiveRecordInterface the model being updated
      * @throws ServerErrorHttpException if there is any error when updating the model
+     * @throws \yii\exceptions\InvalidConfigException
+     * @throws \yii\web\NotFoundHttpException
+     * @throws \yii\web\UnsupportedMediaTypeHttpException
      */
-    public function run($id)
+    public function run($id): \Yiisoft\ActiveRecord\ActiveRecordInterface
     {
         /* @var $model ActiveRecord */
         $model = $this->findModel($id);
@@ -44,7 +57,7 @@ class UpdateAction extends Action
         }
 
         $model->scenario = $this->scenario;
-        $model->load(Yii::$app->getRequest()->getParsedBody(), '');
+        $model->load($this->request->getParsedBody(), '');
         if ($model->save() === false && !$model->hasErrors()) {
             throw new ServerErrorHttpException('Failed to update the object for unknown reason.');
         }

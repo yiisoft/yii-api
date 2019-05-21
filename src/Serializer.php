@@ -7,14 +7,13 @@
 
 namespace Yiisoft\Yii\Rest;
 
-use yii\base\Application;
 use yii\base\Component;
 use yii\base\Model;
 use yii\data\DataProviderInterface;
 use yii\data\Pagination;
 use yii\web\Link;
-use yii\web\Request;
-use yii\web\Response;
+use yii\base\Request;
+use yii\base\Response;
 use Yiisoft\Arrays\Arrayable;
 use Yiisoft\Arrays\ArrayHelper;
 
@@ -100,11 +99,11 @@ class Serializer extends Component
      */
     public $metaEnvelope = '_meta';
     /**
-     * @var Request the current request. If not set, the `request` application component will be used.
+     * @var \yii\web\Request the current request. If not set, the `request` application component will be used.
      */
     public $request;
     /**
-     * @var Response the response to be sent. If not set, the `response` application component will be used.
+     * @var \yii\web\Response the response to be sent. If not set, the `response` application component will be used.
      */
     public $response;
     /**
@@ -116,20 +115,10 @@ class Serializer extends Component
      */
     public $preserveKeys = false;
 
-    /**
-     * @var Application
-     */
-    protected $app;
-
-    public function __construct(Application $app)
+    public function __construct(Request $request, Response $response)
     {
-        $this->app = $app;
-        if ($this->request === null) {
-            $this->request = $this->app->getRequest();
-        }
-        if ($this->response === null) {
-            $this->response = $this->app->getResponse();
-        }
+        $this->request = $request;
+        $this->response = $response;
     }
 
     /**
@@ -165,7 +154,7 @@ class Serializer extends Component
      * @see Model::fields()
      * @see Model::extraFields()
      */
-    protected function getRequestedFields()
+    protected function getRequestedFields(): array
     {
         $fields = $this->request->get($this->fieldsParam);
         $expand = $this->request->get($this->expandParam);
@@ -181,7 +170,7 @@ class Serializer extends Component
      * @param DataProviderInterface $dataProvider
      * @return array the array representation of the data provider.
      */
-    protected function serializeDataProvider($dataProvider)
+    protected function serializeDataProvider($dataProvider): array
     {
         if ($this->preserveKeys) {
             $models = $dataProvider->getModels();
@@ -196,7 +185,9 @@ class Serializer extends Component
 
         if ($this->request->getIsHead()) {
             return null;
-        } elseif ($this->collectionEnvelope === null) {
+        }
+
+        if ($this->collectionEnvelope === null) {
             return $models;
         }
 
@@ -216,7 +207,7 @@ class Serializer extends Component
      * @return array the array representation of the pagination
      * @see addPaginationHeaders()
      */
-    protected function serializePagination($pagination)
+    protected function serializePagination($pagination): array
     {
         return [
             $this->linksEnvelope => Link::serialize($pagination->getLinks(true)),
@@ -233,7 +224,7 @@ class Serializer extends Component
      * Adds HTTP headers about the pagination to the response.
      * @param Pagination $pagination
      */
-    protected function addPaginationHeaders($pagination)
+    protected function addPaginationHeaders($pagination): void
     {
         $links = [];
         foreach ($pagination->getLinks(true) as $rel => $url) {
@@ -252,7 +243,7 @@ class Serializer extends Component
      * @param Arrayable $model
      * @return array the array representation of the model
      */
-    protected function serializeModel($model)
+    protected function serializeModel($model): array
     {
         if ($this->request->getIsHead()) {
             return null;
@@ -267,7 +258,7 @@ class Serializer extends Component
      * @param Model $model
      * @return array the array representation of the errors
      */
-    protected function serializeModelErrors($model)
+    protected function serializeModelErrors($model): array
     {
         $this->response->setStatusCode(422, 'Data Validation Failed.');
         $result = [];
@@ -286,7 +277,7 @@ class Serializer extends Component
      * @param array $models
      * @return array the array representation of the models
      */
-    protected function serializeModels(array $models)
+    protected function serializeModels(array $models): array
     {
         [$fields, $expand] = $this->getRequestedFields();
         foreach ($models as $i => $model) {

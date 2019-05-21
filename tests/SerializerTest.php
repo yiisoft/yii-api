@@ -25,7 +25,7 @@ class SerializerTest extends TestCase
 
     public function testSerializeModelErrors()
     {
-        $serializer = new Serializer($this->app);
+        $serializer = $this->getSerializer();
         $model = new TestModel();
 
         $model->addError('field1', 'Test error');
@@ -46,7 +46,7 @@ class SerializerTest extends TestCase
 
     public function testSerializeModelData()
     {
-        $serializer = new Serializer($this->app);
+        $serializer = $this->getSerializer();
         $model = new TestModel();
 
         $this->assertSame([
@@ -71,7 +71,7 @@ class SerializerTest extends TestCase
 
     public function testExpand()
     {
-        $serializer = new Serializer($this->app);
+        $serializer = $this->getSerializer();
         $model = new TestModel();
 
         TestModel::$fields = ['field1', 'field2'];
@@ -105,7 +105,7 @@ class SerializerTest extends TestCase
 
     public function testNestedExpand()
     {
-        $serializer = new Serializer($this->app);
+        $serializer = $this->getSerializer();
         $model = new TestModel();
         $model->extraField3 = new TestModel2();
 
@@ -126,7 +126,7 @@ class SerializerTest extends TestCase
 
     public function testFields()
     {
-        $serializer = new Serializer($this->app);
+        $serializer = $this->getSerializer();
         $model = new TestModel();
         $model->extraField3 = new TestModel2();
 
@@ -249,7 +249,7 @@ class SerializerTest extends TestCase
      */
     public function testExpandInvalidInput()
     {
-        $serializer = new Serializer($this->app);
+        $serializer = $this->getSerializer();
         $model = new TestModel();
 
         $this->app->request->setQueryParams(['expand' => ['field1,extraField2']]);
@@ -384,10 +384,15 @@ class SerializerTest extends TestCase
      */
     public function testSerializeDataProvider($dataProvider, $expectedResult, $saveKeys = false)
     {
-        $serializer = new Serializer($this->app);
+        $serializer = $this->getSerializer();
         $serializer->preserveKeys = $saveKeys;
 
         $this->assertEquals($expectedResult, $serializer->serialize($dataProvider));
+    }
+
+    private function getSerializer()
+    {
+        return new Serializer($this->container->get('request'), $this->container->get('response'));
     }
 }
 

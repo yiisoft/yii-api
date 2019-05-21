@@ -5,7 +5,10 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace Yiisoft\Yii\Rest;
+namespace Yiisoft\Yii\Rest\Actions;
+
+use yii\base\Request;
+use yii\base\Response;
 
 /**
  * OptionsAction responds to the OPTIONS request by sending back an `Allow` header.
@@ -25,7 +28,21 @@ class OptionsAction extends \yii\base\Action
      * @var array the HTTP verbs that are supported by the resource URL
      */
     public $resourceOptions = ['GET', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'];
+    /**
+     * @var \yii\web\Request
+     */
+    protected $request;
+    /**
+     * @var \yii\web\Response
+     */
+    protected $response;
 
+    public function __construct($id, $controller, Request $request, Response $response)
+    {
+        parent::__construct($id, $controller);
+        $this->request = $request;
+        $this->response = $response;
+    }
 
     /**
      * Responds to the OPTIONS request.
@@ -33,12 +50,12 @@ class OptionsAction extends \yii\base\Action
      */
     public function run($id = null)
     {
-        $app = $this->getApp();
-        if ($app->getRequest()->getMethod() !== 'OPTIONS') {
-            $app->getResponse()->setStatusCode(405);
+        if ($this->request->getMethod() !== 'OPTIONS') {
+            $this->response->setStatusCode(405);
         }
         $options = $id === null ? $this->collectionOptions : $this->resourceOptions;
-        $app->getResponse()->getHeaderCollection()->set('Allow', implode(', ', $options));
-        $app->getResponse()->getHeaderCollection()->set('Access-Control-Allow-Method', implode(', ', $options));
+        $this->response->getHeaderCollection()
+            ->set('Allow', implode(', ', $options))
+            ->set('Access-Control-Allow-Method', implode(', ', $options));
     }
 }
