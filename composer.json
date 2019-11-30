@@ -1,7 +1,12 @@
 {
     "name": "yiisoft/yii-rest",
     "description": "Yii framework REST extension",
-    "keywords": ["yii", "framework", "rest", "api"],
+    "keywords": [
+        "yii",
+        "framework",
+        "rest",
+        "api"
+    ],
     "type": "library",
     "license": "BSD-3-Clause",
     "support": {
@@ -59,5 +64,8 @@
             "web": "config/web.php",
             "tests": "$web"
         }
+    },
+    "config": {
+        "sort-packages": true
     }
 }
