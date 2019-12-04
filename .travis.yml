@@ -29,3 +29,20 @@ before_script:
 
 script:
   - ./vendor/bin/phpunit $PHPUNIT_FLAGS
+
+notifications:
+  slack:
+    -
+      rooms:
+        -
+          secure: MngA9w0aAtfL70Pzk1i0QQiwVXF7VrHjq9UPTaRN0M5/TInzRO9YyxlEJr2/WL5Ipk9Otajk7Mz8X6IbmGw1YjUj2p/RjYhiscTibbD61xhfzUoKUfCzzmTqrBIYPa7WeyItyTlldyzTepSGfVLfed5BxOtQACHLAaUUAMneqBVXGqulm23viGxXfOY/29JIHO5pOFjECGL9P3Y3bdl8mQ1WmULmbA3LJKAbBw/kJJjizz/Xi7V10gABt+bBjyXZdal1l9Es1Nimd5BBPnY9rPsTIR6meMef5IOCgjryI+8hwvaf05WgUJsvuTzJUdyc2+2utVe2LcEQst1bkNnqoTovSQ0c0KBIHd7ckfOqMk3grtxKXCUe2uQNfWuLSkLfaaB1xhR5BPy4Qp5bQep+GnbAeTjslgAmsVwadt0DaMCwF2BBJDOmzjrgHDShsliEB6FsZcVXniuTXVAHb179Z9tiDanxzyaZ33homu5lFO8AU6FW4sfDyeSPrA6gK0JAmrfqdR/qx+PFKEucoDUB9Ugz3FX3SyBanoVh7cwWCUIrZN/oIFdh4GG/BHB18AzXnzL6PjbZSAGqYnpOWT9ndUbpjhiwXf4G0JYCRa96quS1xjp7FvtOBNmfplGhJwRilq8bFOhlD9GPTTEXsd8pXfCq5hR602cuq7qYAwoAxeQ=
+      on_success: always
+      on_failure: never
+      on_pull_requests: false
+    -
+      rooms:
+        -
+          secure: kMklw4mc+m5RWqIFjQCNu3v9mq7jhdmD3TqoCPlz40FlwqFDdLLAJ8KNAV0BKoCOnCjRTO1K8E0CdAQ8VT9UaYVD6IB/HlKt9SSuwQ54LdwU+y+MCQpDcCWpjI0jTZ4N46X9JBk2OF+/Ddk/FjnkW94rsvAGPPQYCY+OQ8l0QRZp3d+JGz8meF9Trnz9mZTFgb4/G/q62bqItCYPHTfeWl2QG6fq5XGPoRpr7YwdT25LvAV/KVjTCFbP8NcRWF8YRyePOfTevIw0VZ1QJScExhsjLAvudotn4vnpkRVF4sYLWqwFWZxZPWF2PBz9vu1LQlywqoM2b9FoyrgdcuTmdX3nn+Tlstuc4AOhoPOcPZVdB11pXrFNsiCtlUX2DQoQJO7VSM34FEldAUbxKjTFBD1oJQvKWzxVPoxzWuk6aVuTUMuYPUVuRutICKUBoA9bfcWVwO31eAak429JnyEyZOAGPcyL+TqkkvHBH5/I9L3SBgEIrpbk/WrzPICmnbrlaEkU2X5yHMAp022T5Y65MNpuqAufvGpd4IoYohtS/C7Sr1rmXbxpssPiepFcYHsHvrYT3yMa6flXbW2gncsGhkviYGBnmeNrGbI0rYSNsTCuece0OwNKJPS+VDceXge038+a/JHVr1DPZrL63v3HABFj8MW9jVQPUs11uhzV0K0=
+      on_success: never
+      on_failure: always
+      on_pull_requests: false
