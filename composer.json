@@ -10,11 +10,11 @@
     "type": "library",
     "license": "BSD-3-Clause",
     "support": {
-        "issues": "https://github.com/yiisoft/yii2-rest/issues",
+        "issues": "https://github.com/yiisoft/yii-rest/issues",
         "forum": "http://www.yiiframework.com/forum/",
         "wiki": "http://www.yiiframework.com/wiki/",
         "irc": "irc://irc.freenode.net/yii",
-        "source": "https://github.com/yiisoft/yii2-rest"
+        "source": "https://github.com/yiisoft/yii-rest"
     },
     "authors": [
         {
