@@ -22,8 +22,10 @@ abstract class AbstractResponseSerializer implements ResponseSerializerInterface
     public function serialize(int $code, $data): ResponseInterface
     {
         $response = $this->responseFactory->createResponse($code);
+        $stream = $this->serializeData($data);
+        $stream->rewind();
 
-        return $response->withBody($this->serializeData($data));
+        return $response->withBody($stream);
     }
 
     abstract protected function serializeData($data): StreamInterface;
