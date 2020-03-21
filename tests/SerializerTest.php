@@ -5,19 +5,16 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace Yiisoft\Yii\Rest\Tests\Unit;
+namespace Yiisoft\Yii\Rest\Tests;
 
-use yii\base\Model;
-use yii\data\ArrayDataProvider;
+use PHPUnit\Framework\TestCase;
 use Yiisoft\Yii\Rest\Serializer;
-use yii\tests\TestCase;
 
 class SerializerTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
-        $this->mockWebApplication();
 
         TestModel::$fields = ['field1', 'field2'];
         TestModel::$extraFields = [];
@@ -147,7 +144,7 @@ class SerializerTest extends TestCase
         $this->app->request->setQueryParams(
             [
                 'fields' => 'field1,extraField3.field3',
-                'expand' => 'extraField3.extraField4'
+                'expand' => 'extraField3.extraField4',
             ]
         );
         $this->assertSame([
@@ -174,7 +171,7 @@ class SerializerTest extends TestCase
         $this->app->request->setQueryParams(
             [
                 'fields' => 'extraField3.*',
-                'expand' => 'extraField3.extraField4'
+                'expand' => 'extraField3.extraField4',
             ]
         );
         $this->assertSame([
@@ -377,7 +374,6 @@ class SerializerTest extends TestCase
 
     /**
      * @dataProvider dataProviderSerializeDataProvider
-     *
      * @param \yii\data\DataProviderInterface $dataProvider
      * @param array $expectedResult
      * @param bool $saveKeys
@@ -396,44 +392,3 @@ class SerializerTest extends TestCase
     }
 }
 
-class TestModel extends Model
-{
-    public static $fields = ['field1', 'field2'];
-    public static $extraFields = [];
-
-    public $field1 = 'test';
-    public $field2 = 2;
-    public $extraField1 = 'testExtra';
-    public $extraField2 = 42;
-    public $extraField3;
-
-    public function fields()
-    {
-        return static::$fields;
-    }
-
-    public function extraFields()
-    {
-        return static::$extraFields;
-    }
-}
-
-class TestModel2 extends Model
-{
-    public static $fields = ['field3', 'field4'];
-    public static $extraFields = [];
-
-    public $field3 = 'test2';
-    public $field4 = 8;
-    public $extraField4 = 'testExtra2';
-
-    public function fields()
-    {
-        return static::$fields;
-    }
-
-    public function extraFields()
-    {
-        return static::$extraFields;
-    }
-}
