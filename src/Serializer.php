@@ -9,11 +9,11 @@ namespace Yiisoft\Yii\Rest;
 
 use yii\base\Component;
 use yii\base\Model;
+use yii\base\Request;
+use yii\base\Response;
 use yii\data\DataProviderInterface;
 use yii\data\Pagination;
 use yii\web\Link;
-use yii\base\Request;
-use yii\base\Response;
 use Yiisoft\Arrays\Arrayable;
 use Yiisoft\Arrays\ArrayHelper;
 
@@ -179,10 +179,6 @@ class Serializer extends Component
         }
         $models = $this->serializeModels($models);
 
-        if (($pagination = $dataProvider->getPagination()) !== false) {
-            $this->addPaginationHeaders($pagination);
-        }
-
         if ($this->request->getIsHead()) {
             return null;
         }
@@ -205,7 +201,6 @@ class Serializer extends Component
      * Serializes a pagination into an array.
      * @param Pagination $pagination
      * @return array the array representation of the pagination
-     * @see addPaginationHeaders()
      */
     protected function serializePagination($pagination): array
     {
@@ -218,24 +213,6 @@ class Serializer extends Component
                 'perPage' => $pagination->getPageSize(),
             ],
         ];
-    }
-
-    /**
-     * Adds HTTP headers about the pagination to the response.
-     * @param Pagination $pagination
-     */
-    protected function addPaginationHeaders($pagination): void
-    {
-        $links = [];
-        foreach ($pagination->getLinks(true) as $rel => $url) {
-            $links[] = "<$url>; rel=$rel";
-        }
-
-        $this->response->setHeader($this->totalCountHeader, $pagination->totalCount);
-        $this->response->setHeader($this->pageCountHeader, $pagination->getPageCount());
-        $this->response->setHeader($this->currentPageHeader, $pagination->getPage() + 1);
-        $this->response->setHeader($this->perPageHeader, $pagination->pageSize);
-        $this->response->setHeader('Link', implode(', ', $links));
     }
 
     /**
