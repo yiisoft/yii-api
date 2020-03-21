@@ -7,6 +7,9 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+/**
+ * TODO should be moved to yii-web
+ */
 final class PaginationHeaderTag implements MiddlewareInterface
 {
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
@@ -14,7 +17,11 @@ final class PaginationHeaderTag implements MiddlewareInterface
         $response = $handler->handle($request);
 
         $links = [];
-        $paginationLinks = /*$pagination->getLinks() ?? */[];
+        /**
+         * TODO Need to implement passing the Paginator to this class
+         * $paginationLinks = $paginator->getLinks();
+         */
+        $paginationLinks = [];
         foreach ($paginationLinks as $rel => $url) {
             $links[] = "<$url>; rel=$rel";
         }
