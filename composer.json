@@ -31,20 +31,22 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
+        "php": "^7.4",
         "yiisoft/arrays": "^3.0@dev",
-        "yiisoft/active-record": "^3.0@dev",
         "yiisoft/db": "^3.0@dev",
+        "yiisoft/factory": "^3.0@dev",
+        "yiisoft/http": "dev-master",
+        "yiisoft/serializer": "^3.0@dev",
         "yiisoft/strings": "^3.0@dev",
-        "yiisoft/yii-web": "^3.0@dev",
-        "php": "^7.4"
+        "yiisoft/yii-web": "^3.0@dev"
     },
     "require-dev": {
+        "nyholm/psr7": "^1.0",
         "phpunit/phpunit": "^8.4",
         "yiisoft/di": "^3.0@dev",
         "yiisoft/log": "^3.0@dev",
         "yiisoft/cache": "^3.0@dev",
-        "hiqdev/composer-config-plugin": "^1.0@dev",
-        "yiisoft/view": "^3.0@dev"
+        "hiqdev/composer-config-plugin": "^1.0@dev"
     },
     "autoload": {
         "psr-4": {
