@@ -6,37 +6,37 @@ use Psr\Http\Message\ResponseInterface;
 
 trait RestControllerTrait
 {
-    public function actionDelete(): ResponseInterface
+    public function delete(): ResponseInterface
     {
         throw new \Exception('Method is not implemented yet');
     }
 
-    public function actionHead(): ResponseInterface
+    public function head(): ResponseInterface
     {
         throw new \Exception('Method is not implemented yet');
     }
 
-    public function actionGet(): ResponseInterface
+    public function get(): ResponseInterface
     {
         throw new \Exception('Method is not implemented yet');
     }
 
-    public function actionOptions(): ResponseInterface
+    public function options(): ResponseInterface
     {
         throw new \Exception('Method is not implemented yet');
     }
 
-    public function actionPatch(): ResponseInterface
+    public function patch(): ResponseInterface
     {
         throw new \Exception('Method is not implemented yet');
     }
 
-    public function actionPost(): ResponseInterface
+    public function post(): ResponseInterface
     {
         throw new \Exception('Method is not implemented yet');
     }
 
-    public function actionPut(): ResponseInterface
+    public function put(): ResponseInterface
     {
         throw new \Exception('Method is not implemented yet');
     }

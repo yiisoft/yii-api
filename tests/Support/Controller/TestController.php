@@ -1,10 +1,10 @@
 <?php
 
-namespace Yiisoft\Yii\Rest\Tests\Support;
+namespace Yiisoft\Yii\Rest\Tests\Support\Controller;
 
 use Yiisoft\Yii\Rest\RestControllerTrait;
 
-class TestController
+final class TestController
 {
     use RestControllerTrait;
 }

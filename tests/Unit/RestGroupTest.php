@@ -6,9 +6,10 @@ use PHPUnit\Framework\TestCase;
 use Yiisoft\Http\Method;
 use Yiisoft\Router\Route;
 use Yiisoft\Yii\Rest\RestGroup;
-use Yiisoft\Yii\Rest\Tests\Support\TestController;
+use Yiisoft\Yii\Rest\Tests\Support\Controller\GetController;
+use Yiisoft\Yii\Rest\Tests\Support\Controller\TestController;
 
-class RestGroupTest extends TestCase
+final class RestGroupTest extends TestCase
 {
     public function testCreateDefaultRoutes(): void
     {
@@ -26,5 +27,16 @@ class RestGroupTest extends TestCase
             unset($methodsToCheck[array_search($method, $methodsToCheck, true)]);
         }
         $this->assertEmpty($methodsToCheck);
+    }
+
+    public function testCreateOnlyExistsMethodsRoutes(): void
+    {
+        $group = RestGroup::create('users', GetController::class);
+        $routes = $group->getItems();
+
+        $this->assertCount(1, $routes);
+        $route = current($routes);
+        $this->assertInstanceOf(Route::class, $route);
+        $this->assertSame([Method::GET], $route->getMethods());
     }
 }
