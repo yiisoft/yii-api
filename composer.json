@@ -15,26 +15,14 @@
         "wiki": "http://www.yiiframework.com/wiki/",
         "irc": "irc://irc.freenode.net/yii",
         "source": "https://github.com/yiisoft/yii-rest"
-    },
-    "authors": [
-        {
-            "name": "Qiang Xue",
-            "email": "qiang.xue@gmail.com",
-            "homepage": "http://www.yiiframework.com/"
-        },
-        {
-            "name": "Alexander Makarov",
-            "email": "sam@rmcreative.ru",
-            "homepage": "http://rmcreative.ru/"
-        }
-    ],
+    },   
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
         "php": "^7.4",
         "yiisoft/http": "dev-master",
-        "yiisoft/serializer": "^3.0@dev",
-        "yiisoft/router": "^3.0@dev"
+        "yiisoft/router": "^3.0@dev",
+        "yiisoft/serializer": "^3.0@dev"
     },
     "require-dev": {
         "nyholm/psr7": "^1.0",
