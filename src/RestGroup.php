@@ -36,7 +36,8 @@ class RestGroup
 
         foreach ($methods as $methodName => $httpMethod) {
             if ($reflection->hasMethod($methodName)) {
-                $routes[] = Route::methods([$httpMethod], $prefix, [$controller, $methodName]);
+                $pattern = $methodName === 'list' ? $prefix : "$prefix/{id:[^/]+}";
+                $routes[] = Route::methods([$httpMethod], $pattern, [$controller, $methodName]);
             }
         }
 
