@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Yiisoft\Yii\Rest\Tests\Unit\ResponseSerializer;
 
 use PHPUnit\Framework\TestCase;
@@ -17,7 +19,10 @@ abstract class AbstractResponseFactoryTestCase extends TestCase
 
         $response = $serializer->createResponse($data);
 
-        $this->assertResultContainData($response->getBody()->getContents(), $data);
+        $stream = $response->getBody();
+        $stream->rewind();
+
+        $this->assertResultContainData($stream->getContents(), $data);
     }
 
     abstract protected function getFactory(): ResponseFactoryInterface;
@@ -25,7 +30,7 @@ abstract class AbstractResponseFactoryTestCase extends TestCase
     private function assertResultContainData(string $content, $data): void
     {
         if (is_string($data) || is_int($data)) {
-            $this->assertStringContainsString($data, $content);
+            $this->assertStringContainsString((string)$data, $content);
 
             return;
         }

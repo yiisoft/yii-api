@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Yiisoft\Yii\Rest\ResponseSerializer;
 
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -10,19 +12,23 @@ use Yiisoft\Serializer\JsonSerializer;
 final class JsonResponseFactory extends AbstractResponseFactory
 {
     private JsonSerializer $jsonSerializer;
+    private StreamFactoryInterface $streamFactory;
 
     public function __construct(
         JsonSerializer $jsonSerializer,
         StreamFactoryInterface $streamFactory,
         ResponseFactoryInterface $factory
     ) {
-        parent::__construct($streamFactory, $factory);
+        parent::__construct($factory);
         $this->jsonSerializer = $jsonSerializer;
+        $this->streamFactory = $streamFactory;
     }
 
     protected function convertData($data): StreamInterface
     {
-        return $this->createStream($this->jsonSerializer->serialize($data));
+        $content = $this->jsonSerializer->serialize($data);
+
+        return $this->streamFactory->createStream($content);
     }
 
     protected function getContentType(): string
