@@ -25,6 +25,8 @@ composer.phar
 
 # phpunit itself is not needed
 phpunit.phar
+# phpunit cache
+.phpunit.result.cache
 # local phpunit config
 /phpunit.xml
 
