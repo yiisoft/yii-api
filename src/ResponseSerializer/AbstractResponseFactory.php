@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Yiisoft\Yii\Rest\ResponseSerializer;
 
 use Psr\Http\Message\ResponseFactoryInterface as PsrResponseFactoryInterface;
