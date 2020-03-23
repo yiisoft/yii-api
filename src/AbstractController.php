@@ -18,7 +18,7 @@ abstract class AbstractController
         $this->responseFactory = $responseFactory;
     }
 
-    protected function render($data): ResponseInterface
+    protected function createResponse($data): ResponseInterface
     {
         return $this->responseFactory->createResponse($data);
     }
