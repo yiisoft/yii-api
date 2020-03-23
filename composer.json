@@ -33,7 +33,8 @@
     "require": {
         "php": "^7.4",
         "yiisoft/http": "dev-master",
-        "yiisoft/serializer": "^3.0@dev"
+        "yiisoft/serializer": "^3.0@dev",
+        "yiisoft/router": "^3.0@dev"
     },
     "require-dev": {
         "nyholm/psr7": "^1.0",
