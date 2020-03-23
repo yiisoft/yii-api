@@ -21,7 +21,6 @@ abstract class AbstractResponseFactory implements ResponseFactoryInterface
     public function createResponse($data): ResponseInterface
     {
         $stream = $this->convertData($data);
-        $stream->rewind();
 
         return $this
             ->responseFactory->createResponse()
