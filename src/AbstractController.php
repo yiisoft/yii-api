@@ -18,8 +18,8 @@ abstract class AbstractController
         $this->responseSerializer = $responseSerializer;
     }
 
-    protected function render(int $code, ...$data): ResponseInterface
+    protected function render(...$data): ResponseInterface
     {
-        return $this->responseSerializer->serialize($code, $data);
+        return $this->responseSerializer->serialize($data);
     }
 }

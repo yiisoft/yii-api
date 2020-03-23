@@ -15,7 +15,7 @@ abstract class AbstractResponseSerializerTestCase extends TestCase
     {
         $serializer = $this->getSerializer();
 
-        $response = $serializer->serialize(123, $data);
+        $response = $serializer->serialize($data);
 
         $this->assertResultContainData($response->getBody()->getContents(), $data);
     }
