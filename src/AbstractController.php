@@ -11,15 +11,15 @@ use Psr\Http\Message\ResponseInterface;
  */
 abstract class AbstractController
 {
-    private ResponseSerializerInterface $responseSerializer;
+    private ResponseFactoryInterface $responseFactory;
 
-    public function __construct(ResponseSerializerInterface $responseSerializer)
+    public function __construct(ResponseFactoryInterface $responseFactory)
     {
-        $this->responseSerializer = $responseSerializer;
+        $this->responseFactory = $responseFactory;
     }
 
     protected function render(...$data): ResponseInterface
     {
-        return $this->responseSerializer->serialize($data);
+        return $this->responseFactory->createResponse($data);
     }
 }

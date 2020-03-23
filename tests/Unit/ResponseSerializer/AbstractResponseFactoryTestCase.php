@@ -3,9 +3,9 @@
 namespace Yiisoft\Yii\Rest\Tests\Unit\ResponseSerializer;
 
 use PHPUnit\Framework\TestCase;
-use Yiisoft\Yii\Rest\ResponseSerializerInterface;
+use Yiisoft\Yii\Rest\ResponseFactoryInterface;
 
-abstract class AbstractResponseSerializerTestCase extends TestCase
+abstract class AbstractResponseFactoryTestCase extends TestCase
 {
     /**
      * @dataProvider serializeDataProvider
@@ -13,14 +13,14 @@ abstract class AbstractResponseSerializerTestCase extends TestCase
      */
     public function testSerialize(...$data): void
     {
-        $serializer = $this->getSerializer();
+        $serializer = $this->getFactory();
 
-        $response = $serializer->serialize($data);
+        $response = $serializer->createResponse($data);
 
         $this->assertResultContainData($response->getBody()->getContents(), $data);
     }
 
-    abstract protected function getSerializer(): ResponseSerializerInterface;
+    abstract protected function getFactory(): ResponseFactoryInterface;
 
     private function assertResultContainData(string $content, $data): void
     {

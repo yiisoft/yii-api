@@ -7,7 +7,7 @@ use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\StreamInterface;
 use Yiisoft\Serializer\JsonSerializer;
 
-class JsonResponseSerializer extends AbstractResponseSerializer
+final class JsonResponseFactory extends AbstractResponseFactory
 {
     private JsonSerializer $jsonSerializer;
 
@@ -20,7 +20,7 @@ class JsonResponseSerializer extends AbstractResponseSerializer
         $this->jsonSerializer = $jsonSerializer;
     }
 
-    protected function serializeData($data): StreamInterface
+    protected function convertData($data): StreamInterface
     {
         return $this->createStream($this->jsonSerializer->serialize($data));
     }
