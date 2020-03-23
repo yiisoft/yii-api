@@ -21,14 +21,18 @@ abstract class AbstractResponseFactory implements ResponseFactoryInterface
 
     public function createResponse($data): ResponseInterface
     {
-        $response = $this->responseFactory->createResponse();
         $stream = $this->convertData($data);
         $stream->rewind();
 
-        return $response->withBody($stream);
+        return $this
+            ->responseFactory->createResponse()
+            ->withHeader('Content-Type', $this->getContentType())
+            ->withBody($stream);
     }
 
     abstract protected function convertData($data): StreamInterface;
+
+    abstract protected function getContentType(): string;
 
     protected function createStream(string $content): StreamInterface
     {

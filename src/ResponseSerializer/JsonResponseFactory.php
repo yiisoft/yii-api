@@ -24,4 +24,9 @@ final class JsonResponseFactory extends AbstractResponseFactory
     {
         return $this->createStream($this->jsonSerializer->serialize($data));
     }
+
+    protected function getContentType(): string
+    {
+        return 'application/json';
+    }
 }
