@@ -21,6 +21,11 @@ trait RestControllerTrait
         throw new \Exception('Method is not implemented yet');
     }
 
+    public function list(): ResponseInterface
+    {
+        throw new \Exception('Method is not implemented yet');
+    }
+
     public function options(): ResponseInterface
     {
         throw new \Exception('Method is not implemented yet');

@@ -22,11 +22,19 @@ class RestGroup
     private static function createDefaultRoutes(string $prefix, string $controller): array
     {
         $reflection = new \ReflectionClass($controller);
-        $httpMethods = Method::ANY;
+        $methods = [
+            'get' => Method::GET,
+            'list' => Method::GET,
+            'post' => Method::POST,
+            'put' => Method::PUT,
+            'delete' => Method::DELETE,
+            'patch' => Method::PATCH,
+            'head' => Method::HEAD,
+            'options' => Method::OPTIONS,
+        ];
         $routes = [];
 
-        foreach ($httpMethods as $httpMethod) {
-            $methodName = strtolower($httpMethod);
+        foreach ($methods as $methodName => $httpMethod) {
             if ($reflection->hasMethod($methodName)) {
                 $routes[] = Route::methods([$httpMethod], $prefix, [$controller, $methodName]);
             }
