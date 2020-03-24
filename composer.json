@@ -37,7 +37,7 @@
     },
     "require-dev": {
         "nyholm/psr7": "^1.0",
-        "phpunit/phpunit": "^8.4 || ^9.0",
+        "phpunit/phpunit": "^9.0",
         "yiisoft/di": "^3.0@dev",
         "yiisoft/log": "^3.0@dev",
         "yiisoft/cache": "^3.0@dev",
