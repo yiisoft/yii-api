@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Yiisoft\Yii\Rest\Tests\Unit\ResponseSerializer;
+namespace Yiisoft\Yii\Rest\Tests\Unit\ResponseFactory;
 
 use PHPUnit\Framework\TestCase;
 use Yiisoft\Yii\Rest\ResponseFactoryInterface;
