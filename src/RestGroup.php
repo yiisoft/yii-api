@@ -7,7 +7,7 @@ use Yiisoft\Http\Method;
 use Yiisoft\Router\Group;
 use Yiisoft\Router\Route;
 use Yiisoft\Router\RouteCollectorInterface;
-use Yiisoft\Yii\Rest\Middleware\Convert;
+use Yiisoft\Yii\Rest\Middleware\ResponseConverter;
 
 class RestGroup
 {
@@ -42,7 +42,7 @@ class RestGroup
         foreach ($methods as $methodName => $httpMethod) {
             if ($reflection->hasMethod($methodName)) {
                 $pattern = $methodName === 'list' ? '' : '/{id:[^/]+}';
-                $middleware = new Convert($controller, $methodName, $container);
+                $middleware = new ResponseConverter($controller, $methodName, $container);
                 $routes[] = Route::methods([$httpMethod], $pattern, $middleware);
             }
         }
