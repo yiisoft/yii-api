@@ -15,7 +15,7 @@
         "wiki": "http://www.yiiframework.com/wiki/",
         "irc": "irc://irc.freenode.net/yii",
         "source": "https://github.com/yiisoft/yii-rest"
-    },   
+    },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
@@ -48,8 +48,7 @@
         },
         "config-plugin": {
             "params": "config/params.php",
-            "web": "config/web.php",
-            "tests": "$web"
+            "web": "config/web.php"
         }
     },
     "config": {
