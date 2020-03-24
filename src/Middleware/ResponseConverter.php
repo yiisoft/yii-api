@@ -3,6 +3,7 @@
 namespace Yiisoft\Yii\Rest\Middleware;
 
 use Psr\Container\ContainerInterface;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Yiisoft\Injector\Injector;
@@ -26,6 +27,9 @@ final class ResponseConverter
         $controller = $this->container->get($this->class);
         $responseFactory = $this->container->get(ResponseFactoryInterface::class);
         $mixedResponse = (new Injector($this->container))->invoke([$controller, $this->method], [$request, $handler]);
+        if ($mixedResponse instanceof ResponseInterface) {
+            return $mixedResponse;
+        }
 
         return $responseFactory->createResponse($mixedResponse);
     }
