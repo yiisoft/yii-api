@@ -3,6 +3,7 @@
 namespace Yiisoft\Yii\Rest\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
+use Psr\Container\ContainerInterface;
 use Yiisoft\Http\Method;
 use Yiisoft\Router\Route;
 use Yiisoft\Yii\Rest\RestGroup;
@@ -13,7 +14,8 @@ final class RestGroupTest extends TestCase
 {
     public function testCreateDefaultRoutes(): void
     {
-        $group = RestGroup::create('users', TestController::class);
+        $container = $this->createMock(ContainerInterface::class);
+        $group = RestGroup::create('users', TestController::class, $container);
         $routes = $group->getItems();
         $this->assertCount(8, $routes);
 
@@ -40,7 +42,8 @@ final class RestGroupTest extends TestCase
 
     public function testCreateOnlyExistsMethodsRoutes(): void
     {
-        $group = RestGroup::create('users', GetController::class);
+        $container = $this->createMock(ContainerInterface::class);
+        $group = RestGroup::create('users', GetController::class, $container);
         $routes = $group->getItems();
 
         $this->assertCount(1, $routes);
