@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Yiisoft\Yii\Rest\ResponseSerializer;
+namespace Yiisoft\Yii\Rest\ResponseFactory;
 
 use Psr\Http\Message\ResponseFactoryInterface as PsrResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
