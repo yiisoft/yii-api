@@ -11,7 +11,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Yiisoft\Injector\Injector;
 use Yiisoft\Yii\Rest\ResponseFactoryInterface;
 
-final class ResponseConverter
+final class ActionCaller
 {
     private string $class;
     private string $method;

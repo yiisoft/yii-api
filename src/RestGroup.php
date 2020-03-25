@@ -8,7 +8,7 @@ use Psr\Container\ContainerInterface;
 use Yiisoft\Http\Method;
 use Yiisoft\Router\Group;
 use Yiisoft\Router\Route;
-use Yiisoft\Yii\Rest\Middleware\ResponseConverter;
+use Yiisoft\Yii\Rest\Middleware\ActionCaller;
 
 class RestGroup
 {
@@ -37,7 +37,7 @@ class RestGroup
         foreach ($methods as $methodName => $httpMethod) {
             if (in_array($methodName, $controllerActions, true)) {
                 $pattern = $methodName === 'list' ? '' : '/{id:[^/]+}';
-                $middleware = new ResponseConverter($controller, $methodName, $container);
+                $middleware = new ActionCaller($controller, $methodName, $container);
                 $routes[] = Route::methods([$httpMethod], $pattern, $middleware);
             }
         }
