@@ -19,7 +19,6 @@ class RestGroup
 
     private static function createDefaultRoutes(string $controller, ContainerInterface $container): array
     {
-        $reflection = new \ReflectionClass($controller);
         $methods = [
             'list' => Method::GET,
             'get' => Method::GET,
@@ -32,8 +31,9 @@ class RestGroup
         ];
         $routes = [];
 
+        $controllerActions = get_class_methods($controller);
         foreach ($methods as $methodName => $httpMethod) {
-            if ($reflection->hasMethod($methodName)) {
+            if (in_array($methodName, $controllerActions, true)) {
                 $pattern = $methodName === 'list' ? '' : '/{id:[^/]+}';
                 $middleware = new ResponseConverter($controller, $methodName, $container);
                 $routes[] = Route::methods([$httpMethod], $pattern, $middleware);
