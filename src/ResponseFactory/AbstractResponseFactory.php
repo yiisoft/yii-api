@@ -7,6 +7,7 @@ namespace Yiisoft\Yii\Rest\ResponseFactory;
 use Psr\Http\Message\ResponseFactoryInterface as PsrResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
+use Yiisoft\Http\Header;
 use Yiisoft\Yii\Rest\ResponseFactoryInterface;
 
 abstract class AbstractResponseFactory implements ResponseFactoryInterface
@@ -22,9 +23,9 @@ abstract class AbstractResponseFactory implements ResponseFactoryInterface
     {
         $stream = $this->convertData($data);
 
-        return $this
-            ->responseFactory->createResponse()
-            ->withHeader('Content-Type', $this->getContentType())
+        return $this->responseFactory
+            ->createResponse()
+            ->withHeader(Header::CONTENT_TYPE, $this->getContentType())
             ->withBody($stream);
     }
 

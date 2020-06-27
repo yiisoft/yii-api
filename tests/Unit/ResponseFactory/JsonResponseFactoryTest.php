@@ -21,8 +21,8 @@ final class JsonResponseFactoryTest extends AbstractResponseFactoryTestCase
 
     public function testContentTypeInResponse(): void
     {
-        $serializer = $this->getFactory();
-        $response = $serializer->createResponse([]);
+        $factory = $this->getFactory();
+        $response = $factory->createResponse([]);
 
         $this->assertTrue($response->hasHeader('Content-Type'));
         $this->assertEquals('application/json', $response->getHeaderLine('Content-Type'));

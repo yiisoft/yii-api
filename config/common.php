@@ -1,5 +1,5 @@
 <?php
 
 return [
-    \Yiisoft\Yii\Rest\ResponseFactoryInterface::class => \Yiisoft\Yii\Rest\ResponseSerializer\JsonResponseFactory::class,
+    \Yiisoft\Yii\Rest\ResponseFactoryInterface::class => \Yiisoft\Yii\Rest\ResponseFactory\JsonResponseFactory::class,
 ];
