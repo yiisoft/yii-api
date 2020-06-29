@@ -2,7 +2,6 @@
 
 namespace Yiisoft\Yii\Rest;
 
-use Psr\Container\ContainerInterface;
 use Yiisoft\Http\Method;
 use Yiisoft\Router\Group;
 use Yiisoft\Router\Route;
@@ -13,18 +12,14 @@ class RestGroup
 {
     public static function create(
         string $prefix,
-        string $controller,
-        ContainerInterface $container
+        string $controller
     ): RouteCollectorInterface {
-        $routes = self::createDefaultRoutes($controller, $container);
-        $group = Group::create($prefix, $routes);
+        $routes = self::createDefaultRoutes($controller);
 
-        // add middlewares here
-
-        return $group;
+        return Group::create($prefix, $routes);
     }
 
-    private static function createDefaultRoutes(string $controller, ContainerInterface $container): array
+    private static function createDefaultRoutes(string $controller): array
     {
         $reflection = new \ReflectionClass($controller);
         $methods = [
@@ -42,8 +37,7 @@ class RestGroup
         foreach ($methods as $methodName => $httpMethod) {
             if ($reflection->hasMethod($methodName)) {
                 $pattern = $methodName === 'list' ? '' : '/{id:[^/]+}';
-                $middleware = new Convert($controller, $methodName, $container);
-                $routes[] = Route::methods([$httpMethod], $pattern, $middleware);
+                $routes[] = Route::methods([$httpMethod], $pattern, [$controller, $methodName]);
             }
         }
 
