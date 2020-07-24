@@ -15,11 +15,11 @@
         "wiki": "http://www.yiiframework.com/wiki/",
         "irc": "irc://irc.freenode.net/yii",
         "source": "https://github.com/yiisoft/yii-rest"
-    },   
+    },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^7.4",
+        "php": "^7.4|^8.0",
         "yiisoft/http": "dev-master",
         "yiisoft/router": "^3.0@dev",
         "yiisoft/serializer": "^3.0@dev"
