@@ -15,18 +15,20 @@
         "wiki": "http://www.yiiframework.com/wiki/",
         "irc": "irc://irc.freenode.net/yii",
         "source": "https://github.com/yiisoft/yii-rest"
-    },   
+    },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^7.4",
+        "php": "^7.4|^8.0",
         "yiisoft/http": "dev-master",
         "yiisoft/router": "^3.0@dev",
         "yiisoft/serializer": "^3.0@dev"
     },
     "require-dev": {
         "nyholm/psr7": "^1.0",
-        "phpunit/phpunit": "^9.0",
+        "infection/infection": "^0.16.3",
+        "phan/phan": "^3.0.2",
+        "phpunit/phpunit": "^9.2",
         "yiisoft/di": "^3.0@dev",
         "yiisoft/log": "^3.0@dev",
         "yiisoft/cache": "^3.0@dev",
@@ -52,6 +54,9 @@
             "web": "config/web.php",
             "tests": "$web"
         }
+    },
+    "scripts": {
+        "phan": "phan --progress-bar -o analysis.txt"
     },
     "config": {
         "sort-packages": true

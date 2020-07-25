@@ -6,7 +6,6 @@ use Yiisoft\Http\Method;
 use Yiisoft\Router\Group;
 use Yiisoft\Router\Route;
 use Yiisoft\Router\RouteCollectorInterface;
-use Yiisoft\Yii\Rest\Middleware\Convert;
 
 class RestGroup
 {
