@@ -20,7 +20,7 @@
     "prefer-stable": true,
     "require": {
         "php": "^7.4|^8.0",
-        "yiisoft/http": "dev-master",
+        "yiisoft/http": "^1.0",
         "yiisoft/router": "^3.0@dev",
         "yiisoft/serializer": "^3.0@dev"
     },
