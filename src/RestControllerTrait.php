@@ -1,6 +1,6 @@
 <?php
 
-namespace Yiisoft\Yii\Rest;
+namespace Yiisoft\Yii\Api;
 
 use Psr\Http\Message\ResponseInterface;
 

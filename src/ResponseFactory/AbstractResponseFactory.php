@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Yiisoft\Yii\Rest\ResponseFactory;
+namespace Yiisoft\Yii\Api\ResponseFactory;
 
 use Psr\Http\Message\ResponseFactoryInterface as PsrResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 use Yiisoft\Http\Header;
-use Yiisoft\Yii\Rest\ResponseFactoryInterface;
+use Yiisoft\Yii\Api\ResponseFactoryInterface;
 
 abstract class AbstractResponseFactory implements ResponseFactoryInterface
 {

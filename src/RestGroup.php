@@ -1,6 +1,6 @@
 <?php
 
-namespace Yiisoft\Yii\Rest;
+namespace Yiisoft\Yii\Api;
 
 use Yiisoft\Http\Method;
 use Yiisoft\Router\Group;

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Yiisoft\Yii\Rest\Tests\Unit\ResponseFactory;
+namespace Yiisoft\Yii\Api\Tests\Unit\ResponseFactory;
 
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Yiisoft\Serializer\JsonSerializer;
-use Yiisoft\Yii\Rest\ResponseFactory\JsonResponseFactory;
-use Yiisoft\Yii\Rest\ResponseFactoryInterface;
+use Yiisoft\Yii\Api\ResponseFactory\JsonResponseFactory;
+use Yiisoft\Yii\Api\ResponseFactoryInterface;
 
 final class JsonResponseFactoryTest extends AbstractResponseFactoryTestCase
 {

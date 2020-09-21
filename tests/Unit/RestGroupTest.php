@@ -1,13 +1,13 @@
 <?php
 
-namespace Yiisoft\Yii\Rest\Tests\Unit;
+namespace Yiisoft\Yii\Api\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 use Yiisoft\Http\Method;
 use Yiisoft\Router\Route;
-use Yiisoft\Yii\Rest\RestGroup;
-use Yiisoft\Yii\Rest\Tests\Support\Controller\GetController;
-use Yiisoft\Yii\Rest\Tests\Support\Controller\TestController;
+use Yiisoft\Yii\Api\RestGroup;
+use Yiisoft\Yii\Api\Tests\Support\Controller\GetController;
+use Yiisoft\Yii\Api\Tests\Support\Controller\TestController;
 
 final class RestGroupTest extends TestCase
 {

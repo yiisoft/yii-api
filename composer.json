@@ -1,6 +1,6 @@
 {
-    "name": "yiisoft/yii-rest",
-    "description": "Yii framework REST extension",
+    "name": "yiisoft/yii-api",
+    "description": "Yii framework API support",
     "keywords": [
         "yii",
         "framework",
@@ -10,11 +10,11 @@
     "type": "library",
     "license": "BSD-3-Clause",
     "support": {
-        "issues": "https://github.com/yiisoft/yii-rest/issues",
+        "issues": "https://github.com/yiisoft/yii-api/issues",
         "forum": "http://www.yiiframework.com/forum/",
         "wiki": "http://www.yiiframework.com/wiki/",
         "irc": "irc://irc.freenode.net/yii",
-        "source": "https://github.com/yiisoft/yii-rest"
+        "source": "https://github.com/yiisoft/yii-api"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -36,12 +36,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Yiisoft\\Yii\\Rest\\": "src"
+            "Yiisoft\\Yii\\Api\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Yiisoft\\Yii\\Rest\\Tests\\": "tests"
+            "Yiisoft\\Yii\\Api\\Tests\\": "tests"
         }
     },
     "extra": {

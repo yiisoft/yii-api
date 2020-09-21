@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Yiisoft\Yii\Rest\Tests\Unit\ResponseFactory;
+namespace Yiisoft\Yii\Api\Tests\Unit\ResponseFactory;
 
 use PHPUnit\Framework\TestCase;
-use Yiisoft\Yii\Rest\ResponseFactoryInterface;
+use Yiisoft\Yii\Api\ResponseFactoryInterface;
 
 abstract class AbstractResponseFactoryTestCase extends TestCase
 {

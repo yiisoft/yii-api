@@ -1,6 +1,6 @@
 <?php
 
-namespace Yiisoft\Yii\Rest\Tests\Support\Controller;
+namespace Yiisoft\Yii\Api\Tests\Support\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 
