@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Yiisoft\Yii\Api\Tests\Support\Controller;
 
 use Psr\Http\Message\ResponseInterface;
