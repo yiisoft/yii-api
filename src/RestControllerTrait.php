@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Yiisoft\Yii\Api;
 
 use Psr\Http\Message\ResponseInterface;
