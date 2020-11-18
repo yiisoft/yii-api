@@ -26,7 +26,7 @@
     },
     "require-dev": {
         "infection/infection": "^0.18.0",
-        "nyholm/psr7": "^1.0",
+        "nyholm/psr7": "^1.3",
         "phpunit/phpunit": "^9.3",
         "vimeo/psalm": "^4.1",
         "yiisoft/cache": "^3.0@dev",
