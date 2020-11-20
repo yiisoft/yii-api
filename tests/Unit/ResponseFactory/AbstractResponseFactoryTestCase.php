@@ -11,6 +11,7 @@ abstract class AbstractResponseFactoryTestCase extends TestCase
 {
     /**
      * @dataProvider serializeDataProvider
+     *
      * @param array $data
      */
     public function testSerialize(...$data): void
