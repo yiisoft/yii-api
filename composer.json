@@ -27,13 +27,15 @@
     "require-dev": {
         "infection/infection": "^0.18.0",
         "nyholm/psr7": "^1.0",
-        "phpunit/phpunit": "^9.3",
-        "vimeo/psalm": "^4.1",
+        "phan/phan": "^3.0",
+        "phpunit/phpunit": "^9.4",
+        "roave/infection-static-analysis-plugin": "^1.5",
+        "spatie/phpunit-watcher": "^1.23",
+        "vimeo/psalm": "^4.2",
         "yiisoft/cache": "^3.0@dev",
         "yiisoft/composer-config-plugin": "^1.0@dev",
         "yiisoft/di": "^3.0@dev",
-        "yiisoft/log": "^3.0@dev",
-        "phan/phan": "^3.0"
+        "yiisoft/log": "^3.0@dev"
     },
     "autoload": {
         "psr-4": {
