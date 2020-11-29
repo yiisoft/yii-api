@@ -25,7 +25,6 @@
         "yiisoft/serializer": "^3.0@dev"
     },
     "require-dev": {
-        "infection/infection": "^0.18.0",
         "nyholm/psr7": "^1.0",
         "phan/phan": "^3.0",
         "phpunit/phpunit": "^9.4",
