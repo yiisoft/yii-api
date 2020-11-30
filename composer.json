@@ -28,7 +28,7 @@
         "nyholm/psr7": "^1.0",
         "phan/phan": "^3.0",
         "phpunit/phpunit": "^9.4",
-        "roave/infection-static-analysis-plugin": "^1.5",
+        "roave/infection-static-analysis-plugin": "^1.6",
         "spatie/phpunit-watcher": "^1.23",
         "vimeo/psalm": "^4.2",
         "yiisoft/cache": "^3.0@dev",
